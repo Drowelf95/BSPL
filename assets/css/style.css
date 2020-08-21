@@ -164,9 +164,78 @@ html {
     color: white;
 }
 
+.loadingPage_error {
+    color: red;
+    text-align: center;
+}
+
 .mdpForgotten p {
     margin: 0;
     font-size: 0.7rem;
+}
+
+
+/*Back office*/
+
+.masterContainer {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 90vh;
+    background-color: #ececec;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.bo_Container {
+    width: 80%;
+    height: 100%;
+    background-color: white;
+    border-radius: 40px;
+}
+
+.bo_menu {
+    flex-direction: column;
+    width: 20%;
+    background-color: #ececec;
+    border-radius: 40px 0 0 40px;
+}
+
+.bo_menu img {
+    width: 40%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.bo_m_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    width: 250px;
+    height: auto;
+    padding: 10px 0;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.bo_m_btn i {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.bo_m_btn p {
+    margin: 0;
+}
+
+.bo_m_btn:hover {
+    background-color: #dcdcdc;
+    color: #481a71;
 }
 
 

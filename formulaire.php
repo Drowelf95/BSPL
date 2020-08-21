@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -25,22 +29,30 @@
                 <h1>Admin</h1>
             </div>
 
-            <div class="inputLines">
-                <h2>Identifiant</h2>
-                <input type="text" name="Identifiant" placeholder="Tapez votre identifiant ici." />
-                <h2>Mot de passe</h2>
-                <form action="security.php" method="post">
-                    <input type="password" name="pass" placeholder="Tapez votre mot de passe ici." />
-                
-            </div>
+            <form action="security.php" method="post">
+                <div class="inputLines">
 
-            <div class="dispFlex">
-                <input type="submit" class="bigBtn" value="Valider">
-            </div>
+                    <h2>Identifiant</h2>
+                    <input type="text" name="identifiant" placeholder="Tapez votre identifiant ici." required />
+
+
+                    <h2>Mot de passe</h2>
+                    <input type="password" name="pass" placeholder="Tapez votre mot de passe ici." required />
+
+                </div>
+
+                <div class="dispFlex">
+                    <input type="submit" class="bigBtn" value="Valider">
+                </div>
+
+                <?php if(isset($_GET['erreur'])) { 
+                    echo "<span><p class="."loadingPage_error".">Veuillez saisir un identifant ou mot de passe correcte</p></span>";
+                }?>
+
             </form>
 
             <div class="dispFlex mdpForgotten">
-                <p>Mot de passe oublié ? Cliquez-ici.</p>
+                <p>Mot de passe oublié ? <a href="backoffice.php">Cliquez-ici.</a></p>
             </div>
         </div>
 
