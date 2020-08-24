@@ -29,7 +29,7 @@
                 <h1>Admin</h1>
             </div>
 
-            <form action="security.php" method="post">
+            <form action="process.php" method="post">
                 <div class="inputLines">
 
                     <h2>Identifiant</h2>

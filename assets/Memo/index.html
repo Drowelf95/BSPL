@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="assets/img/bike.png" />
+    <title>Cycloo. - Location de vélo</title>
+
+    <link href="assets/fonts/Fontawesome/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/mediaq.css" />
+</head>
+
+<body>
+
+    <div class="main_wrapper">
+
+        <!--Top Title-->
+        <header>
+
+            <div id="topAnchor" class="anchor"></div>
+
+            <div id="background_LP">
+                <div class="background">
+                    <div class="Logo">
+                        <h1 class="title_LP noselect">Cycloo</h1>
+                        <div id="rollBox" class="rollingBox"></div>
+                    </div>
+                </div>
+                <!--Trigger JS animation of the box-->
+                <div class="overlayLogo"></div>
+            </div>
+
+            <div id="infoAnchorDesk" class="infoStartDesk">
+                <p>Découvrez notre service</p>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+        </header>
+
+        <!--Scroll top-->
+        <div id="scrollTop" class="scrollNone">
+            <p><i class="fas fa-chevron-up"></i></p>
+        </div>
+
+        <!--Slider-->
+        <section class="sliderWrapper">
+
+            <div id="sliderAnchor" class="anchor"></div>
+
+            <div class="introduction">
+                <h2>Louez un vélo quand vous voulez, où vous voulez !</h2>
+                <p>Comment utiliser la plateforme Cycloo ?</p>
+            </div>
+
+            <div class="sliderContainer">
+
+                <!--Nav buttons-->
+                <div class="navBtn">
+                    <div class="clLeft" id="btnPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="clPause" id="btnPause">
+                        <i class="fas fa-pause"></i>
+                    </div>
+                    <div class="clRight" id="btnNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <button class="sliderBtn">Prev</button>
+                <button class="sliderBtn">Pause</button>
+                <button class="sliderBtn">Next</button>
+
+                <!--Iamges & texts-->
+                <div class="sliderImages">
+                    <div class="slide">
+                        <img src="assets/img/Slider3.png" id="lastClone" alt="">
+                        <div class="slideTxt">
+                            <h3>Comment ?</h3>
+                            <p>Depuis la carte interactive, trouvez un vélo près de chez vous. Une fois sélectionné il ne nous faudra plus qu’un nom, un prénom et votre signature pour valider votre réservation. Vous aurezalors 20 minutes pour aller chercher
+                                votre vélo.</p>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="assets/img/Slider1.png" alt="">
+                        <div class="slideTxt">
+                            <h3>Cycloo.</h3>
+                            <p>À chacun son vélo !</p>
+                            <p>Pour vous déplacer dans votre agglomération sans contrainte et au grès de vos envies, découvrez notre service de location rapide et simple d’accès. En plus vous n’avez pas besoin de vous créer un compte client.</p>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="assets/img/Slider2.png" alt="">
+                        <div class="slideTxt txtRight">
+                            <h3>Pourquoi ?</h3>
+                            <p>Cycloo référence plus de 2000 vélos de location autour de chez vous. C’est simple, rapide et sans contrainte.<br>Il ne vous faudra pas plus de 3 minutes pour trouver et réserver le vélo que vous souhaitez.</p>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="assets/img/Slider3.png" alt="">
+                        <div class="slideTxt">
+                            <h3>Comment ?</h3>
+                            <p>Depuis la carte interactive, trouvez un vélo près de chez vous. Une fois sélectionné il ne nous faudra plus qu’un nom, un prénom et votre signature pour valider votre réservation. Vous aurez alors 20 minutes pour aller chercher
+                                votre vélo.</p>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="assets/img/Slider1.png" id="firstClone" alt="">
+                        <div class="slideTxt">
+                            <h3>Cycloo.</h3>
+                            <p>À chacun son vélo !</p>
+                            <p>Pour vous déplacer dans votre agglomération sans contrainte et au grès de vos envies, découvrez notre service de location rapide et simple d’accès. En plus vous n’avez pas besoin de vous créer un compte client.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Nav dots-->
+            <div class="dots">
+                <div class="dot_1"></div>
+                <div class="dot_2"></div>
+                <div class="dot_3"></div>
+            </div>
+
+        </section>
+
+        <!--Map-->
+        <section class="mapWrapper">
+
+            <div class="introduction">
+                <h2>Trouvez votre vélo</h2>
+                <p>Votre réservation est valable 20 minutes</p>
+            </div>
+
+            <div id="mapAnchor" class="anchor"></div>
+
+            <div class="mapContainer">
+
+                <div class="mapBinder">
+                    <!--Map layer-->
+                    <div id="mapid"></div>
+
+                    <!--Grid locker to prevent scrolling-->
+                    <div class="gridLock">
+                        <p class="dskLock noselect">Vous pouvez déverrouiller la carte en double cliquant</p>
+                        <p class="mobLock noselect">Vous pouvez déverrouiller la carte en double tapant sur votre écran</p>
+                    </div>
+                </div>
+
+                <!--Contact form container-->
+                <div class="contactForm">
+                    <img class="imgContBack noselect" src="assets/img/Skyline2.png" alt="City backdrop">
+                    <div class="contactFormOverlay">
+
+                        <div class="infoBox">
+                            <img src="assets/img/MapSide.png" alt="Bike">
+                            <div class="infoContainer">
+
+                                <!--Station's informations-->
+                                <div class="stationDetails styleNone">
+                                    <h3>Détail de la station :</h3>
+                                    <p>Adresse :<span class="sttAdd"></span></p>
+                                    <div class="infoOptional">
+                                        <p>Places disponibles :<span class="sttAVBS"></span></p>
+                                        <p>Vélos disponibles :<span class="sttAVB"></span></p>
+                                    </div>
+                                </div>
+
+                                <!--If bikes are aviables then display inputs fields-->
+                                <div class="bikeBooking styleNone">
+                                    <h3 class="testInput">Reserver votre vélo :</h3>
+                                    <input class="required inputFirst" type="text" placeholder="Votre prénom" required>
+                                    <input class="required inputLast" type="text" placeholder="Votre nom" required>
+
+                                </div>
+
+                                <!--If inputs are filled the display Canvas-->
+                                <div class="signCanvas styleNone">
+                                    <h3>Merci de signer pour valider :</h3>
+                                    <div class="eraser">
+                                        <i class="fas fa-eraser"></i>
+                                        <p>Effacer</p>
+                                    </div>
+                                    <canvas id="sketch" width="300" height="100"></canvas>
+
+                                </div>
+
+                                <!--Show all the infos of the reservation-->
+                                <div class="bookingDone styleNone">
+                                    <div class="bookingBox">
+                                        <h3 class="bookingInfo">Réservation effectuée</h3>
+                                    </div>
+                                    <div class="recapLoc">
+                                        <p>Adresse :<span class="recapAdd"></span></p>
+                                        <p>Nom de la réservation :<span class="recapName"></span></p>
+                                    </div>
+                                    <h2>Allez récupérer votre vélo !</h2>
+                                    <p class="timerInfo">Il vous reste <span class="bookingTimer">XX</span> <br> pour aller chercher votre vélo</p>
+                                    <p class="cancelInfo">Pour annuler la réservation en cours et louer un nouveau vélo veuillez cliquer sur le bouton ci-desous</p>
+                                </div>
+
+                                <!--Alert if no bikes are aviable-->
+                                <div class="bikeAlerts">
+                                    <h3 class="noBikesAV styleNone">Aucun vélo n'est disponible à cette station</h3>
+                                    <h3 class="stationNone">Veuillez selectionner <br>une station Cycloo.</h3>
+                                </div>
+                            </div>
+
+                            <!--mobile booking buttons-->
+                            <div class="mobileBtn">
+                                <button class="mobBtn1 styleNone">Selectionner</button>
+                                <button class="mobBtn2 styleNone">Reserver</button>
+                                <button class="mobBtn3 styleNone">Reserver</button>
+                                <button class="mobBtn4 styleNone">Valider</button>
+                                <button class="mobBtn5 styleNone">Annuler</button>
+                            </div>
+
+                        </div>
+
+                        <!--Destop booking buttons-->
+                        <div class="desktopBtn">
+                            <button class="dskBtn1 styleNone">Valider</button>
+                            <button class="dskBtn2 styleNone">Valider</button>
+                            <button class="dskBtn3 styleNone">Reserver</button>
+                            <button class="dskBtn4 styleNone">Annuler</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Footer-->
+        <footer>
+            <div class="backgroundFooter">
+                <div class="background">
+                    <div class="footerSize">
+                        <h2 class="footerLP">Merci de votre visite</h2>
+                        <p>Et bonne journée à vous...</p>
+                    </div>
+
+                    <p class="contact">Contact : <a href="mailto:sutter.johan@gmail.com">sutter.johan@gmail.com</a></p>
+                </div>
+            </div>
+        </footer>
+
+        <!--Javascript & Jquery-->
+        <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+        <script src="assets/js/pageBehavior.js"></script>
+        <script src="assets/js/SliderManager.js"></script>
+        <script src="assets/js/MapHandler.js"></script>
+
+        <script src="assets/js/canvasBox.js"></script>
+
+        <script>
+            $(document).ready(function(e) {
+                const InitcanvasBox = new canvasBox();
+                const InitpageBehavior = new pageBehavior();
+                const InitSliderManager = new SliderManager();
+                const InitMapHandler = new MapHandler();
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>
