@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -39,8 +43,10 @@
                 </div>
 
                 <div class="bo_m_btn">
-                    <p><i class="fas fa-sign-out-alt"></i></p>
-                    <p>Quitter</p>
+                    <a href="logoff.php">
+                        <p><i class="fas fa-sign-out-alt"></i></p>
+                        <p>Quitter</p>
+                    </a>
                 </div>
             </div>
 
@@ -65,9 +71,7 @@
         width: '600',
         height: '250'
     });
-    </script>
 
-    <script>
     $(document).ready(function(e) {
         const Initbackoffice = new backOffice();
     });

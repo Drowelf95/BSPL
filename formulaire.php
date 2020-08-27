@@ -1,6 +1,10 @@
 <?php
     session_start();
-?>
+
+    if ($_SESSION['loggedin'] === "true") {
+        header('location: backoffice.php');
+        exit;
+    } else {?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,7 +33,7 @@
                 <h1>Admin</h1>
             </div>
 
-            <form action="process.php" method="post">
+            <form action="security.php" method="post">
                 <div class="inputLines">
 
                     <h2>Identifiant</h2>
@@ -52,7 +56,7 @@
             </form>
 
             <div class="dispFlex mdpForgotten">
-                <p>Mot de passe oublié ? <a href="backoffice.php">Cliquez-ici.</a></p>
+                <p>Mot de passe oublié ? <a href="">Cliquez-ici.</a></p>
             </div>
         </div>
 
@@ -61,3 +65,5 @@
 </body>
 
 </html>
+
+<?php };?>
