@@ -189,6 +189,7 @@ html {
 .bo_Container {
     display: flex;
     justify-content: left;
+    flex-direction: column;
     width: 80%;
     height: 100%;
     padding-left: 50px;
@@ -349,7 +350,7 @@ h3 {
 
 .bo_reader p,
 .bo_trash p {
-    margin: 5px 0;
+    margin: 5px;
 }
 
 .bo_reader h3,
