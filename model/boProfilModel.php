@@ -29,6 +29,13 @@ function dbConnect()
     }
 }
 
+function get_data()
+{
+    $dbh = dbConnect();
+    $req3 = $dbh ->prepare('UPDATE login_table SET user_login = :new_user, pass = :new_pass WHERE id = 1');
+    return $req3;
+}
+
 function auto_loggin() 
 {
     session_start();
@@ -38,15 +45,12 @@ function auto_loggin()
     }
 }
 
-function get_data()
-{
-    $dbh = dbConnect();
-    $req = $dbh ->prepare('INSERT INTO bills(author, chapter, title, content, deleted) VALUES(?, ?, ?, ?, false)');
-    return $req;
-}
-
-if(isset($_POST['save_edit'])){
-    $req = get_data();
-    $req ->execute(array($_POST['author'],$_POST['chapter'], $_POST['title'], $_POST['mytextarea'], ));
-header('location: index.php');
+if(isset($_POST['save_profil'])){
+    $req3 = get_data();
+    $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+    $req3->execute(array(
+        'new_user' => $_POST['pseudo'],
+        'new_pass' => $password
+     ));
+    header('location: index.php?action=backOffice');
 }

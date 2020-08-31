@@ -1,14 +1,5 @@
 <?php
 
-session_start();
-
-function log_off() 
-{
-    $_SESSION['loggedin'] = "";
-    header('location: index.php');
-    exit;
-}
-
 function dbConnect()
 {
     $host_name = 'db5000822621.hosting-data.io';
@@ -29,9 +20,18 @@ function dbConnect()
     }
 }
 
+function auto_loggin() 
+{
+    session_start();
+    if ($_SESSION['loggedin'] === "") {
+        header('location: index.php?action=formulaire');
+        exit;
+    }
+}
+
 function display_active()
 {
     $dbh = dbConnect();
-    $rep = $dbh ->query('SELECT * FROM bills WHERE deleted=0');
+    $rep = $dbh ->query('SELECT * FROM bills WHERE deleted=0 ORDER BY date_crea DESC');
     return $rep;
 }

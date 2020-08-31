@@ -38,11 +38,11 @@ $rep = $dbh ->query('SELECT * FROM bills WHERE deleted=0');
 return $rep;
 }*/
 
-function display_del(){
+/*function display_del(){
 $dbh = dbConnect();
 $repDel = $dbh ->query('SELECT * FROM bills WHERE deleted=1');
 return $repDel;
-}
+}*/
 
 /*if(isset($_POST['save_edit'])){
     $req = get_data();

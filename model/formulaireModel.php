@@ -1,9 +1,5 @@
 <?php
 
-session_start();
-
-$_SESSION['loggedin'] = "";
-
 function dbConnect()
 {
     $host_name = 'db5000822621.hosting-data.io';
@@ -26,6 +22,7 @@ function dbConnect()
 
 function auto_loggin() 
 {
+    session_start();
     if ($_SESSION['loggedin'] === "true") {
         header('location: index.php?action=backOffice');
         exit;
@@ -38,13 +35,14 @@ function test_loggin()
     $response = $dbh ->query('SELECT * FROM login_table');
     while ($donnees = $response->fetch())
     {
-        $bo_log = $donnees['login'];
+        $bo_log = $donnees['user_login'];
         $bo_mdp = $donnees['pass'];
     }
 
     if (isset($_POST['identifiant']) || isset($_POST['pass'])) 
     {
         if ($_POST['identifiant'] ==  $bo_log && $_POST['pass'] ==  $bo_mdp) {
+            session_start();
             $_SESSION['loggedin'] = "true";
             header('location: index.php?action=backOffice');
             exit;
@@ -55,9 +53,12 @@ function test_loggin()
     }
 }
 
-function error_loggin() 
+function logoff() 
 {
-    if(isset($_GET['erreur'])) { 
-        echo "<span><p class="."loadingPage_error".">Veuillez saisir un identifant ou mot de passe correcte</p></span>";
-    }
+    if(isset($_GET['loggin'])) { 
+        session_start();
+        $_SESSION['loggedin'] = "";
+        header('location: index.php?action=formulaire');
+        exit;
+        }
 }

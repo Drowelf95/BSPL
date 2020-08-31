@@ -20,6 +20,18 @@ if(isset($_GET['action'])) {
     }
 }
 
+if(isset($_GET['action'])) {
+    if($_GET['action'] == 'boTrash') {
+        boTrash();
+    }
+}
+
+if(isset($_GET['action'])) {
+    if($_GET['action'] == 'boProfil') {
+        boProfil();
+    }
+}
+
 else {
     frontPage();
 }

@@ -38,15 +38,10 @@ function auto_loggin()
     }
 }
 
-function get_data()
+function display_del()
 {
     $dbh = dbConnect();
-    $req = $dbh ->prepare('INSERT INTO bills(author, chapter, title, content, deleted) VALUES(?, ?, ?, ?, false)');
-    return $req;
-}
+    $repDel = $dbh ->query('SELECT * FROM bills WHERE deleted=1 ORDER BY date_crea DESC');
+    return $repDel;
 
-if(isset($_POST['save_edit'])){
-    $req = get_data();
-    $req ->execute(array($_POST['author'],$_POST['chapter'], $_POST['title'], $_POST['mytextarea'], ));
-header('location: index.php');
 }

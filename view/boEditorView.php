@@ -7,8 +7,8 @@
     <div class="bo_titles">
         <h2>Billets</h2>
         <div class="bo_options">
-            <p><i class="fas fa-i-cursor"></i>Créer</p>
-            <p><i class="far fa-trash-alt"></i>Corbeille</p>
+            <p><a href="index.php?action=backOffice"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
+            <p><a href="index.php?action=boTrash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
         </div>
     </div>
 
@@ -29,6 +29,11 @@
             <div class="bo_fields">
                 <h3>Votre contenu :</h3>
                 <textarea id="mytextarea" name="mytextarea" placeholder="Un nouveau chapitre!"></textarea>
+            </div>
+
+            <div class="bo_fields">
+                <h3>Charger une image :</h3>
+                <input type="text" name="upload" class="fieldSizing" placeholder="Copier ici le lien du fichier à charger">
             </div>
 
             <div class="bo_fields">

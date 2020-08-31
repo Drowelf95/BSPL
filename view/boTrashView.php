@@ -7,18 +7,18 @@
     <div class="bo_titles">
         <h2>Billets</h2>
         <div class="bo_options">
+            <p><a href="index.php?action=backOffice"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
             <p><a href="index.php?action=boEditor"><i class="fas fa-i-cursor"></i>Créer</a></p>
-            <p><a href="index.php?action=boTrash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
         </div>
     </div>
 
-    <!--Display all the aviable texts-->
-    <div class="bo_reader">
+        <!--Display trash-->
+    <div class="bo_trash">
         <?php 
-    
-    while ($donnees = $rep->fetch()){?>
+        
+        while ($donnees = $repDel->fetch()){?>
 
-        <h3><?= htmlspecialchars ('Chapitre : ' . $donnees['chapter'] . ' - ' . $donnees['title'])?></h3>
+        <h3><?= htmlspecialchars('Chapitre : ' . $donnees['chapter'] . ' - ' . $donnees['title'])?></h3>
         <div class="bo_postContent">
             <p><?= $donnees['content']?></p>
         </div>
@@ -28,9 +28,7 @@
         </div>
         <div class="bo_postOptions">
             <p>Visualiser</p>
-            <p>Modifier</p>
             <p>Supprimer</p>
-            </a>
         </div>
 
         <?php }?>

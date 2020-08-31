@@ -205,7 +205,13 @@ html {
 }
 
 .bo_menu a {
+    color: black;
     text-align: center;
+    text-decoration: none;
+}
+
+.bo_menu a:visited {
+    color: black;
 }
 
 .bo_menu img {
@@ -398,6 +404,24 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+a {
+    color: #481a71;
+}
+
+a:visited {
+    color: #481a71;
+}
+
+.retrun_btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    padding: 10px 20px;
+    background-color: white;
+    cursor: pointer;
 }
 
 

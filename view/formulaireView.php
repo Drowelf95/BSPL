@@ -2,6 +2,8 @@
 
     <div class="dispFlex loadingPage">
 
+    <p class="retrun_btn"><i class="fas fa-arrow-left"></i></p>
+
         <div class="mdpContainer">
 
             <div class="dispFlex titleContainer">
@@ -22,6 +24,11 @@
 
                 </div>
 
+                <?php 
+                if(isset($_GET['erreur'])) { 
+                echo "<span><p class="."loadingPage_error".">Veuillez saisir un identifant ou mot de passe correcte</p></span>";
+                }?>
+
                 <div class="dispFlex">
                     <input type="submit" class="bigBtn" value="Valider">
                 </div>
@@ -31,6 +38,7 @@
             <div class="dispFlex mdpForgotten">
                 <p>Mot de passe oublié ? <a href="">Cliquez-ici.</a></p>
             </div>
+
         </div>
 
     </div>
