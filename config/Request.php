@@ -11,12 +11,12 @@ class Request
     public function __construct()
     {
         $this->get = new Parameter($_GET);
-        $this->post = $_POST;
-        $this->session = $_SESSION;
+        $this->post = new Parameter($_POST);
+        $this->session = new Session($_SESSION);
     }
 
     /**
-     * @return mixed
+     * @return Parameter
      */
     public function getGet()
     {
@@ -24,7 +24,7 @@ class Request
     }
 
     /**
-     * @return mixed
+     * @return Parameter
      */
     public function getPost()
     {
@@ -32,7 +32,7 @@ class Request
     }
 
     /**
-     * @return mixed
+     * @return Session
      */
     public function getSession()
     {
