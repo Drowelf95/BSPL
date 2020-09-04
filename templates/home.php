@@ -1,19 +1,27 @@
-<h1>Mon blog</h1>
-<p>En construction</p>
-<?= $this->session->show('add_article'); ?>
-<?= $this->session->show('edit_article'); ?>
-<a href="../public/index.php?route=addArticle">Nouvel article</a>
-<?php
-foreach ($articles as $article)
-{
-    ?>
-    <div>
-        <h2><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a></h2>
-        <p><?= htmlspecialchars($article->getContent());?></p>
-        <p><?= htmlspecialchars($article->getAuthor());?></p>
-        <p>Créé le : <?= htmlspecialchars($article->getCreatedAt());?></p>
+<div class="dispFlex landingPage">
+
+        <div class="leftSide dispFlex">
+
+            <p class="login"><a href="index.php?route=login"><i class="fas fa-user-lock"></i></a></p>
+            <div class="infosContainer dispFlex">
+
+                <h1>Jean FORTEROCHE</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempus elit nibh, quis interdum enim interdum eget. Pellentesque cursus, diam pulvinar dignissim consectetur, purus ligula vulputate urna, ac vehicula nunc velit sit amet
+                    felis.
+                </p>
+            </div>
+
+            <p class="bigBtn">à propos</p>
+
+        </div>
+
+        <div class="rightSide dispFlex">
+
+            <div class="infosContainer dispFlex">
+                <h1>Billet simple pour l'Alaska</h1>
+                <p>Le nouveau roman épisodique de Jean FORTEROCHE</p>
+            </div>
+
+            <p class="bigBtn">Lire</p>
+        </div>
     </div>
-    <br>
-    <?php
-}
-?>
