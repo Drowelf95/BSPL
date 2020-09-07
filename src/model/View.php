@@ -9,6 +9,8 @@ class View
     private $file;
     private $title;
     private $styling;
+    private $fontAwe;
+    private $mediaq;
     private $request;
     private $session;
 
@@ -23,11 +25,33 @@ class View
         $this->file = '../templates/'.$template.'.php';
         $content  = $this->renderFile($this->file, $data);
         $this->styling = '../public/css/style.css';
+        $this->fontAwe = '../public/fonts/Fontawesome/css/all.css';
+        $this->mediaq = '../public/css/mediaq.css';
         $view = $this->renderFile('../templates/base.php', [
             'title' => $this->title,
             'content' => $content,
             'session' => $this->session,
-            'styling' => $this->styling
+            'styling' => $this->styling,
+            'fontAwe' => $this->fontAwe,
+            'mediaq' => $this->mediaq
+        ]);
+        echo $view;
+    }
+
+    public function renderBO($template, $data = [])
+    {
+        $this->file = '../templates/'.$template.'.php';
+        $content  = $this->renderFile($this->file, $data);
+        $this->styling = '../public/css/style.css';
+        $this->fontAwe = '../public/fonts/Fontawesome/css/all.css';
+        $this->mediaq = '../public/css/mediaq.css';
+        $view = $this->renderFile('../templates/baseBO.php', [
+            'title' => $this->title,
+            'content' => $content,
+            'session' => $this->session,
+            'styling' => $this->styling,
+            'fontAwe' => $this->fontAwe,
+            'mediaq' => $this->mediaq
         ]);
         echo $view;
     }
@@ -40,6 +64,6 @@ class View
             require $file;
             return ob_get_clean();
         }
-        header('Location: index.php?route=notFound');
+        header('Location: index.php?path=notFound');
     }
 }

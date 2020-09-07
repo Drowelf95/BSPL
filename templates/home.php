@@ -1,8 +1,10 @@
+<?php $this->title = "Accueil"; ?>
+
 <div class="dispFlex landingPage">
 
         <div class="leftSide dispFlex">
 
-            <p class="login"><a href="index.php?route=login"><i class="fas fa-user-lock"></i></a></p>
+            <p class="login"><a href="index.php?path=login"><i class="fas fa-user-lock"></i></a></p>
             <div class="infosContainer dispFlex">
 
                 <h1>Jean FORTEROCHE</h1>
@@ -22,6 +24,6 @@
                 <p>Le nouveau roman épisodique de Jean FORTEROCHE</p>
             </div>
 
-            <p class="bigBtn">Lire</p>
+            <a href="index.php?path=frontView"><p class="bigBtn">Lire</p></a>
         </div>
-    </div>
+</div>
