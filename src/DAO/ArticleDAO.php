@@ -53,7 +53,7 @@ class ArticleDAO extends DAO
         $this->createQuery($sql, [
             'chapter' => $post->get('chapter'),
             'title' => $post->get('title'),
-            'content' => $post->get('content'),
+            'content' => $post->get('mytextarea'),
             'author' => $post->get('author'),
             'articleId' => $articleId
         ]);

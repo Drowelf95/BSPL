@@ -16,7 +16,7 @@
         <form method="post" action="../public/index.php?path=editArticle&articleId=<?php echo htmlspecialchars($article->getId());?>">
             <div class="bo_fields">
                 <h3>Chapitre :</h3>
-                <input type="text" id="chapter" name="chapter" class="fieldSizing">
+                <input type="text" id="chapter" name="chapter" class="fieldSizing" value="<?php echo $article->getChapter();?>">
             </div>
 
             <div class="bo_fields">
@@ -26,7 +26,7 @@
 
             <div class="bo_fields">
                 <h3>Votre contenu :</h3>
-                <textarea id="mytextarea" name="mytextarea" ></textarea>
+                <textarea id="mytextarea" name="mytextarea"><?php echo $article->getContent();?></textarea>
             </div>
 
             <div class="bo_fields">
@@ -36,7 +36,7 @@
 
             <div class="bo_fields">
                 <h3>Auteur :</h3>
-                <input type="text" id="author" name="author" class="fieldSizing" required>
+                <input type="text" id="author" name="author" class="fieldSizing"  value="<?php echo $article->getAuthor();?>" required>
             </div>
 
             <div class="bo_submit">

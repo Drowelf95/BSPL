@@ -11,34 +11,31 @@ class FrontController extends Controller
         return $this->view->render('home');
     }
 
-    private function checkLoggedIn()
+    public function read()
     {
-        if(!$this->session->get('pseudo')) {
-            $this->session->set('need_login', 'Vous devez vous connecter pour accéder à cette page');
-            header('Location: ../public/index.php?route=login');
-        } else {
-            return true;
-        }
+        return $this->view->render('frontView');
     }
 
     public function login(Parameter $post)
     {
-        
-        if($post->get('submit')) {
-            $result = $this->userDAO->login($post);
-            if($post->get('password') == 'test' && $post->get('pseudo') == 'Jean' ) {
-                $this->session->set('login', 'Content de vous revoir');
-                $this->session->set('id', $result['result']['id']);
-                $this->session->set('pseudo', $post->get('pseudo'));
-                header('Location: ../public/index.php?path=backOffice');
+        if(!$this->session->get('pseudo')) {
+            if($post->get('submit')) {
+                $result = $this->userDAO->login($post);
+                if($result && $result['isPasswordValid']) {
+                    $this->session->set('id', $result['result']['id']);
+                    $this->session->set('pseudo', $post->get('pseudo'));
+                    header('Location: ../public/index.php?path=backOffice');
+                }
+                else {
+                    return $this->view->render('login', [
+                        'post'=> $post
+                    ]);
+                }
             }
-            else {
-                $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects');
-                return $this->view->render('login', [
-                    'post'=> $post
-                ]);
-            }
+            return $this->view->render('login');
+            
+        } else {
+            header('Location: ../public/index.php?path=backOffice');
         }
-        return $this->view->render('login');
     }
 }

@@ -44,7 +44,7 @@
                     </div>
                 </a>
 
-                <a href="">
+                <a href="index.php?path=logOut">
                     <div class="bo_m_btn">
                         <p><i class="fas fa-sign-out-alt"></i></p>
                         <p>Quitter</p>

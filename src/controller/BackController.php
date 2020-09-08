@@ -6,6 +6,15 @@ use App\config\Parameter;
 
 class BackController extends Controller
 {
+    private function checkLoggedIn()
+    {
+        if(!$this->session->get('pseudo')) {
+            header('Location: ../public/index.php?path=login');
+        } else {
+            return true;
+        }
+    }
+
     public function article()
     {
         $articles = $this->articleDAO->getArticles();
@@ -16,43 +25,52 @@ class BackController extends Controller
 
     public function addArticle(Parameter $post)
     {
-        if ($post->get('submit')) {
-            $this->articleDAO->addArticle($post);
-            header('Location: ../public/index.php?path=backOffice');
+        if ($this->checkLoggedIn()) {
+            if ($post->get('submit')) {
+                $this->articleDAO->addArticle($post);
+                header('Location: ../public/index.php?path=backOffice');
+            }
+            return $this->view->renderBO('backOfficeEditor');
         }
-        return $this->view->renderBO('backOfficeEditor');
     }
 
      public function editArticle(Parameter $post, $articleId)
     {
+        if ($this->checkLoggedIn()) {
+            $articles = $this->articleDAO->getArticles();
             $article = $this->articleDAO->getArticle($articleId);
             if ($post->get('submit')) {
-                $errors = $this->validation->validate($post, 'Article');
-                if (!$errors) {
-                    $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
-                    $this->session->set('edit_article', 'L\' article a bien été modifié');
-                    header('Location: ../public/index.php?path=backOfficeReader');
-                }
-                return $this->view->renderBO('backOfficeModif', [
-                    'post' => $post,
-                    'errors' => $errors
+                $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
+                header('Location: ../public/index.php?path=backOffice');
+                return $this->view->renderBO('backOfficeReader', [
+                    'articles' => $articles
                 ]);
-
+                
             }
-            $post->set('id', $article->getId());
-            $post->set('title', $article->getTitle());
-            $post->set('content', $article->getContent());
-            $post->set('author', $article->getAuthor());
-
             return $this->view->renderBO('backOfficeModif', [
                 'article' => $article
             ]);
+        }
     }
 
-    public function profil()
+    public function updatePassword(Parameter $post)
     {
-        //if($this->checkLoggedIn()) {
-            return $this->view->renderBO('profil');
-        //}
+        if ($this->checkLoggedIn()) {
+            if ($post->get('submit')) {
+            $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
+            header('Location: ../public/index.php?path=backOffice');
+            return $this->view->renderBO('backOfficeReader');
+        }
+        return $this->view->renderBO('profil');
+        }
+    }
+
+    public function logout()
+    {
+        if ($this->checkLoggedIn()) {
+            $this->session->stop();
+            $this->session->start();
+            header('Location: ../public/index.php');
+        }
     }
 }

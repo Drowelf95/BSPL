@@ -41,7 +41,13 @@ class Router
                     $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
                 elseif ($path === 'profil'){
-                    $this->backController->profil();
+                    $this->backController->updatePassword($this->request->getPost());
+                }
+                elseif ($path === 'logOut'){
+                    $this->backController->logout();
+                }
+                elseif ($path === 'frontView'){
+                    $this->frontController->read();
                 }
             }
             else{

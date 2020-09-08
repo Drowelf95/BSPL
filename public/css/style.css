@@ -34,7 +34,6 @@ html {
 
 .login {
     position: absolute;
-    text-decoration: none;
     font-size: 1.5rem;
     opacity: 0.5;
     cursor: pointer;
@@ -73,9 +72,6 @@ html {
     color: #481a71;
 }
 
-
-/*LP Common*/
-
 .landingPage {
     font-size: 1.3rem;
 }
@@ -101,7 +97,6 @@ html {
     font-size: 2rem;
     text-align: center;
     cursor: pointer;
-    text-decoration: none;
     transform: scale(1);
     transition-property: transform;
     transition-duration: 300ms;
@@ -112,7 +107,72 @@ html {
 }
 
 
-/*Loading page*/
+/*Front view*/
+
+.fv_Close {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 3rem;
+}
+
+.fv_head {
+    margin-top: 10vh;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+
+.fv_head h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+
+.fv_Nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 700px;
+    background-color: lightpink;
+}
+
+.fv_Circle {
+    width: 80px;
+    height: 80px;
+    background-color: #481a71;
+    border-radius: 80px;
+}
+
+.fv_Circle i {
+    color: white;
+    font-size: 3rem;
+}
+
+.fv_btnLeft,
+.fv_btnCtr,
+.fv_btnRight {
+    flex-direction: column;
+    z-index: 3;
+}
+
+.fv_btnBar {
+    position: absolute;
+    height: 15px;
+    width: 700px;
+    background-color: lightgrey;
+    z-index: 1;
+}
+
+.fv_navTitles {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    background-color: lightsalmon;
+}
+
+
+/*login*/
 
 .loadingPage {
     width: 100%;
@@ -174,6 +234,16 @@ html {
     font-size: 0.7rem;
 }
 
+.retrun_btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    padding: 10px 20px;
+    background-color: white;
+    cursor: pointer;
+}
+
 
 /*Back office*/
 
@@ -211,7 +281,6 @@ html {
 .bo_menu a {
     color: black;
     text-align: center;
-    text-decoration: none;
 }
 
 .bo_menu a:visited {
@@ -234,7 +303,6 @@ html {
     padding: 10px 0;
     border-radius: 10px;
     color: black;
-    text-decoration: none;
     font-size: 1.5rem;
     cursor: pointer;
     transition-duration: 300ms;
@@ -250,7 +318,6 @@ html {
 }
 
 .bo_m_btn a {
-    text-decoration: none;
     color: black;
 }
 
@@ -308,7 +375,6 @@ html {
     border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
-    text-decoration: none;
     background-color: #481a71;
     color: white;
 }
@@ -344,7 +410,7 @@ h3 {
 }
 
 
-/*Post manager*/
+/*Back office Editor, Reader, Modif */
 
 .bo_postManager {
     display: flex;
@@ -393,7 +459,6 @@ h3 {
 }
 
 .bo_postOptions a {
-    text-decoration: none;
     color: grey;
 }
 
@@ -419,21 +484,12 @@ h3 {
 }
 
 a {
+    text-decoration: none;
     color: #481a71;
 }
 
 a:visited {
     color: #481a71;
-}
-
-.retrun_btn {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 2rem;
-    padding: 10px 20px;
-    background-color: white;
-    cursor: pointer;
 }
 
 

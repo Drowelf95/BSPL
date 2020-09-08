@@ -16,15 +16,15 @@
     {
         ?>
     <h3><a
-            href="../public/index.php?path=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a>
+            href="../public/index.php?path=article&articleId=<?= htmlspecialchars($article->getId());?>"><?php echo htmlspecialchars($article->getTitle());?></a>
     </h3>
     <div class="bo_postContent">
-        <p><?= htmlspecialchars($article->getContent());?></p>
+        <p><?php echo htmlspecialchars($article->getContent(), 0, 150);?></p>
     </div>
     <div class="bo_postInfos">
-        <p>Auteur : <?= htmlspecialchars($article->getAuthor());?></p>
-        <p><?= htmlspecialchars ($donnees['date_crea'])?></p>
-        <p>Créé le : <?= htmlspecialchars($article->getCreatedAt());?></p>
+        <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
+        <p><?php echo htmlspecialchars ($donnees['date_crea'])?></p>
+        <p>Créé le : <?php echo htmlspecialchars($article->getCreatedAt());?></p>
     </div>
     <div class="bo_postOptions">
         <p>Visualiser</p>

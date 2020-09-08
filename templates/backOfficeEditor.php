@@ -37,7 +37,7 @@
 
             <div class="bo_fields">
                 <h3>Auteur :</h3>
-                <input type="text" id="author" name="author" class="fieldSizing" value="Jean Foreteroche" required>
+                <input type="text" id="author" name="author" class="fieldSizing" value="Jean Forteroche" required>
             </div>
 
             <div class="bo_submit">
