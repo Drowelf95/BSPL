@@ -23,6 +23,7 @@ class Router
 
     public function run()
     {
+
         $path = $this->request->getGet()->get('path');
         try{
             if(isset($path))
@@ -38,6 +39,9 @@ class Router
                 }
                 elseif ($path === 'editArticle'){
                     $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
+                }
+                elseif ($path === 'profil'){
+                    $this->backController->profil();
                 }
             }
             else{

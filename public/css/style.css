@@ -186,7 +186,7 @@ html {
     border-radius: 40px;
 }
 
-.bo_Container {
+.bo_subContainer {
     display: flex;
     justify-content: left;
     flex-direction: column;
@@ -194,7 +194,11 @@ html {
     height: 100%;
     padding-left: 50px;
     background-color: white;
-    border-radius: 40px 0 0 40px;
+    border-radius: 40px;
+}
+
+.bo_Container {
+    margin: 40px 0;
 }
 
 .bo_menu {
@@ -217,7 +221,6 @@ html {
 .bo_menu img {
     width: 40%;
     height: auto;
-    margin-bottom: 30px;
 }
 
 .bo_m_btn {
@@ -265,7 +268,7 @@ html {
     width: 300px;
     height: auto;
     text-align: left;
-    margin: 70px 0 10px;
+    margin: 10px 0;
 }
 
 .bo_titles h2 {
@@ -387,6 +390,15 @@ h3 {
 
 .bo_postOptions p {
     margin-right: 20px;
+}
+
+.bo_postOptions a {
+    text-decoration: none;
+    color: grey;
+}
+
+.bo_postOptions a:visited {
+    color: grey;
 }
 
 .bo_postOptions p:hover {

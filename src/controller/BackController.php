@@ -33,7 +33,7 @@ class BackController extends Controller
                     $this->session->set('edit_article', 'L\' article a bien été modifié');
                     header('Location: ../public/index.php?path=backOfficeReader');
                 }
-                return $this->view->render('backOfficeModif', [
+                return $this->view->renderBO('backOfficeModif', [
                     'post' => $post,
                     'errors' => $errors
                 ]);
@@ -44,8 +44,15 @@ class BackController extends Controller
             $post->set('content', $article->getContent());
             $post->set('author', $article->getAuthor());
 
-            return $this->view->render('backOfficeModif', [
-                'post' => $post
+            return $this->view->renderBO('backOfficeModif', [
+                'article' => $article
             ]);
+    }
+
+    public function profil()
+    {
+        //if($this->checkLoggedIn()) {
+            return $this->view->renderBO('profil');
+        //}
     }
 }

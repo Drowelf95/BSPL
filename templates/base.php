@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= $styling ?>"/>
     <link rel="stylesheet" href="<?= $fontAwe ?>"/>
     <link rel="stylesheet" href="<?= $mediaq ?>"/>
+    <link rel="icon" href="<?= $favIco ?>" />
 </head>
 <body>
     <div id="content">
@@ -18,7 +19,6 @@
     <script src="https://code.jquery.com/jquery-3.5.0.js"
         integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="assets/js/backoffice.js"></script>
 
     <script>
     tinymce.init({

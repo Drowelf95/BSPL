@@ -13,7 +13,7 @@
 
     <!--Display the text editor-->
     <div class="bo_editor">
-        <form method="post" action="../public/index.php?path=editArticle&articleId=<?= htmlspecialchars($article->getId()); ?>">
+        <form method="post" action="../public/index.php?path=editArticle&articleId=<?php echo htmlspecialchars($article->getId());?>">
             <div class="bo_fields">
                 <h3>Chapitre :</h3>
                 <input type="text" id="chapter" name="chapter" class="fieldSizing">
@@ -21,7 +21,7 @@
 
             <div class="bo_fields">
                 <h3>Titre :</h3>
-                <input type="text" id="title" name="title" class="fieldSizing" >
+                <input type="text" id="title" name="title" class="fieldSizing" value="<?php echo $article->getTitle();?>">
             </div>
 
             <div class="bo_fields">

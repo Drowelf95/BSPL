@@ -28,7 +28,7 @@
     </div>
     <div class="bo_postOptions">
         <p>Visualiser</p>
-        <a href="../public/index.php?path=editArticle&articleId=<?= $article->getId(); ?>">Modifier</a>
+        <p><a href="../public/index.php?path=editArticle&articleId=<?= $article->getId(); ?>">Modifier</a></p>
         <p>Supprimer</p>
         </a>
     </div>

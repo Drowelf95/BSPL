@@ -13,6 +13,7 @@ class View
     private $mediaq;
     private $request;
     private $session;
+    private $favIco;
 
     public function __construct()
     {
@@ -27,13 +28,15 @@ class View
         $this->styling = '../public/css/style.css';
         $this->fontAwe = '../public/fonts/Fontawesome/css/all.css';
         $this->mediaq = '../public/css/mediaq.css';
+        $this->favIco = '../public/img/fire.png';
         $view = $this->renderFile('../templates/base.php', [
             'title' => $this->title,
             'content' => $content,
             'session' => $this->session,
             'styling' => $this->styling,
             'fontAwe' => $this->fontAwe,
-            'mediaq' => $this->mediaq
+            'mediaq' => $this->mediaq,
+            'favIco' => $this->favIco
         ]);
         echo $view;
     }
@@ -45,13 +48,15 @@ class View
         $this->styling = '../public/css/style.css';
         $this->fontAwe = '../public/fonts/Fontawesome/css/all.css';
         $this->mediaq = '../public/css/mediaq.css';
+        $this->favIco = '../public/img/fire.png';
         $view = $this->renderFile('../templates/baseBO.php', [
             'title' => $this->title,
             'content' => $content,
             'session' => $this->session,
             'styling' => $this->styling,
             'fontAwe' => $this->fontAwe,
-            'mediaq' => $this->mediaq
+            'mediaq' => $this->mediaq,
+            'favIco' => $this->favIco
         ]);
         echo $view;
     }
