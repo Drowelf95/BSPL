@@ -19,7 +19,7 @@
             href="../public/index.php?path=article&articleId=<?= htmlspecialchars($article->getId());?>"><?php echo htmlspecialchars($article->getTitle());?></a>
     </h3>
     <div class="bo_postContent">
-        <p><?php echo htmlspecialchars($article->getContent(), 0, 150);?></p>
+        <p><?php echo $article->getContent();?></p>
     </div>
     <div class="bo_postInfos">
         <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
