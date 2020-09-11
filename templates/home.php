@@ -24,6 +24,7 @@
                 <p>Le nouveau roman épisodique de Jean FORTEROCHE</p>
             </div>
 
-            <a href="index.php?path=frontView"><p class="bigBtn">Lire</p></a>
+            <a href="index.php?path=frontView&articleId=1"><p class="bigBtn">Lire</p></a>
+           
         </div>
 </div>

@@ -1,15 +1,15 @@
 <?php $this->title = "Nouvel article"; ?>
 
-<div class="bo_Container">
-
-    <!--Display Title and options of the selected area-->
-    <div class="bo_titles">
-        <h2>Éditeur</h2>
-        <div class="bo_options">
-            <p><a href="index.php?path=backOffice"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
-            <p><a href="index.php?path=trash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
-        </div>
+<!--Display Title and options of the selected area-->
+<div class="bo_titles">
+    <h2>Éditeur</h2>
+    <div class="bo_options">
+        <p><a href="index.php?path=backOffice"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
+        <p><a href="index.php?path=trash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
     </div>
+</div>
+
+<div class="bo_Container">
 
     <!--Display the text editor-->
     <div class="bo_editor">

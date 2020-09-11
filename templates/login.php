@@ -34,6 +34,10 @@
             <p>Mot de passe oublié ? <a href="">Cliquez-ici.</a></p>
         </div>
 
+        <div class="errorMessage">
+            <p><?php echo $this->session->get('errorMdp');?></p>
+        </div>
+
     </div>
 
 </div>

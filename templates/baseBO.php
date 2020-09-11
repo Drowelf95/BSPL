@@ -19,7 +19,7 @@
 
                 <a href="index.php">
                     <div class="bo_m_btn">
-                    <p><img src="../public/img/iceberg.png" alt=""></p>
+                        <p><img src="../public/img/iceberg.png" alt=""></p>
                         <p>Accueil</p>
                     </div>
                 </a>
@@ -32,10 +32,12 @@
                     </div>
                 </a>
 
-                <div class="bo_m_btn">
-                    <p><i class="far fa-comments"></i></p>
-                    <p>Commentaires</p>
-                </div>
+                <a href="index.php?path=comments">
+                    <div class="bo_m_btn">
+                        <p><i class="far fa-comments"></i></p>
+                        <p>Commentaires</p>
+                    </div>
+                </a>
 
                 <a href="index.php?path=profil">
                     <div class="bo_m_btn">
@@ -50,6 +52,21 @@
                         <p>Quitter</p>
                     </div>
                 </a>
+
+                <?php if ($this->session->get('loginOut')) {?>
+                <div class="logout_Conf">
+                    <p>Souhaitez vous réellement quitter ?</p>
+                    <div class="logout_confBtn">
+                        <a href="index.php?path=logoutConf">
+                            <p class="conf_Yes">Oui</p>
+                        </a>
+                        <a href="index.php?path=logoutCancel">
+                            <p class="conf_No">Non</p>
+                        </a>
+                    </div>
+                </div>
+                <?php };?>
+
             </div>
 
             <div class="bo_subContainer">

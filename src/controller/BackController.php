@@ -17,10 +17,12 @@ class BackController extends Controller
 
     public function article()
     {
+        if ($this->checkLoggedIn()) {
         $articles = $this->articleDAO->getArticles();
         return $this->view->renderBO('backOfficeReader', [
             'articles' => $articles
         ]);
+        }
     }
 
     public function addArticle(Parameter $post)
@@ -53,14 +55,29 @@ class BackController extends Controller
         }
     }
 
+    public function comments()
+    {
+        $comments = $this->commentDAO->getCommentsFromArticle2();
+        return $this->view->renderBO('backOfficeCom', [
+            'comments' => $comments
+        ]);
+    }
+
     public function updatePassword(Parameter $post)
     {
         if ($this->checkLoggedIn()) {
             if ($post->get('submit')) {
-            $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
-            header('Location: ../public/index.php?path=backOffice');
-            return $this->view->renderBO('backOfficeReader');
-        }
+                if ($post->get('password') == $post->get('password_conf') ){
+                    $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
+                    header('Location: ../public/index.php?path=backOffice');
+                    return $this->view->renderBO('backOfficeReader');
+                } else {
+                    $this->session->set('errorMdp', 'Le mot de passe et la confirmation ne correspondent pas.');
+                    return $this->view->renderBO('profil');
+                    $this->session->set('errorMdp');
+                }
+            }
+        $this->session->remove('errorMdp');
         return $this->view->renderBO('profil');
         }
     }
@@ -68,9 +85,27 @@ class BackController extends Controller
     public function logout()
     {
         if ($this->checkLoggedIn()) {
+            $this->session->set('loginOut', 'logoff');
+            header('Location: ../public/index.php?path=backOffice');
+            return $this->view->renderBO('backOffice');
+        }
+    }
+
+    public function logoutConf()
+    {
+        if ($this->checkLoggedIn()) {
+            $this->session->remove('loginOut');
             $this->session->stop();
             $this->session->start();
             header('Location: ../public/index.php');
+        }
+    }
+
+    public function logoutCancel()
+    {
+        if ($this->checkLoggedIn()) {
+            $this->session->remove('loginOut');
+            header('Location: ../public/index.php?path=backOffice');
         }
     }
 }

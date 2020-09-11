@@ -40,14 +40,26 @@ class Router
                 elseif ($path === 'editArticle'){
                     $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
+                elseif ($path === 'comments'){
+                    $this->backController->comments($this->request->getGet()->get('articleId'));
+                }
                 elseif ($path === 'profil'){
                     $this->backController->updatePassword($this->request->getPost());
                 }
                 elseif ($path === 'logOut'){
                     $this->backController->logout();
                 }
+                elseif ($path === 'logoutConf'){
+                    $this->backController->logoutConf();
+                }
+                elseif ($path === 'logoutCancel'){
+                    $this->backController->logoutCancel();
+                }
                 elseif ($path === 'frontView'){
-                    $this->frontController->read();
+                    $this->frontController->article($this->request->getGet()->get('articleId'));
+                }
+                elseif($path === 'addComment'){
+                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
             }
             else{

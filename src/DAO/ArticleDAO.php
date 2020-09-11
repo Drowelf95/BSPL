@@ -59,4 +59,12 @@ class ArticleDAO extends DAO
         ]);
     }
 
+    public function maxID()
+    {
+        $sql ='SELECT * FROM article WHERE id = ( SELECT MAX(id) FROM article )';
+        $result = $this->createQuery($sql);
+        $lastID = $result->fetch();
+        $result->closeCursor();
+        return $lastID;
+    }
 }

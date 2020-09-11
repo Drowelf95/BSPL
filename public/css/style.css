@@ -114,7 +114,7 @@ html {
 }
 
 .fv_Close {
-    position: absolute;
+    position: fixed;
     top: 30px;
     left: 30px;
     font-size: 3rem;
@@ -131,6 +131,13 @@ html {
     font-size: 3rem;
     font-weight: normal;
     padding-bottom: 10px;
+}
+
+.fv_navBox {
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
 }
 
 .fv_Nav {
@@ -158,6 +165,12 @@ html {
     flex-direction: column;
     z-index: 3;
     width: 160px;
+}
+
+.fv_btnCtr {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3rem;
 }
 
 .fv_btnBar {
@@ -188,7 +201,6 @@ html {
 }
 
 .fv_articleImg img {
-    margin-top: 50px;
     height: 200px;
     width: auto;
 }
@@ -218,11 +230,12 @@ html {
     font-size: 1.2rem;
     color: white;
     cursor: pointer;
+    margin: 30px 0;
 }
 
 .fv_comArea {
     width: 100%;
-    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .fv_comArea form {
@@ -253,6 +266,10 @@ html {
     margin-right: 20px;
 }
 
+.fv_comCancel {
+    cursor: pointer;
+}
+
 .fv_comInfos {
     display: flex;
     flex-direction: row;
@@ -262,6 +279,10 @@ html {
     margin: 0 20px 0 0;
     font-style: italic;
     color: grey;
+}
+
+.fv_articleComments {
+    flex-direction: column;
 }
 
 
@@ -433,7 +454,6 @@ html {
 
 .bo_titles h2 {
     font-size: 3rem;
-    margin-top: 0;
     margin-bottom: 5px;
 }
 
@@ -502,6 +522,40 @@ h3 {
     color: grey;
 }
 
+.logout_Conf {
+    background-color: #ff5252;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.logout_Conf p {
+    color: white;
+    margin: 8px;
+}
+
+.logout_confBtn {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logout_confBtn p {
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: black;
+    background-color: #dcdcdc;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.conf_Yes:hover {
+    background-color: #21e6c1;
+}
+
+.conf_No:hover {
+    background-color: #b71c1c;
+    color: white;
+}
+
 
 /*Back office Editor, Reader, Modif */
 
@@ -527,7 +581,13 @@ h3 {
     cursor: pointer;
 }
 
+.bo_postTitle {
+    width: 10%;
+    word-wrap: break-word;
+}
+
 .bo_postContent {
+    word-wrap: break-word;
     width: 80%;
 }
 
@@ -537,18 +597,10 @@ h3 {
     font-size: 0.8rem;
 }
 
-.bo_postInfos p {
-    margin-right: 20px;
-}
-
 .bo_postOptions {
     display: flex;
     color: grey;
     cursor: pointer;
-}
-
-.bo_postOptions p {
-    margin-right: 20px;
 }
 
 .bo_postOptions a {
@@ -563,6 +615,43 @@ h3 {
     text-decoration: underline;
 }
 
+.bo_comWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.bo_comwrapperOpt {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+    width: 90%;
+    border-bottom: 1px dashed grey;
+    margin-bottom: 30px;
+}
+
+.bo_postflaged {
+    width: 20px;
+    color: red;
+}
+
+.bo_comWrapper h3 {
+    margin: 0;
+}
+
+.bo_postTitle,
+.bo_postContent,
+.bo_postInfos,
+.bo_postflaged,
+.bo_postOptions {
+    margin-right: 20px;
+}
+
+.bo_postOptions p {
+    margin-right: 20px;
+}
+
 
 /*Common*/
 
@@ -570,6 +659,11 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.errorMessage {
+    font-style: italic;
+    color: red;
 }
 
 a {
