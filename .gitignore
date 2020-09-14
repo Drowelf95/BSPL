@@ -1,3 +1,2 @@
-/config/dev.php
-git rm --cached /Backup
-/composer.json
+.dev.php
+**/vendor
