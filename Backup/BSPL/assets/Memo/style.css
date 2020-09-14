@@ -1,0 +1,590 @@
+/*General*/
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ebecf0;
+}
+
+html {
+    font-family: Calibri, Arial;
+    font-size: 16px;
+}
+
+
+/* Left Section */
+
+.leftSection {
+    width: 50%;
+    height: 100vh;
+    left: 0px;
+    background-color: white;
+    color: #002060;
+}
+
+.titleWrapper {
+    width: 100%;
+    height: 20vh;
+}
+
+.titleWrapper img {
+    width: 150px;
+    height: auto;
+    margin-right: 50px;
+}
+
+.titleWrapper h1 {
+    color: #002060;
+    font-size: 5rem;
+}
+
+.firstSection {
+    height: 40vh;
+}
+
+.introText {
+    width: 60%;
+}
+
+.secondSection {
+    display: flex;
+    justify-content: center;
+    height: 40vh;
+}
+
+.searchWrapper {
+    width: 60%;
+}
+
+.searchWrapper input {
+    height: 50px;
+    width: 60%;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding-left: 20px;
+    font-size: 1.2rem;
+}
+
+.searchWrapper button {
+    height: 54px;
+    width: 150px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    border: none;
+    color: #002060;
+    background: #dee8f4;
+    cursor: pointer;
+}
+
+
+/* Right Section */
+
+.rightSection {
+    width: 50%;
+    height: 100vh;
+    right: 0px;
+    background: linear-gradient(to bottom right, #2AFADF, #4C83FF);
+    flex-direction: column;
+    color: #002060;
+}
+
+.rightSection img {
+    width: 600px;
+    height: auto;
+}
+
+.rightMenu {
+    width: 450px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.menuTitle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    font-size: 1.3rem;
+    color: #002060;
+}
+
+.menuTitle img {
+    padding: 10px 20px;
+    width: 60px;
+    height: auto;
+}
+
+.menuTitle h2 {
+    width: 100%;
+}
+
+.dirContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    color: black;
+}
+
+
+/* Menu Styling*/
+
+.menuSeparator {
+    width: 100%;
+    background-color: white;
+    height: 40px;
+    margin: 3px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.menuBtn {
+    flex-direction: column;
+}
+
+.menuBtn p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f2f2f2;
+    height: 40px;
+    margin: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: 300ms;
+}
+
+.menuBtn p:hover {
+    transform: scale(1.3);
+    border: 4px solid #2378c6;
+    border-radius: 15px;
+}
+
+.menuAcro {
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+/* Infos & Services Display */
+
+.infServDisp a {
+    color: black;
+}
+
+.dirName p,
+.servName p,
+.dirInfos p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f2f2f2;
+    height: 40px;
+    border-radius: 5px;
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: 300ms;
+}
+
+.servName p:hover,
+.dirInfos p:hover {
+    transform: scale(1.3);
+    border: 4px solid #2378c6;
+    border-radius: 15px;
+}
+
+.dirName p {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.servName p,
+.dirInfos p {
+    cursor: pointer;
+}
+
+
+/* searchBar */
+
+.searchHeader {
+    top: 0;
+    position: fixed;
+    height: 27vh;
+    width: 100%;
+    z-index: 9999;
+}
+
+.headerTop {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 12vh;
+    background-color: white;
+}
+
+.topBarLeft {
+    position: absolute;
+    height: 12vh;
+    width: 50%;
+    left: 0;
+}
+
+.titleWrapper {
+    width: 100%;
+    height: 12vh;
+}
+
+.titleWrapper img {
+    width: 100px;
+    height: auto;
+    margin-right: 50px;
+}
+
+.titleWrapper h1 {
+    color: #002060;
+    font-size: 4rem;
+}
+
+.topBarRight {
+    position: absolute;
+    left: 50%;
+    height: 12vh;
+    width: 50%;
+    background: linear-gradient(to bottom right, #2AFADF, #4C83FF);
+    flex-direction: column;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    transition: height 0.5s;
+    -webkit-transition: height 0.5s;
+}
+
+.topBarRight_hover {
+    height: 100vh;
+    cursor: default;
+}
+
+.menuTopRight {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.topBarSearch {
+    height: 15vh;
+    width: 100%;
+    flex-direction: row;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.19);
+    background-color: white;
+}
+
+.topBarSearch form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.topBarSearch input {
+    height: 50px;
+    width: 60%;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding-left: 20px;
+    font-size: 1.2rem;
+}
+
+.topBarSearch button {
+    height: 54px;
+    width: 150px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    border: none;
+    color: #002060;
+    background: #dee8f4;
+    cursor: pointer;
+}
+
+.menuClose {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: white;
+    font-size: 1.5rem;
+    color: black;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.searchResults {
+    min-height: 68vh;
+    height: 100%;
+    width: 100%;
+    background-color: #f2f2f2;
+}
+
+
+/* Directions & Services */
+
+.ds_Container {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 40px 0;
+    flex-direction: column;
+}
+
+.ds_titleWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ds_Title {
+    text-align: center;
+    padding: 10px 20px;
+    border-bottom: 3px solid lightgrey;
+    color: #002060;
+    font-size: 2rem;
+    z-index: 99;
+}
+
+.ds_Title h3 {
+    margin: 0;
+}
+
+.ds_Title_team {
+    margin-top: 30px;
+}
+
+.ds_mission {
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+    background-color: #dee8f4;
+    height: 30px;
+    padding: 5px 20px;
+    font-size: 1.2rem;
+    color: #002060;
+    cursor: pointer;
+}
+
+.ds_missionBody {
+    width: 60%;
+    padding: 20px;
+}
+
+.ds_groupContainer {
+    width: 100%;
+    height: 40vh;
+    background-color: #dee8f4;
+}
+
+
+/* Archives & Profil page & Search */
+
+.card,
+.firstResults {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.cardWrap {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 10px;
+    border: 2px solid lightgrey;
+    background-color: white;
+}
+
+.cardThumbnail {
+    background-image: url('https://quifaitquoi.pole-emploi-services.fr/wp-content/uploads/2020/07/1262-scaled.jpg');
+    display: flex;
+    align-self: stretch;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 0 0 10px;
+}
+
+.cardThumbnail_Search {
+    width: 35%;
+}
+
+.cardThumbnail_Profil {
+    width: 45%;
+}
+
+.cardThumbnailFrame {
+    margin: 30px 0;
+    border: 5px solid white;
+}
+
+.cardWrap_Search {
+    margin-top: 20px;
+    width: 65%;
+}
+
+.cardWrap_Profil {
+    margin-top: 50px;
+    width: 25%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.firstResults_Head {
+    width: 65%;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 1.2rem;
+    border: 2px solid lightgrey;
+    font-weight: bold;
+    color: #002060;
+}
+
+.firstResults_Head p {
+    margin: 8px 20px;
+}
+
+.cardBody {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+}
+
+.cardBody p,
+.infosBody p {
+    margin: 3px 0;
+}
+
+.cardLeft,
+.cardRight {
+    width: 50%;
+}
+
+.cardRight {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.infosBody {
+    padding-right: 10px;
+    ;
+}
+
+.cardBody i,
+.cardRight i {
+    text-align: center;
+    margin-right: 10px;
+    color: #4C83FF;
+    width: 20px;
+}
+
+.card h3 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+
+/* Global */
+
+.btnGrey {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #002060;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    background-color: #f2f2f2;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.btnBlue {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #002060;
+    cursor: pointer;
+    width: 120px;
+    height: 30px;
+    background-color: #dee8f4;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: 300ms;
+    z-index: 1;
+}
+
+.btnBlue:hover {
+    transform: scale(1.3);
+}
+
+.btnBlue_2 {
+    margin: 30px 0;
+    font-size: 1.2rem;
+    width: auto;
+    height: 40px;
+    background-color: #dee8f4;
+    border-radius: 10px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.btnBlue_2 a {
+    padding: 0 20px;
+    text-decoration: none;
+    color: #002060;
+}
+
+.btnBlue_2 a:hover {
+    font-weight: bold;
+}
+
+.dispFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+hr.dotted {
+    border-top: 4px dotted #bbb;
+    border-bottom: 0;
+    max-width: 100px;
+    margin: 20px 0;
+}
+
+.container {
+    margin-top: 32vh;
+}
+
+.container_2 {
+    margin-top: 27vh;
+}
+
+.btnGrey p {
+    margin: 5px;
+}
+
+.styleNone {
+    display: none;
+}
+
+.styleNone_Link {
+    text-decoration: none;
+}
