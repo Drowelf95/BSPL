@@ -4,7 +4,18 @@
 <div class="bo_titles">
     <h2>Commentaires</h2>
     <div class="bo_options">
-        <p><a href="index.php?path=commentBin"><i class="far fa-trash-alt"></i>Corbeille</a></p>
+    <?php 
+        $isBinEmpty = $this->session->get('comBin');
+        if ($isBinEmpty == 'full') {?>
+            <p><a href="index.php?path=commentBin"><i class="far fa-trash-alt"></i>Corbeille</a></p>
+        <?php }?>
+    </div>
+    <div class="bo_alertArea">
+        <?php $alert = $this->session->get('alert');?>
+        <?php if (!empty($alert)) {?>
+        <div class="bo_alert"><i class="fas fa-comment-dots"></i><?php echo $alert;?></div>
+        <?php } 
+         $this->session->remove('alert');?>
     </div>
 </div>
 
@@ -30,16 +41,16 @@
             <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
 
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&articleId=<?= $comment->getArticleID(); ?>"
+                <p><a href="../public/index.php?path=frontView&articleId=<?php echo $comment->getArticleID(); ?>"
                         target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
-                <p><a href="../public/index.php?path=trashComment&commentId=<?= $comment->getID(); ?>">
+                <p class="bo_delete"><a href="../public/index.php?path=trashComment&commentId=<?php echo $comment->getID(); ?>">
                 <i class="far fa-trash-alt"></i>Supprimer</p>
             </div>
 
             <div class="bo_postflaged">
                 <?php if($comment->isFlag()) {?>
                 <i class="fas fa-exclamation-triangle"></i>
-                <p><a href="../public/index.php?path=unflagComment&commentId=<?= $comment->getID(); ?>">Désignaler le
+                <p><a href="../public/index.php?path=unflagComment&commentId=<?php echo $comment->getID(); ?>">Désignaler le
                         commentaire</a></p>
                 <?php }?>
             </div>

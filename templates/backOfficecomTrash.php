@@ -2,9 +2,16 @@
 
 <!--Display Title and options of the selected area-->
 <div class="bo_titles">
-    <h2>Commentaires</h2>
+    <h2>Corbeille</h2>
     <div class="bo_options">
-        <p><a href="index.php?path=trash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
+        <p><a href="index.php?path=comments"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
+    </div>
+    <div class="bo_alertArea">
+        <?php $alert = $this->session->get('alert');?>
+        <?php if (!empty($alert)) {?>
+        <div class="bo_alert"><i class="fas fa-comment-dots"></i><?php echo $alert;?></div>
+        <?php } 
+         $this->session->remove('alert');?>
     </div>
 </div>
 
@@ -30,19 +37,17 @@
             <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
 
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&articleId=<?= $comment->getArticleID(); ?>"
+                <p><a href="../public/index.php?path=frontView&articleId=<?php echo $comment->getArticleID(); ?>"
                         target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
-                <p><i class="far fa-trash-alt"></i>Supprimer</p>
+                <p><a href="../public/index.php?path=untrashComment&commentId=<?php echo $comment->getId();?>"><i
+                    class="fas fa-undo-alt"></i>Sortir de la corbeille</a></p>
+                <p class="articlePermDel bo_delete id="<?php echo $comment->getId();?>"><i class="far fa-trash-alt"></i>Supprimer</p>
             </div>
-
-            <div class="bo_postflaged">
-                <?php if($comment->isFlag()) {?>
-                <i class="fas fa-exclamation-triangle"></i>
-                <p><a href="../public/index.php?path=unflagComment&commentId=<?= $comment->getID(); ?>">Désignaler le
-                        commentaire</a></p>
-                <?php }?>
-            </div>
-
+        </div>
+        <div class="bo_permDelete dispNone">
+            <p>Souhaitez-vous définitivement supprimer ce commentaire ? </p>
+            <p class="bo_permYes"><a href="">Oui</a></p>
+            <p class="bo_permNo">Non</p>
         </div>
     </div>
     <br>

@@ -58,14 +58,14 @@ class Router
                 elseif ($path === 'trashComment'){
                     $this->backController->trashComment($this->request->getGet()->get('commentId'));
                 }
+                elseif ($path === 'untrashComment'){
+                    $this->backController->untrashComment($this->request->getGet()->get('commentId'));
+                }
                 elseif ($path === 'commentBin'){
                     $this->backController->commentBin($this->request->getGet()->get('commentId'));
                 }
                 elseif ($path === 'profil'){
                     $this->backController->updatePassword($this->request->getPost());
-                }
-                elseif ($path === 'logOut'){
-                    $this->backController->logout();
                 }
                 elseif ($path === 'logoutConf'){
                     $this->backController->logoutConf();
@@ -80,7 +80,7 @@ class Router
                     $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
                 elseif($path === 'flagComment'){
-                    $this->frontController->flagComment($this->request->getGet()->get('commentId'));
+                    $this->frontController->flagComment($this->request->getGet()->get('commentId, articleId'));
                 }
                 elseif($path === 'unflagComment'){
                     $this->backController->unflagComment($this->request->getGet()->get('commentId'));

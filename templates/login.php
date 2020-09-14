@@ -16,7 +16,7 @@
             <div class="inputLines">
 
                 <h2>Identifiant</h2>
-                <input type="text" id="pseudo" name="pseudo" placeholder="Tapez votre identifiant ici." value="<?= isset($post) ? htmlspecialchars($post->get('pseudo')): ''; ?>" required />
+                <input type="text" id="pseudo" name="pseudo" placeholder="Tapez votre identifiant ici." value="<?php echo isset($post) ? htmlspecialchars($post->get('pseudo')): ''; ?>" required />
 
 
                 <h2>Mot de passe</h2>

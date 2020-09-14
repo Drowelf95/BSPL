@@ -133,7 +133,7 @@ $chaptNext = $chaptNow ;
 
                 <div class="fv_signal">
                 <?php if(!$comment->isFlag()) {?>
-                    <p><a href="../public/index.php?path=flagComment&commentId=<?= $comment->getID(); ?>">
+                    <p><a href="../public/index.php?path=flagComment&commentId=<?php echo $comment->getID();?>&articleId=<?php echo $comment->getArticleID();?>">
                             <i class="fas fa-exclamation-triangle"></i>
                             Signaler</a></p>
                     <?php } else { ?>

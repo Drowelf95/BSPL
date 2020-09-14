@@ -19,6 +19,12 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
         $articles = $this->articleDAO->getArticles();
+        $postInBin = $this->articleDAO->getArticlesDeleted();
+            if (!empty($postInBin)) {
+                $this->session->set('postBin', 'full');
+            }else {
+                $this->session->set('postBin', 'empty');
+            }
         return $this->view->renderBO('backOfficeReader', [
             'articles' => $articles
         ]);
@@ -73,7 +79,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->articleDAO->trashArticle($articleId);
-            $this->session->set('alerte', 'L\'article à était placé dans la corbeille ');
+            $this->session->set('alert', 'L\'article a été placé dans la corbeille ');
             header('Location: ../public/index.php?path=backOffice');
         }
     }
@@ -82,6 +88,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->articleDAO->untrashArticle($articleId);
+            $this->session->set('alert', 'L\'article a été sorti de la corbeille ');
             header('Location: ../public/index.php?path=articleBin');
         }
     }
@@ -99,6 +106,12 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $comments = $this->commentDAO->getCommentsFromArticle2();
+            $postInBin = $this->commentDAO->getcommentsDeleted();
+            if (!empty($postInBin)) {
+                $this->session->set('comBin', 'full');
+            }else {
+                $this->session->set('comBin', 'empty');
+            }
             return $this->view->renderBO('backOfficeCom', [
                 'comments' => $comments
             ]);
@@ -109,9 +122,18 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->commentDAO->trashComment($commentId);
-            $this->session->set('alerte', 'Le commentaire à été placé dans la corbeille ');
+            $this->session->set('alert', 'Le commentaire a été placé dans la corbeille ');
             header('Location: ../public/index.php?path=comments');
         }   
+    }
+
+    public function untrashComment($commentId)
+    {
+        if ($this->checkLoggedIn()) {
+            $this->commentDAO->untrashComment($commentId);
+            $this->session->set('alert', 'Le commentaire a été sorti de la corbeille ');
+            header('Location: ../public/index.php?path=commentBin');
+        }
     }
 
     public function commentBin()
@@ -132,7 +154,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->commentDAO->unflagComment($commentId);
-            $this->session->set('unflag_comment', 'Le commentaire a bien été désignalé');
+            $this->session->set('alert', 'Le commentaire a bien été désignalé');
             header('Location: ../public/index.php?path=comments');
         }
     }
@@ -143,6 +165,7 @@ class BackController extends Controller
             if ($post->get('submit')) {
                 if ($post->get('password') == $post->get('password_conf') ){
                     $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
+                    $this->session->set('alert', 'L\'identifiant et le mot de passe ont été mise à jour');
                     header('Location: ../public/index.php?path=backOffice');
                     return $this->view->renderBO('backOfficeReader');
                 } else {
@@ -153,15 +176,6 @@ class BackController extends Controller
             }
         $this->session->remove('errorMdp');
         return $this->view->renderBO('profil');
-        }
-    }
-
-    public function logout()
-    {
-        if ($this->checkLoggedIn()) {
-            $this->session->set('loginOut', 'logoff');
-            header('Location: ../public/index.php?path=backOffice');
-            return $this->view->renderBO('backOffice');
         }
     }
 

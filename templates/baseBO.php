@@ -45,26 +45,20 @@
                     </div>
                 </a>
 
-                <a href="index.php?path=logOut">
-                    <div class="bo_m_btn">
-                        <p><i class="fas fa-sign-out-alt"></i></p>
-                        <p>Quitter</p>
-                    </div>
-                </a>
+                <div class="bo_m_btn bo_logOut">
+                    <p><i class="fas fa-sign-out-alt"></i></p>
+                    <p>Quitter</p>
+                </div>
 
-                <?php if ($this->session->get('loginOut')) {?>
-                <div class="logout_Conf">
+                <div class="logout_Conf dispNone">
                     <p>Souhaitez vous réellement quitter ?</p>
                     <div class="logout_confBtn">
                         <a href="index.php?path=logoutConf">
                             <p class="conf_Yes">Oui</p>
                         </a>
-                        <a href="index.php?path=logoutCancel">
-                            <p class="conf_No">Non</p>
-                        </a>
+                        <p class="conf_No">Non</p>
                     </div>
                 </div>
-                <?php };?>
 
             </div>
 

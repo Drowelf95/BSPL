@@ -2,7 +2,9 @@ class behavior {
     constructor() {
         this.dispCom()
         this.hideCom()
-        this.permDelete()
+        this.del_click()
+        this.timeAlert()
+        this.loginOut()
     }
 
     dispCom() {
@@ -18,9 +20,36 @@ class behavior {
             $('.fv_comArea').addClass('dispNone')
         })
     }
-    permDelete() {
+    del_click() {
         $('.articlePermDel').on('click', e => {
             $('.bo_permDelete').removeClass('dispNone')
+        })
+        $('.bo_permNo').on('click', e => {
+            $('.bo_permDelete').addClass('dispNone')
+        })
+        $('.bo_permYes').on('click', e => {
+            $('.bo_permDelete').addClass('dispNone')
+        })
+    }
+
+    timeAlert() {
+        const self = this
+
+        self.interval = setInterval(function() {
+            self.hideAlerts()
+        }, 3000)
+    }
+
+    hideAlerts() {
+        $('.bo_alert').fadeOut('slow');
+    }
+
+    loginOut() {
+        $('.bo_logOut').on('click', e => {
+            $('.logout_Conf').removeClass('dispNone')
+        })
+        $('.conf_No').on('click', e => {
+            $('.logout_Conf').addClass('dispNone')
         })
     }
 }
