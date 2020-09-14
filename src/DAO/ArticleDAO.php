@@ -21,7 +21,20 @@ class ArticleDAO extends DAO
 
     public function getArticles()
     {
-        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article ORDER BY id DESC';
+        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article WHERE deleted = 0 ORDER BY id DESC';
+        $result = $this->createQuery($sql);
+        $articles = [];
+        foreach ($result as $row){
+            $articleId = $row['id'];
+            $articles[$articleId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $articles;
+    }
+
+    public function getArticlesDeleted()
+    {
+        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article WHERE deleted = 1 ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -66,5 +79,25 @@ class ArticleDAO extends DAO
         $lastID = $result->fetch();
         $result->closeCursor();
         return $lastID;
+    }
+
+    public function trashArticle($articleId)
+    {
+        $sql = 'UPDATE article SET deleted = ? WHERE id = ?';
+        $this->createQuery($sql, [1, $articleId]);
+    }
+
+    public function untrashArticle($articleId)
+    {
+        $sql = 'UPDATE article SET deleted = ? WHERE id = ?';
+        $this->createQuery($sql, [0, $articleId]);
+    }
+
+    public function deleteArticle($articleId)
+    {
+        $sql = 'DELETE FROM comment WHERE article_id = ?';
+        $this->createQuery($sql, [$articleId]);
+        $sql = 'DELETE FROM article WHERE id = ?';
+        $this->createQuery($sql, [$articleId]);
     }
 }

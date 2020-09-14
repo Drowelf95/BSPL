@@ -10,7 +10,7 @@ $max = $this->session->get('maxID');
 $chaptNow = $article->getID();
 $chaptPrev = $chaptNow -1;
 $chaptNext = $chaptNow +1;
-;?> 
+;?>
 
 <div class="Container">
     <!--Display the title plus Nav bar-->
@@ -20,16 +20,16 @@ $chaptNext = $chaptNow +1;
 
     <div class="dispFlex fv_Article">
         <div class="fv_articleContainer">
-            
-        <div class="dispFlex fv_articleImg">
+
+            <div class="dispFlex fv_articleImg">
                 <img src="../public/img/iceberg.png">
             </div>
-            
+
             <div class="fv_articleTitle">
                 <h3>Chapitre : <?php echo $article->getChapter();?></h3>
                 <h3><?php echo $article->getTitle();?></h3>
             </div>
-            
+
             <div class="fv_articleContent">
                 <p><?php echo $article->getContent();?></p>
             </div>
@@ -51,9 +51,9 @@ $chaptNext = $chaptNow +1;
                                 </div>
                             </a>
                             <?php } else { ?>
-                                <div class="dispFlex fv_Circle">
-                                    <i class="fas fa-times"></i>
-                                </div>
+                            <div class="dispFlex fv_Circle">
+                                <i class="fas fa-times"></i>
+                            </div>
                             <?php } ?>
                         </div>
 
@@ -73,9 +73,9 @@ $chaptNext = $chaptNow +1;
                                 </div>
                             </a>
                             <?php } else { ?>
-                                <div class="dispFlex fv_Circle">
-                                    <i class="fas fa-times"></i>
-                                </div>
+                            <div class="dispFlex fv_Circle">
+                                <i class="fas fa-times"></i>
+                            </div>
                             <?php } ?>
                         </div>
 
@@ -87,7 +87,7 @@ $chaptNext = $chaptNow +1;
                 <div class="fv_navTitles">
                     <div class="dispFlex fv_navTitle fv_navTitleEdges">
                         <?php if ($chaptNow != 1){?>
-                            <h2>Chapitre <?php echo $chaptPrev;?></h2>
+                        <h2>Chapitre <?php echo $chaptPrev;?></h2>
                         <?php } ?>
                     </div>
                     <div class="dispFlex fv_navTitle">
@@ -95,7 +95,7 @@ $chaptNext = $chaptNow +1;
                     </div>
                     <div class="dispFlex fv_navTitle fv_navTitleEdges">
                         <?php if ($chaptNow != $max){?>
-                            <h2>Chapitre <?php echo $chaptNext;?></h2>
+                        <h2>Chapitre <?php echo $chaptNext;?></h2>
                         <?php } ?>
                     </div>
                 </div>
@@ -129,7 +129,16 @@ $chaptNext = $chaptNow +1;
                 <p><?php echo $comment->getContent();?></p>
                 <div class="fv_comInfos">
                     <p>date : <?php echo $comment->getcreatedAT();?></p>
-                    <p>Signaler <i class="fas fa-exclamation-triangle"></i></p>
+                </div>
+
+                <div class="fv_signal">
+                <?php if(!$comment->isFlag()) {?>
+                    <p><a href="../public/index.php?path=flagComment&commentId=<?= $comment->getID(); ?>">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Signaler</a></p>
+                    <?php } else { ?>
+                        <p class="fv_signalDone">Ce commentaire à était signalé.</p>
+                    <?php }?>
                 </div>
             </div>
             <br>

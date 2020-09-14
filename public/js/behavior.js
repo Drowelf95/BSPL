@@ -2,6 +2,7 @@ class behavior {
     constructor() {
         this.dispCom()
         this.hideCom()
+        this.permDelete()
     }
 
     dispCom() {
@@ -15,6 +16,11 @@ class behavior {
         $('.fv_comCancel').on('click', e => {
             $('.fv_comBtn').removeClass('dispNone')
             $('.fv_comArea').addClass('dispNone')
+        })
+    }
+    permDelete() {
+        $('.articlePermDel').on('click', e => {
+            $('.bo_permDelete').removeClass('dispNone')
         })
     }
 }

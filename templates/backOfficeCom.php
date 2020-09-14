@@ -14,38 +14,38 @@
 
     <div class="bo_comWrapper">
 
-        <div class="bo_postTitle">
+        <div class="bo_artcomTitle">
             <h3><?php echo htmlspecialchars($comment->getPseudo());?></h3>
         </div>
 
-        <div class="bo_postContent">
+        <div class="bo_artcomContent">
             <p><?php echo $comment->getContent();?></p>
         </div>
 
     </div>
-    
-        
-    <div class="bo_comwrapperOpt">
 
+    <div class="bo_postInfosContainer">
         <div class="bo_postInfos">
+
             <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
-        </div>
-        
-        <div class="bo_postflaged">
-            <?php if($comment->isFlag()) {?>
+
+            <div class="bo_postOptions">
+                <p><a href="../public/index.php?path=frontView&articleId=<?= $comment->getArticleID(); ?>"
+                        target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
+                <p><i class="far fa-trash-alt"></i>Supprimer</p>
+            </div>
+
+            <div class="bo_postflaged">
+                <?php if($comment->isFlag()) {?>
                 <i class="fas fa-exclamation-triangle"></i>
-            <?php }?>
+                <p><a href="../public/index.php?path=unflagComment&commentId=<?= $comment->getID(); ?>">Désignaler le
+                        commentaire</a></p>
+                <?php }?>
+            </div>
+
         </div>
-
-        <div class="bo_postOptions">
-            <p><a href="../public/index.php?path=frontView&articleId=<?= $comment->getArticleID(); ?>" target="blank">Visualiser</a></p>
-            <?php if($comment->isFlag()) {?>
-                    <p>Valider le commentaire</p>
-                <?php }?>    
-            <p>Supprimer</p>
-        </div> 
-
     </div>
+    <br>
 
     <?php } ?>
 

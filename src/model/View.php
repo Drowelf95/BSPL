@@ -14,6 +14,7 @@ class View
     private $request;
     private $session;
     private $favIco;
+    private $myJs;
 
     public function __construct()
     {
@@ -51,6 +52,7 @@ class View
         $this->fontAwe = '../public/fonts/Fontawesome/css/all.css';
         $this->mediaq = '../public/css/mediaq.css';
         $this->favIco = '../public/img/fire.png';
+        $this->myJs = '../public/js/behavior.js';
         $view = $this->renderFile('../templates/baseBO.php', [
             'title' => $this->title,
             'content' => $content,
@@ -58,7 +60,8 @@ class View
             'styling' => $this->styling,
             'fontAwe' => $this->fontAwe,
             'mediaq' => $this->mediaq,
-            'favIco' => $this->favIco
+            'favIco' => $this->favIco,
+            'myJs' => $this->myJs
         ]);
         echo $view;
     }

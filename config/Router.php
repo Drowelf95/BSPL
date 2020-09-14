@@ -40,6 +40,18 @@ class Router
                 elseif ($path === 'editArticle'){
                     $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
+                elseif ($path === 'articleBin'){
+                    $this->backController->articleBin($this->request->getGet()->get('articleId'));
+                }
+                elseif ($path === 'trashArticle'){
+                    $this->backController->trashArticle($this->request->getGet()->get('articleId'));
+                }
+                elseif ($path === 'untrashArticle'){
+                    $this->backController->untrashArticle($this->request->getGet()->get('articleId'));
+                }
+                elseif ($path === 'deleteArticle'){
+                    $this->backController->deleteArticle($this->request->getGet()->get('articleId'));
+                }
                 elseif ($path === 'comments'){
                     $this->backController->comments($this->request->getGet()->get('articleId'));
                 }
@@ -60,6 +72,12 @@ class Router
                 }
                 elseif($path === 'addComment'){
                     $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
+                }
+                elseif($path === 'flagComment'){
+                    $this->frontController->flagComment($this->request->getGet()->get('commentId'));
+                }
+                elseif($path === 'unflagComment'){
+                    $this->backController->unflagComment($this->request->getGet()->get('commentId'));
                 }
             }
             else{

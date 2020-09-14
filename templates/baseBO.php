@@ -24,9 +24,8 @@
                     </div>
                 </a>
 
-
                 <a href="index.php?path=backOffice">
-                    <div class="bo_m_btn test">
+                    <div class="bo_m_btn">
                         <p><i class="far fa-edit"></i></p>
                         <p>Billets</p>
                     </div>
@@ -80,12 +79,17 @@
     <script src="https://code.jquery.com/jquery-3.5.0.js"
         integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo $myJs ?>"></script>
 
     <script>
     tinymce.init({
         selector: '#mytextarea',
         width: '600',
         height: '250'
+    });
+
+    $(document).ready(function(e) {
+        const Initbehavior = new behavior();
     });
     </script>
 

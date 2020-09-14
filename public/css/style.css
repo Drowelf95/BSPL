@@ -109,6 +109,9 @@ html {
 
 /*Front view*/
 
+
+/* Container and fixed items */
+
 .Container {
     margin-bottom: 70px;
 }
@@ -120,18 +123,45 @@ html {
     font-size: 3rem;
 }
 
+
+/* Book title */
+
 .fv_head {
-    margin-top: 10vh;
+    margin: 10vh 0 2vh;
     width: 100%;
-    height: auto;
-    flex-direction: column;
 }
 
 .fv_head h1 {
     font-size: 3rem;
     font-weight: normal;
-    padding-bottom: 10px;
 }
+
+
+/* Book Content */
+
+.fv_Article {
+    width: 100%;
+}
+
+.fv_articleContainer {
+    width: 50%;
+}
+
+.fv_articleImg img {
+    height: 200px;
+    width: auto;
+}
+
+.fv_Article h3 {
+    font-size: 1.3rem;
+}
+
+.fv_articleContent {
+    margin-bottom: 40px;
+}
+
+
+/* Book Navigation bar */
 
 .fv_navBox {
     margin-top: 50px;
@@ -196,26 +226,8 @@ html {
     font-size: 0.7rem;
 }
 
-.fv_Article {
-    width: 100%;
-}
 
-.fv_articleImg img {
-    height: 200px;
-    width: auto;
-}
-
-.fv_articleContainer {
-    width: 50%;
-}
-
-.fv_Article h3 {
-    font-size: 1.3rem;
-}
-
-.fv_articleContent {
-    margin-bottom: 40px;
-}
+/* Book comments inputs */
 
 .fv_Comments {
     flex-direction: column;
@@ -230,7 +242,7 @@ html {
     font-size: 1.2rem;
     color: white;
     cursor: pointer;
-    margin: 30px 0;
+    margin: 50px 0;
 }
 
 .fv_comArea {
@@ -270,6 +282,9 @@ html {
     cursor: pointer;
 }
 
+
+/* Book comments display */
+
 .fv_comInfos {
     display: flex;
     flex-direction: row;
@@ -281,8 +296,28 @@ html {
     color: grey;
 }
 
+.fv_signal a {
+    color: grey;
+}
+
+.fv_signal a:visited {
+    color: grey;
+}
+
+.fv_signal a:hover {
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}
+
+.fv_signalDone {
+    color: red;
+    font-weight: bold;
+}
+
 .fv_articleComments {
     flex-direction: column;
+    border-bottom: 1px dashed grey;
 }
 
 
@@ -332,7 +367,8 @@ html {
 }
 
 .mdpContainer .bigBtn {
-    margin: 10px;
+    margin: 0;
+    margin-top: 10px;
     font-size: 1.5rem;
     background-color: #481a71;
     color: white;
@@ -341,11 +377,6 @@ html {
 .loadingPage_error {
     color: red;
     text-align: center;
-}
-
-.mdpForgotten p {
-    margin: 0;
-    font-size: 0.7rem;
 }
 
 .retrun_btn {
@@ -360,6 +391,9 @@ html {
 
 
 /*Back office*/
+
+
+/* Containers */
 
 .masterContainer {
     display: flex;
@@ -383,27 +417,17 @@ html {
 
 .bo_Container {
     margin: 40px 0;
+    overflow: auto;
 }
+
+
+/* Backoffice menu*/
 
 .bo_menu {
     flex-direction: column;
     width: 20%;
     background-color: #ececec;
     border-radius: 40px 0 0 40px;
-}
-
-.bo_menu a {
-    color: black;
-    text-align: center;
-}
-
-.bo_menu a:visited {
-    color: black;
-}
-
-.bo_menu img {
-    width: 40%;
-    height: auto;
 }
 
 .bo_m_btn {
@@ -422,7 +446,17 @@ html {
     transition-duration: 300ms;
 }
 
+.bo_menu a {
+    text-align: center;
+}
+
+.bo_menu img {
+    width: 40%;
+    height: auto;
+}
+
 .bo_m_btn i {
+    width: auto;
     font-size: 3rem;
     margin: 0;
 }
@@ -431,95 +465,10 @@ html {
     margin: 0;
 }
 
-.bo_m_btn a {
-    color: black;
-}
-
 .bo_m_btn:hover,
 .bo_m_btn a:hover {
     background-color: #dcdcdc;
     color: #481a71;
-}
-
-.bo_Container {
-    overflow: auto;
-}
-
-.bo_titles {
-    width: 300px;
-    height: auto;
-    text-align: left;
-    margin: 10px 0;
-}
-
-.bo_titles h2 {
-    font-size: 3rem;
-    margin-bottom: 5px;
-}
-
-.bo_options {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 1rem;
-    margin-left: 5px;
-    height: 30px;
-}
-
-.bo_options p {
-    margin: 0;
-    margin-right: 20px;
-}
-
-.bo_options i {
-    margin-right: 5px;
-}
-
-.bo_options p:hover {
-    text-decoration: underline;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-.bo_btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #481a71;
-    color: white;
-}
-
-.bo_log_off {
-    margin-top: 50px;
-}
-
-.bo_fields {
-    margin-bottom: 20px;
-}
-
-h3 {
-    margin-bottom: 10px;
-}
-
-.fieldSizing {
-    width: 400px;
-    height: 20px;
-    padding: 10px;
-    border: 1px dashed grey;
-}
-
-.bo_submit {
-    display: flex;
-    align-items: center;
-}
-
-.bo_date {
-    margin-left: 20px;
-    font-size: 0.8rem;
-    color: grey;
 }
 
 .logout_Conf {
@@ -557,12 +506,43 @@ h3 {
 }
 
 
-/*Back office Editor, Reader, Modif */
+/* Backoffice title / Options / Alertes */
 
-.bo_postManager {
-    display: flex;
-    flex-direction: column;
+.bo_titles {
+    width: 300px;
+    height: auto;
+    text-align: left;
+    margin: 10px 0;
 }
+
+.bo_titles h2 {
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.bo_options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    height: 30px;
+    margin-left: -6px;
+}
+
+.bo_options p {
+    margin: 0;
+    margin-right: 20px;
+}
+
+.bo_options p:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+
+/* Backoffice Editor */
 
 .bo_editor {
     display: flex;
@@ -570,37 +550,104 @@ h3 {
     margin-bottom: 50px;
 }
 
-.bo_reader p,
-.bo_trash p {
-    margin: 5px;
-}
-
-.bo_reader h3,
-.bo_trash h3 {
-    text-decoration: underline;
+.bo_btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
     cursor: pointer;
+    background-color: #481a71;
+    color: white;
 }
 
-.bo_postTitle {
-    width: 10%;
-    word-wrap: break-word;
+.bo_fields {
+    margin-bottom: 20px;
 }
 
-.bo_postContent {
-    word-wrap: break-word;
-    width: 80%;
+.fieldSizing {
+    width: 400px;
+    height: 20px;
+    padding: 10px;
+    border: 1px dashed grey;
+}
+
+.bo_submit {
+    display: flex;
+    align-items: center;
+}
+
+.bo_date {
+    margin-left: 20px;
+    font-size: 0.8rem;
+    color: grey;
+}
+
+
+/* Backoffice Comments */
+
+.bo_comWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.bo_postInfosContainer {
+    border-bottom: 1px dashed grey;
+    margin-bottom: 30px;
 }
 
 .bo_postInfos {
     display: flex;
-    font-style: italic;
-    font-size: 0.8rem;
 }
+
+.bo_postflaged {
+    display: flex;
+    align-items: center;
+    color: red;
+    cursor: pointer;
+}
+
+.bo_postflaged a {
+    color: red;
+}
+
+.bo_postflaged a:visited {
+    color: red;
+}
+
+.bo_postflaged:hover {
+    text-decoration: underline;
+}
+
+.bo_comWrapper h3 {
+    margin: 0;
+}
+
+
+/* Backoffice Bin */
+
+.bo_permDelete {
+    display: flex;
+}
+
+.bo_permDelete p {
+    margin-right: 20px;
+}
+
+.bo_postInfos p {
+    margin-right: 20px
+}
+
+
+/* backoffice options */
 
 .bo_postOptions {
     display: flex;
     color: grey;
     cursor: pointer;
+}
+
+.bo_postOptions p {
+    margin-right: 20px;
 }
 
 .bo_postOptions a {
@@ -613,43 +660,6 @@ h3 {
 
 .bo_postOptions p:hover {
     text-decoration: underline;
-}
-
-.bo_comWrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-
-.bo_comwrapperOpt {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    margin: 0;
-    width: 90%;
-    border-bottom: 1px dashed grey;
-    margin-bottom: 30px;
-}
-
-.bo_postflaged {
-    width: 20px;
-    color: red;
-}
-
-.bo_comWrapper h3 {
-    margin: 0;
-}
-
-.bo_postTitle,
-.bo_postContent,
-.bo_postInfos,
-.bo_postflaged,
-.bo_postOptions {
-    margin-right: 20px;
-}
-
-.bo_postOptions p {
-    margin-right: 20px;
 }
 
 
@@ -666,6 +676,11 @@ h3 {
     color: red;
 }
 
+i {
+    width: 30px;
+    text-align: center;
+}
+
 a {
     text-decoration: none;
     color: #481a71;
@@ -677,6 +692,10 @@ a:visited {
 
 input:focus {
     outline: none;
+}
+
+h3 {
+    margin-bottom: 10px;
 }
 
 .dispNone {
