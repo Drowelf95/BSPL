@@ -1,10 +1,10 @@
-<?php $this->title = "Gestion"; ?>
+<?php $this->title = "Corbeille"; ?>
 
 <!--Display Title and options of the selected area-->
 <div class="bo_titles">
     <h2>Commentaires</h2>
     <div class="bo_options">
-        <p><a href="index.php?path=commentBin"><i class="far fa-trash-alt"></i>Corbeille</a></p>
+        <p><a href="index.php?path=trash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
     </div>
 </div>
 
@@ -32,8 +32,7 @@
             <div class="bo_postOptions">
                 <p><a href="../public/index.php?path=frontView&articleId=<?= $comment->getArticleID(); ?>"
                         target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
-                <p><a href="../public/index.php?path=trashComment&commentId=<?= $comment->getID(); ?>">
-                <i class="far fa-trash-alt"></i>Supprimer</p>
+                <p><i class="far fa-trash-alt"></i>Supprimer</p>
             </div>
 
             <div class="bo_postflaged">

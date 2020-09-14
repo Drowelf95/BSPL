@@ -55,6 +55,12 @@ class Router
                 elseif ($path === 'comments'){
                     $this->backController->comments($this->request->getGet()->get('articleId'));
                 }
+                elseif ($path === 'trashComment'){
+                    $this->backController->trashComment($this->request->getGet()->get('commentId'));
+                }
+                elseif ($path === 'commentBin'){
+                    $this->backController->commentBin($this->request->getGet()->get('commentId'));
+                }
                 elseif ($path === 'profil'){
                     $this->backController->updatePassword($this->request->getPost());
                 }

@@ -34,7 +34,7 @@ class CommentDAO extends DAO
 
     public function getCommentsFromArticle2()
     {
-        $sql = 'SELECT id, pseudo, content, createdAt, article_id, flag FROM comment ORDER BY createdAt DESC';
+        $sql = 'SELECT id, pseudo, content, createdAt, article_id, flag, deleted FROM comment WHERE deleted = 0 ORDER BY createdAt DESC';
         $result = $this->createQuery($sql);
         $comments = [];
         foreach ($result as $row) {
@@ -44,6 +44,32 @@ class CommentDAO extends DAO
         $result->closeCursor();
         return $comments;
     }
+
+    public function getCommentsDeleted()
+    {
+        $sql = 'SELECT id, pseudo, content, createdAt, article_id, flag, deleted FROM comment WHERE deleted = 1 ORDER BY createdAt DESC';
+        $result = $this->createQuery($sql);
+        $comments = [];
+        foreach ($result as $row) {
+            $commentId = $row['id'];
+            $comments[$commentId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $comments;
+    }
+
+    /*public function getArticleFromComments($commentId)
+    {
+        $sql = 'SELECT id, pseudo, content, createdAt, flag FROM article WHERE article_id = ? ORDER BY createdAt DESC';
+        $result = $this->createQuery($sql, [$commentId]);
+        $articles = [];
+        foreach ($result as $row) {
+            $articleId = $row['id'];
+            $articles[$articleId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $articles;
+    }*/
 
     public function addComment(Parameter $post, $articleId)
     {
@@ -63,9 +89,15 @@ class CommentDAO extends DAO
         $this->createQuery($sql, [0, $commentId]);
     }
 
-    public function deleteComment($commentId)
+    public function trashComment($commentId)
+    {
+        $sql = 'UPDATE comment SET deleted = ? WHERE id = ?';
+        $this->createQuery($sql, [1, $commentId]);
+    }
+
+    /*public function deleteComment($commentId)
     {
         $sql = 'DELETE FROM comment WHERE id = ?';
         $this->createQuery($sql, [$commentId]);
-    }
+    }*/
 }

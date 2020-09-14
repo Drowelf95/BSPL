@@ -71,30 +71,61 @@ class BackController extends Controller
 
     public function trashArticle($articleId)
     {
-        $this->articleDAO->trashArticle($articleId);
-        $this->session->set('alerte', 'L\'article à était placé dans la corbeille ');
-        header('Location: ../public/index.php?path=backOffice');
+        if ($this->checkLoggedIn()) {
+            $this->articleDAO->trashArticle($articleId);
+            $this->session->set('alerte', 'L\'article à était placé dans la corbeille ');
+            header('Location: ../public/index.php?path=backOffice');
+        }
     }
 
     public function untrashArticle($articleId)
     {
-        $this->articleDAO->untrashArticle($articleId);
-        header('Location: ../public/index.php?path=articleBin');
+        if ($this->checkLoggedIn()) {
+            $this->articleDAO->untrashArticle($articleId);
+            header('Location: ../public/index.php?path=articleBin');
+        }
     }
 
     public function deleteArticle($articleId)
     {
-        $this->articleDAO->deleteArticle($articleId);
-        header('Location: ../public/index.php?path=articleBin');
+        if ($this->checkLoggedIn()) {
+            $this->articleDAO->deleteArticle($articleId);
+            header('Location: ../public/index.php?path=articleBin');
+        }
     }
 
 
     public function comments()
     {
-        $comments = $this->commentDAO->getCommentsFromArticle2();
-        return $this->view->renderBO('backOfficeCom', [
-            'comments' => $comments
-        ]);
+        if ($this->checkLoggedIn()) {
+            $comments = $this->commentDAO->getCommentsFromArticle2();
+            return $this->view->renderBO('backOfficeCom', [
+                'comments' => $comments
+            ]);
+        }
+    }
+
+    public function trashComment($commentId)
+    {
+        if ($this->checkLoggedIn()) {
+            $this->commentDAO->trashComment($commentId);
+            $this->session->set('alerte', 'Le commentaire à été placé dans la corbeille ');
+            header('Location: ../public/index.php?path=comments');
+        }   
+    }
+
+    public function commentBin()
+    {
+        if ($this->checkLoggedIn()) {
+        $comments = $this->commentDAO->getcommentsDeleted();
+            if (!empty($comments)) {
+            return $this->view->renderBO('backOfficeComTrash', [
+                'comments' => $comments
+            ]);
+            } else {
+                header('Location: ../public/index.php?path=comments');
+            }
+        }
     }
 
     public function unflagComment($commentId)

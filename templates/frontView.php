@@ -9,7 +9,7 @@
 $max = $this->session->get('maxID');
 $chaptNow = $article->getID();
 $chaptPrev = $chaptNow -1;
-$chaptNext = $chaptNow +1;
+$chaptNext = $chaptNow ;
 ;?>
 
 <div class="Container">

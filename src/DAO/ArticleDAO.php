@@ -47,7 +47,7 @@ class ArticleDAO extends DAO
 
     public function getArticle($articleId)
     {
-        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article WHERE id = ?';
+        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article WHERE deleted= 0 AND id = ?';
         $result = $this->createQuery($sql, [$articleId]);
         $article = $result->fetch();
         $result->closeCursor();

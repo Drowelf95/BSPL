@@ -2,7 +2,7 @@
 
 <!--Display Title and options of the selected area-->
 <div class="bo_titles">
-    <h2>Billets</h2>
+    <h2>Corbeille</h2>
     <div class="bo_options">
         <p><a href="index.php?path=backOffice"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
     </div>
