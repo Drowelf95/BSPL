@@ -1,3 +1,1 @@
-.dev.php
-vendor
-Backup
+git rm --cached /Backup
