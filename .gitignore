@@ -1,3 +1,4 @@
 /vendor
 /Backup
 /config/dev.php
+.gitattributes
