@@ -10,7 +10,7 @@
 
     <!--Display the text editor-->
     <div class="bo_editor">
-    <form action="" method="POST">
+    <form action="../public/index.php?path=profil" method="POST">
         <div class="bo_fields">
             <h3>Pseudonyme :</h3>
             <input type="text" name="pseudo" class="fieldSizing" value=""
@@ -34,6 +34,14 @@
         <div class="bo_submit">
             <input type="submit" class="bo_btn" value="Mettre à jour" id="submit" name="submit">
         </div>
+    </form>
+
+    <form action="../public/index.php?path=bioUpdate" method="POST">
+        <div class="bo_fields">
+                    <h3>Le contenu de la Bio :</h3>
+                    <textarea id="mytextarea" name="myBio" placeholder="Un nouveau chapitre!"></textarea>
+        </div>
+        <input type="submit" class="bo_btn" value="Mettre à jour" id="submit" name="submit">
     </form>
     </div>
 </div>

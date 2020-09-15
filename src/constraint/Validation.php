@@ -10,5 +10,11 @@ class Validation
             $articleValidation = new ArticleValidation();
             $errors = $articleValidation->check($data);
             return $errors;
+        }
+        if($name === 'Comment') {
+            $commentValidation = new CommentValidation();
+            $errors = $commentValidation->check($data);
+            return $errors;
+        }
     }
 }

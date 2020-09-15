@@ -559,6 +559,16 @@ html {
     color: red;
 }
 
+.bo_alert {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bo_alert p {
+    margin: 0;
+}
+
 
 /* Backoffice Editor */
 
@@ -672,6 +682,17 @@ html {
 }
 
 
+/* Bio */
+
+.bioContainer {
+    flex-direction: column;
+    width: 60%;
+    height: auto;
+    background-color: white;
+    padding: 20px;
+}
+
+
 /*Common*/
 
 .dispFlex {
@@ -683,6 +704,17 @@ html {
 .errorMessage {
     font-style: italic;
     color: red;
+}
+
+.errorContainer {
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    background-color: white;
+}
+
+.errorContainer p {
+    font-size: 4rem;
 }
 
 i {

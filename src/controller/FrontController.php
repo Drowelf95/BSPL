@@ -56,13 +56,15 @@ class FrontController extends Controller
     public function addComment(Parameter $post, $articleId)
     {
         if($post->get('submit')) {
-            //$this->commentDAO->addComment($post, $articleId);
-            $article = $this->articleDAO->getArticle($articleId);
-            $comments = $this->commentDAO->getCommentsFromArticle($articleId);
-            return $this->view->render('frontView', [
-                'article' => $article,
-                'comments' => $comments
-            ]);
+            $errors = $this->validation->validate($post, 'Comment');
+                if(!$errors){
+                    $this->commentDAO->addComment($post, $articleId);
+                    $this->session->set('alert', 'Le commentaire a bien été posté.');
+                    header('Location: ../public/index.php?path=frontView&articleId=' .$articleId);
+                } else {
+                    $this->session->set('alert', 'Le pseudo ou le contenu du commentaire est trop court, veuillez le changer.');
+                    header('Location: ../public/index.php?path=frontView&articleId=' .$articleId);
+                } 
         }
     }
 
@@ -70,6 +72,11 @@ class FrontController extends Controller
     {
         $this->commentDAO->flagComment($commentId);
         $this->session->set('flag_comment', 'Le commentaire a bien été signalé');
-        header('Location: ../public/index.php?path=frontView&articleId='.$articleId);
+        header('Location: ../public/index.php?path=frontView&articleId=' .$articleId);
+    }
+
+    public function bio()
+    {
+        return $this->view->render('bio');
     }
 }

@@ -32,7 +32,7 @@
         </h3>
 
         <div class="bo_artcomContent">
-            <p><?php echo $article->getContent();?></p>
+            <p><?php echo substr($article->getContent(),0,300);?></p>
         </div>
     </div>
 

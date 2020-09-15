@@ -8,12 +8,10 @@
             <div class="infosContainer dispFlex">
 
                 <h1>Jean FORTEROCHE</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempus elit nibh, quis interdum enim interdum eget. Pellentesque cursus, diam pulvinar dignissim consectetur, purus ligula vulputate urna, ac vehicula nunc velit sit amet
-                    felis.
-                </p>
+                <p>Auteur français & Youtuber, je suis un grand amateur des nouvelles technologies ! Je vous invite donc à découvrir mon nouveau roman sur cette nouvelle plate-forme entièrement en ligne. Bonne lecture !</p>
             </div>
 
-            <p class="bigBtn">à propos</p>
+            <a href="index.php?path=bio"><p class="bigBtn">à propos</p></a>
 
         </div>
 

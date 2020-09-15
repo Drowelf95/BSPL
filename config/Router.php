@@ -85,10 +85,16 @@ class Router
                     $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
                 elseif($path === 'flagComment'){
-                    $this->frontController->flagComment($this->request->getGet()->get('commentId, articleId'));
+                    $this->frontController->flagComment($this->request->getGet()->get('commentId'), $this->request->getGet()->get('articleId'));
                 }
                 elseif($path === 'unflagComment'){
                     $this->backController->unflagComment($this->request->getGet()->get('commentId'));
+                }
+                elseif($path === 'bio'){
+                    $this->frontController->bio();
+                }
+                elseif($path === 'bioUpdate'){
+                    $this->backController->editBio();
                 }
             }
             else{

@@ -5,7 +5,12 @@
     <h2>Modifications</h2>
     <div class="bo_options">
         <p><a href="index.php?path=backOffice"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
-        <p><a href="index.php?path=trash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
+    </div>
+    <div class="bo_alertArea">
+        <div class="bo_alert"><p><?php echo isset($errors['chapter']) ? $errors['chapter'] : ''; ?></p></div>    
+        <div class="bo_alert"><p><?php echo isset($errors['title']) ? $errors['title'] : ''; ?></p></div>
+        <div class="bo_alert"><p><?php echo isset($errors['mytextarea']) ? $errors['mytextarea'] : ''; ?></p></div>
+        <div class="bo_alert"><p><?php echo isset($errors['author']) ? $errors['author'] : ''; ?></p></div>
     </div>
 </div>
 

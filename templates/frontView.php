@@ -17,6 +17,11 @@ $chaptNext = $chaptNow ;
     <div class="dispFlex fv_head">
         <h1>Billet simple pour l'Alaska</h1>
     </div>
+    <?php $alert = $this->session->get('alert');?>
+    <div class="dispFlex bo_alertArea">
+        <div class="bo_alert"><?php echo $alert;?></div>
+    </div>
+    <?php $alert = $this->session->remove('alert');?>
 
     <div class="dispFlex fv_Article">
         <div class="fv_articleContainer">
@@ -107,7 +112,7 @@ $chaptNext = $chaptNow ;
                 </div>
 
                 <div class="dispFlex fv_comArea dispNone">
-                    <form action="index.php?path=addComment" method="POST">
+                    <form action="index.php?path=addComment&articleId=<?php echo htmlspecialchars($article->getId());?>" method="POST">
                         <h3>Pseudonyme</h3>
                         <input type="text" id="pseudo" name="pseudo" class="fieldComments"
                             placeholder="Tapez votre nom ou pseudonyme ici..." required>
@@ -133,7 +138,7 @@ $chaptNext = $chaptNow ;
 
                 <div class="fv_signal">
                 <?php if(!$comment->isFlag()) {?>
-                    <p><a href="../public/index.php?path=flagComment&commentId=<?php echo $comment->getID();?>&articleId=<?php echo $comment->getArticleID();?>">
+                    <p><a href="../public/index.php?path=flagComment&commentId=<?php echo $comment->getID();?>&articleId=<?php echo htmlspecialchars($article->getId());?>">
                             <i class="fas fa-exclamation-triangle"></i>
                             Signaler</a></p>
                     <?php } else { ?>

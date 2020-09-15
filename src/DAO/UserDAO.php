@@ -23,4 +23,12 @@ class UserDAO extends DAO
         $sql = 'UPDATE user SET password = ? WHERE pseudo = ?';
         $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $post->get('pseudo')]);
     }
+
+    public function updateBio($post)
+    {
+        $sql = 'UPDATE user SET bio=:bio';
+        $this->createQuery($sql, [
+            'bio' => $post->get('myBio'),
+            ]);
+    }
 }

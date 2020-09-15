@@ -57,17 +57,21 @@ class ArticleDAO extends DAO
 
     public function addArticle(Parameter $post)
     {
+        $streapText = $post->get('mytextarea');
+        $streapContent = strip_tags ($streapText);
         $sql = 'INSERT INTO article (chapter, title, content, image, createdAt, author) VALUES (?, ?, ?, ?, NOW(), ?)';
-        $this->createQuery($sql, [$post->get('chapter'), $post->get('title'), $post->get('mytextarea'), $post->get('image'), $post->get('author')]);
+        $this->createQuery($sql, [$post->get('chapter'), $post->get('title'), $streapContent, $post->get('image'), $post->get('author')]);
     }
 
     public function editArticle(Parameter $post, $articleId)
     {
         $sql = 'UPDATE article SET chapter=:chapter, title=:title, content=:content, author=:author WHERE id=:articleId';
+        $streapText = $post->get('mytextarea');
+        $streapContent = strip_tags ($streapText);
         $this->createQuery($sql, [
             'chapter' => $post->get('chapter'),
             'title' => $post->get('title'),
-            'content' => $post->get('mytextarea'),
+            'content' => $streapContent,
             'author' => $post->get('author'),
             'articleId' => $articleId
         ]);

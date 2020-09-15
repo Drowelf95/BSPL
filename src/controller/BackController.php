@@ -49,8 +49,15 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             if ($post->get('submit')) {
-                $this->articleDAO->addArticle($post);
-                header('Location: ../public/index.php?path=backOffice');
+                $errors = $this->validation->validate($post, 'Article');
+                if(!$errors){
+                    $this->articleDAO->addArticle($post);
+                    header('Location: ../public/index.php?path=backOffice');
+                }
+                    return $this->view->renderBO('backOfficeEditor', [
+                    'post' => $post,
+                    'errors' => $errors
+                ]);
             }
             return $this->view->renderBO('backOfficeEditor');
         }
@@ -62,10 +69,18 @@ class BackController extends Controller
             $articles = $this->articleDAO->getArticles();
             $article = $this->articleDAO->getArticle($articleId);
             if ($post->get('submit')) {
-                $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
-                header('Location: ../public/index.php?path=backOffice');
-                return $this->view->renderBO('backOfficeReader', [
-                    'articles' => $articles
+                $errors = $this->validation->validate($post, 'Article');
+                if(!$errors){
+                    $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
+                    header('Location: ../public/index.php?path=backOffice');
+                    return $this->view->renderBO('backOfficeReader', [
+                        'articles' => $articles
+                    ]);
+                }
+                return $this->view->renderBO('backOfficeModif', [
+                    'article' => $article,
+                    'post' => $post,
+                    'errors' => $errors
                 ]);
                 
             }
@@ -176,8 +191,8 @@ class BackController extends Controller
                 if ($post->get('password') == $post->get('password_conf') ){
                     $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
                     $this->session->set('alert', 'L\'identifiant et le mot de passe ont été mise à jour');
-                    header('Location: ../public/index.php?path=backOffice');
-                    return $this->view->renderBO('backOfficeReader');
+                    header('Location: ../public/index.php?path=profil');
+                    return $this->view->renderBO('profil');
                 } else {
                     $this->session->set('errorMdp', 'Le mot de passe et la confirmation ne correspondent pas.');
                     return $this->view->renderBO('profil');
@@ -204,6 +219,17 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $this->session->remove('loginOut');
             header('Location: ../public/index.php?path=backOffice');
+        }
+    }
+
+    public function editBio(Parameter $post)
+    {
+        if ($this->checkLoggedIn()) {
+            if ($post->get('submit')) {
+                    $this->userDAO->updateBio($post);
+                    header('Location: ../public/index.php?path=profil');
+                    return $this->view->renderBO('profil');
+            }
         }
     }
 }
