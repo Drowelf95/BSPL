@@ -14,6 +14,7 @@ class ArticleDAO extends DAO
         $article->setChapter($row['chapter']);
         $article->setTitle($row['title']);
         $article->setContent($row['content']);
+        $article->setImage($row['image']);
         $article->setAuthor($row['author']);
         $article->setCreatedAt($row['createdAt']);
         return $article;
@@ -21,7 +22,7 @@ class ArticleDAO extends DAO
 
     public function getArticles()
     {
-        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article WHERE deleted = 0 ORDER BY id DESC';
+        $sql = 'SELECT id, chapter, title, content, image, author, createdAt FROM article WHERE deleted = 0 ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -56,8 +57,8 @@ class ArticleDAO extends DAO
 
     public function addArticle(Parameter $post)
     {
-        $sql = 'INSERT INTO article (chapter, title, content, createdAt, author) VALUES (?, ?, ?, NOW(), ?)';
-        $this->createQuery($sql, [$post->get('chapter'), $post->get('title'), $post->get('mytextarea'), $post->get('author')]);
+        $sql = 'INSERT INTO article (chapter, title, content, image, createdAt, author) VALUES (?, ?, ?, ?, NOW(), ?)';
+        $this->createQuery($sql, [$post->get('chapter'), $post->get('title'), $post->get('mytextarea'), $post->get('image'), $post->get('author')]);
     }
 
     public function editArticle(Parameter $post, $articleId)

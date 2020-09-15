@@ -5,12 +5,14 @@ namespace App\config;
 use Exception;
 use App\src\controller\FrontController;
 use App\src\controller\BackController;
+use App\src\controller\ErrorController;
 
 class Router
 {
     private $request;
     private $frontController;
     private $backController;
+    private $errorController;
     
 
     public function __construct()
@@ -18,7 +20,7 @@ class Router
         $this->request = new Request();
         $this->frontController = new FrontController();
         $this->backController = new BackController();
-
+        $this->errorController = new ErrorController();
     }
 
     public function run()
@@ -63,6 +65,9 @@ class Router
                 }
                 elseif ($path === 'commentBin'){
                     $this->backController->commentBin($this->request->getGet()->get('commentId'));
+                }
+                elseif ($path === 'deleteComment'){
+                    $this->backController->deleteComment($this->request->getGet()->get('commentId'));
                 }
                 elseif ($path === 'profil'){
                     $this->backController->updatePassword($this->request->getPost());

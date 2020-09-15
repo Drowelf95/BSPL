@@ -79,7 +79,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->articleDAO->trashArticle($articleId);
-            $this->session->set('alert', 'L\'article a été placé dans la corbeille ');
+            $this->session->set('alert', 'L\'article a été placé dans la corbeille');
             header('Location: ../public/index.php?path=backOffice');
         }
     }
@@ -88,7 +88,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->articleDAO->untrashArticle($articleId);
-            $this->session->set('alert', 'L\'article a été sorti de la corbeille ');
+            $this->session->set('alert', 'L\'article a été sorti de la corbeille');
             header('Location: ../public/index.php?path=articleBin');
         }
     }
@@ -97,6 +97,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->articleDAO->deleteArticle($articleId);
+            $this->session->set('alert', 'L\'article a été définitivement supprimé');
             header('Location: ../public/index.php?path=articleBin');
         }
     }
@@ -147,6 +148,15 @@ class BackController extends Controller
             } else {
                 header('Location: ../public/index.php?path=comments');
             }
+        }
+    }
+
+    public function deleteComment($commentId)
+    {
+        if ($this->checkLoggedIn()) {
+            $this->commentDAO->deleteComment($commentId);
+            $this->session->set('alert', 'Le commentaire a été définitivement supprimé');
+            header('Location: ../public/index.php?path=commentBin');
         }
     }
 

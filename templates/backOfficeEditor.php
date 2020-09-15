@@ -6,6 +6,7 @@
     <div class="bo_options">
         <p><a href="index.php?path=backOffice"><i class="fas fa-long-arrow-alt-left"></i>Retour</a></p>
         <p><a href="index.php?path=trash"><i class="far fa-trash-alt"></i>Corbeille</a></p>
+        <p><?php echo isset($errors['title']) ? $errors['title'] : ''; ?></p>
     </div>
 </div>
 
@@ -32,7 +33,7 @@
 
             <div class="bo_fields">
                 <h3>Charger une image :</h3>
-                <input type="text" name="upload" class="fieldSizing" placeholder="Copier ici le lien du fichier à charger">
+                <input type="file" name="image" class="fieldSizing">
             </div>
 
             <div class="bo_fields">

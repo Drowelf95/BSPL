@@ -22,7 +22,7 @@ $chaptNext = $chaptNow ;
         <div class="fv_articleContainer">
 
             <div class="dispFlex fv_articleImg">
-                <img src="../public/img/iceberg.png">
+                <img src="<?php echo $article->getImage();?>">
             </div>
 
             <div class="fv_articleTitle">

@@ -46,7 +46,7 @@
         </div>
         <div class="bo_permDelete dispNone">
             <p>Souhaitez-vous définitivement supprimer ce commentaire ? </p>
-            <p class="bo_permYes"><a href="">Oui</a></p>
+            <p class="bo_permYes"><a href="../public/index.php?path=deleteComment&commentId=<?php echo $comment->getId();?>">Oui</a></p>
             <p class="bo_permNo">Non</p>
         </div>
     </div>

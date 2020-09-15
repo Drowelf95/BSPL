@@ -31,7 +31,7 @@
 
             <div class="bo_fields">
                 <h3>Charger une image :</h3>
-                <input type="text" name="upload" class="fieldSizing" >
+                <input type="file" name="image" class="fieldSizing" >
             </div>
 
             <div class="bo_fields">
