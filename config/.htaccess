@@ -1,0 +1,4 @@
+AuthName "Page d'administration protégée"
+AuthType Basic
+AuthUserFile "/homepages/35/d814802187/htdocs/Bspl/config/.htpasswd"
+Require valid-user

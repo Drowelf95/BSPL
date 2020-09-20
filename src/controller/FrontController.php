@@ -45,9 +45,11 @@ class FrontController extends Controller
     {
         $maxID = $this->articleDAO->maxID();
         $this->session->set('maxID', $maxID[0]);
+        $articles = $this->articleDAO->getArticles();
         $article = $this->articleDAO->getArticle($articleId);
-        $comments = $this->commentDAO->getCommentsFromArticle($articleId);
+        $comments = $this->commentDAO->getCommentsFromArticle2($articleId);
         return $this->view->render('frontView', [
+            //'articles' => $articles,
             'article' => $article,
             'comments' => $comments
         ]);
@@ -77,6 +79,9 @@ class FrontController extends Controller
 
     public function bio()
     {
-        return $this->view->render('bio');
+        $bioText = $this->userDAO->getBio();
+        return $this->view->render('bio', [
+            'bioText' => $bioText
+        ]);
     }
 }

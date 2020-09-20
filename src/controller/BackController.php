@@ -191,16 +191,23 @@ class BackController extends Controller
                 if ($post->get('password') == $post->get('password_conf') ){
                     $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
                     $this->session->set('alert', 'L\'identifiant et le mot de passe ont été mise à jour');
-                    header('Location: ../public/index.php?path=profil');
-                    return $this->view->renderBO('profil');
+                    $bioText = $this->userDAO->getBio();
+                    return $this->view->renderBO('profil', [ 
+                        'bioText' => $bioText 
+                        ]);
                 } else {
-                    $this->session->set('errorMdp', 'Le mot de passe et la confirmation ne correspondent pas.');
-                    return $this->view->renderBO('profil');
-                    $this->session->set('errorMdp');
+                    $this->session->set('alert', 'Le mot de passe et la confirmation ne correspondent pas.');
+                    $bioText = $this->userDAO->getBio();
+                    return $this->view->renderBO('profil', [ 
+                        'bioText' => $bioText 
+                        ]);
                 }
             }
-        $this->session->remove('errorMdp');
-        return $this->view->renderBO('profil');
+
+        $bioText = $this->userDAO->getBio();
+        return $this->view->renderBO('profil', [ 
+            'bioText' => $bioText 
+            ]);
         }
     }
 
@@ -222,13 +229,17 @@ class BackController extends Controller
         }
     }
 
-    public function editBio(Parameter $post)
+
+    public function updateBio(Parameter $post)
     {
         if ($this->checkLoggedIn()) {
             if ($post->get('submit')) {
                     $this->userDAO->updateBio($post);
-                    header('Location: ../public/index.php?path=profil');
-                    return $this->view->renderBO('profil');
+                    $this->session->set('alert', 'La Bio de votre profil est à jour.');
+                    $bioText = $this->userDAO->getBio();
+                    return $this->view->renderBO('profil', [ 
+                        'bioText' => $bioText 
+                    ]);
             }
         }
     }

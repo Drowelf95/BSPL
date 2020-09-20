@@ -2,4 +2,5 @@
 /Backup
 /config/dev.php
 .gitattributes
-/public/phpinfo.php
+/config/phpinfo.php
+/config/crypte.php

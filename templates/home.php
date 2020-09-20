@@ -8,7 +8,7 @@
             <div class="infosContainer dispFlex">
 
                 <h1>Jean FORTEROCHE</h1>
-                <p>Auteur français & Youtuber, je suis un grand amateur des nouvelles technologies ! Je vous invite donc à découvrir mon nouveau roman sur cette nouvelle plate-forme entièrement en ligne. Bonne lecture !</p>
+                <p>Auteur français & Youtuber, je suis un grand amateur des nouvelles technologies ! Je vous invite donc à découvrir mon nouveau roman sur cette plate-forme entièrement en ligne. Bonne lecture !</p>
             </div>
 
             <a href="index.php?path=bio"><p class="bigBtn">à propos</p></a>

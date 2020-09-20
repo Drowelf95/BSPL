@@ -1,0 +1,163 @@
+/*Minor breakpoint*/
+
+@media screen and (max-width: 1600px) {}
+
+
+/*Minor breakpoint*/
+
+@media screen and (max-width: 1300px) {}
+
+
+/*Major breakpoint*/
+
+@media screen and (max-width: 1024px) {}
+
+
+/*Major breakpoint*/
+
+@media screen and (max-width: 720px) {
+    /* Landing page */
+    .landingPage {
+        font-size: 0.8rem;
+        flex-direction: column-reverse;
+    }
+    .login {
+        font-size: 1rem;
+    }
+    .infosContainer {
+        width: 90%;
+        height: auto;
+    }
+    .leftSide {
+        width: 100%;
+        height: 50vh;
+    }
+    .rightSide {
+        width: 100%;
+        height: 50vh;
+    }
+    .bigBtn {
+        font-size: 1rem;
+    }
+    /* Login */
+    .retrun_btn {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    .mdpContainer {
+        width: 100%;
+        border-radius: unset;
+    }
+    /* Backoffice */
+    .masterContainer {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        border-radius: unset;
+    }
+    .bo_menu {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+    }
+    .bo_m_btn {
+        width: auto;
+        font-size: 0.8rem;
+        border-radius: unset;
+    }
+    .bo_m_btn i {
+        font-size: 1rem;
+    }
+    .bo_subContainer {
+        width: 100%;
+        height: auto;
+        border-radius: unset;
+        padding: 0;
+        overflow: hidden;
+    }
+    .bo_titles h2 {
+        font-size: 1.5rem;
+        margin: 10px;
+    }
+    .bo_Container {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    .bo_Container {
+        padding-right: 0;
+        margin: 10px;
+    }
+    .bo_postInfos {
+        flex-wrap: wrap;
+    }
+    .bo_postOptions {
+        text-align: center;
+    }
+    /* Editor */
+    .fieldSizing {
+        width: 90%;
+    }
+    /* bio */
+    .bioContainer {
+        justify-content: unset;
+        width: 100%;
+        height: 70vh;
+        overflow: auto;
+        text-align: center;
+    }
+    /* Front View */
+    .fv_Close {
+        font-size: 1rem;
+    }
+    .dropdown p {
+        margin: 0;
+        font-size: 1rem;
+        color: #481a71;
+        padding: 0
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 200px;
+        background-color: white;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 99;
+    }
+    .Container {
+        flex-direction: column;
+        margin: 0;
+        height: 100vh;
+    }
+    .fv_head {
+        margin: 0;
+        margin-top: 10vh;
+        height: 20vh;
+    }
+    .fv_head h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin: 0;
+    }
+    .fv_Article h3 {
+        margin: 0;
+    }
+    .fv_Article {
+        flex-grow: 1;
+        overflow: auto;
+    }
+    .fv_articleContainer {
+        width: 100%;
+        height: 100%;
+        padding: 0 10px;
+        overflow: scroll;
+    }
+    .fv_articleImg,
+    .fv_navBox {
+        display: none;
+    }
+}
+
+
+/*Minor breakpoint*/
+
+@media screen and (max-width: 480px) {}

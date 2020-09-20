@@ -5,6 +5,19 @@
     <a href="index.php"><i class="fas fa-times"></i></a>
 </div>
 
+<!--Display the menu-->
+<div class="dropdown fv_Menu">
+  <p class="dropbtn "><i class="fas fa-bars"></i></p>
+  <div class="dropdown-content">
+    <?php foreach ($articles as $article) { ?>
+        <a href="../public/index.php?path=frontView&articleId=<?php echo $article->getId(); ?>">
+                Chapitre : <?php echo htmlspecialchars($article->getChapter());?> -
+                <?php echo htmlspecialchars($article->getTitle());?></a>
+    <?php } ?>  
+  </div>
+</div>
+
+
 <?php 
 $max = $this->session->get('maxID');
 $chaptNow = $article->getID();
@@ -12,7 +25,7 @@ $chaptPrev = $chaptNow -1;
 $chaptNext = $chaptNow ;
 ;?>
 
-<div class="Container">
+<div class="dispFlex Container">
     <!--Display the title plus Nav bar-->
     <div class="dispFlex fv_head">
         <h1>Billet simple pour l'Alaska</h1>
@@ -146,7 +159,6 @@ $chaptNext = $chaptNow ;
                     <?php }?>
                 </div>
             </div>
-            <br>
 
             <?php }?>
         </div>

@@ -90,8 +90,7 @@ html {
 
 .bigBtn {
     margin: 0;
-    padding: 5px 0;
-    width: 200px;
+    padding: 5px 20px;
     border: none;
     border-radius: 30px;
     font-size: 2rem;
@@ -109,6 +108,52 @@ html {
 
 /*Front view*/
 
+.Container {
+    flex-direction: column;
+}
+
+
+/* Menu drop Down */
+
+.dropbtn {
+    padding: 16px;
+    font-size: 2rem;
+    border: none;
+}
+
+.dropdown p {
+    margin: 0;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 /* Container and fixed items */
 
@@ -119,8 +164,15 @@ html {
 .fv_Close {
     position: fixed;
     top: 30px;
+    right: 30px;
+    font-size: 2rem;
+}
+
+.fv_Menu {
+    position: fixed;
+    top: 30px;
     left: 30px;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 
@@ -417,6 +469,7 @@ html {
 
 .bo_Container {
     margin: 0 0 40px;
+    padding-right: 50px;
     overflow: auto;
 }
 

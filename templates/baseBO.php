@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title><?php echo $title ?></title>
 
     <link rel="stylesheet" href="<?= $styling ?>" />
@@ -19,7 +21,7 @@
 
                 <a href="index.php">
                     <div class="bo_m_btn">
-                        <p><img src="../public/img/iceberg.png" alt=""></p>
+                        <p><i class="fas fa-home"></i></p>
                         <p>Accueil</p>
                     </div>
                 </a>

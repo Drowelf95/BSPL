@@ -39,11 +39,11 @@
                             class="far fa-eye"></i>Visualiser</a></p>
                 <p><a href="../public/index.php?path=untrashArticle&articleId=<?php echo $article->getId();?>"><i
                             class="fas fa-undo-alt"></i>Sortir de la corbeille</a></p>
-                <p class="bo_delete articlePermDel"><i class="far fa-trash-alt"></i>Supprimer</p>
+                <p class="bo_delete articlePermDel" id="<?php echo $article->getId(); ?>"><i class="far fa-trash-alt"></i>Supprimer</p>
                 </a>
             </div>
         </div>
-        <div class="bo_permDelete dispNone">
+        <div class="bo_permDelete dispNone" id="<?php echo $article->getId(); ?>">
             <p>Souhaitez-vous définitivement supprimer cette article ? </p>
             <p class="bo_permYes"><a href="../public/index.php?path=deleteArticle&articleId=<?php echo $article->getId();?>">Oui</a></p>
             <p class="bo_permNo">Non</p>

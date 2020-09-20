@@ -94,7 +94,7 @@ class Router
                     $this->frontController->bio();
                 }
                 elseif($path === 'bioUpdate'){
-                    $this->backController->editBio();
+                    $this->backController->updateBio($this->request->getPost());
                 }
             }
             else{

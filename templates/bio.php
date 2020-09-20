@@ -5,6 +5,6 @@
     <h1>Jean Forteroche</h1>
     <h2>à propos</h2>
     
-    <p></p>
+    <p><?php echo $bioText->getBio();?></p>
     </div>
 </div>
