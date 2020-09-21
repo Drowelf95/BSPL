@@ -34,7 +34,7 @@
         <div class="fv_articleContainer">
 
             <div class="dispFlex fv_articleImg">
-                <img src="<?php echo $article->getImage();?>">
+                <img src="<?php echo $article->getPhoto();?>">
             </div>
 
             <div class="fv_articleTitle">

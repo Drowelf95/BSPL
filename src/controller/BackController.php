@@ -51,6 +51,11 @@ class BackController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if(!$errors){
+                    /*$target = "../public/img/".basename($_FILES['photo']['name']);
+                    if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                    } else {
+                        $this->session->set('alert', 'Impossible d\'importer l\'image');
+                    }*/
                     $this->articleDAO->addArticle($post);
                     header('Location: ../public/index.php?path=backOffice');
                 }

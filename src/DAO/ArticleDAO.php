@@ -14,7 +14,7 @@ class ArticleDAO extends DAO
         $article->setChapter($row['chapter']);
         $article->setTitle($row['title']);
         $article->setContent($row['content']);
-        $article->setImage($row['image']);
+        $article->setPhoto($row['photo']);
         $article->setAuthor($row['author']);
         $article->setCreatedAt($row['createdAt']);
         return $article;
@@ -22,7 +22,7 @@ class ArticleDAO extends DAO
 
     public function getArticles()
     {
-        $sql = 'SELECT id, chapter, title, content, image, author, createdAt FROM article WHERE deleted = 0 ORDER BY id DESC';
+        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted = 0 ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -35,7 +35,7 @@ class ArticleDAO extends DAO
 
     public function getArticlesDeleted()
     {
-        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article WHERE deleted = 1 ORDER BY id DESC';
+        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted = 1 ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -48,7 +48,7 @@ class ArticleDAO extends DAO
 
     public function getArticle($articleId)
     {
-        $sql = 'SELECT id, chapter, title, content, author, createdAt FROM article WHERE deleted= 0 AND id = ?';
+        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted= 0 AND id = ?';
         $result = $this->createQuery($sql, [$articleId]);
         $article = $result->fetch();
         $result->closeCursor();
@@ -59,19 +59,26 @@ class ArticleDAO extends DAO
     {
         $streapText = $post->get('mytextarea');
         $streapContent = strip_tags ($streapText);
-        $sql = 'INSERT INTO article (chapter, title, content, image, createdAt, author) VALUES (?, ?, ?, ?, NOW(), ?)';
-        $this->createQuery($sql, [$post->get('chapter'), $post->get('title'), $streapContent, $post->get('image'), $post->get('author')]);
+        $sql = 'INSERT INTO article (chapter, title, content, photo, createdAt, author) VALUES (?, ?, ?, ?, NOW(), ?)';
+        $this->createQuery($sql, [
+            $post->get('chapter'), 
+            $post->get('title'), 
+            $streapContent, 
+            $post->get('photo'), 
+            $post->get('author')
+        ]);
     }
 
     public function editArticle(Parameter $post, $articleId)
     {
-        $sql = 'UPDATE article SET chapter=:chapter, title=:title, content=:content, author=:author WHERE id=:articleId';
+        $sql = 'UPDATE article SET chapter=:chapter, title=:title, content=:content, photo=:photo author=:author WHERE id=:articleId';
         $streapText = $post->get('mytextarea');
         $streapContent = strip_tags ($streapText);
         $this->createQuery($sql, [
             'chapter' => $post->get('chapter'),
             'title' => $post->get('title'),
             'content' => $streapContent,
+            'photo' => $post->get('photo'),
             'author' => $post->get('author'),
             'articleId' => $articleId
         ]);

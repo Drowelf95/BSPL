@@ -27,6 +27,11 @@ class Article
     /**
      * @var string
      */
+    private $photo;
+
+    /**
+     * @var string
+     */
     private $author;
 
     /**
@@ -102,17 +107,17 @@ class Article
     /**
      * @return string
      */
-    public function getImage()
+    public function getPhoto()
     {
-        return $this->image;
+        return $this->photo;
     }
 
     /**
-     * @param string $image
+     * @param string $photo
      */
-    public function setImage($image)
+    public function setPhoto($photo)
     {
-        $this->image = $image;
+        $this->photo = $photo;
     }
 
     /**

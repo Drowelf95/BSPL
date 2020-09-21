@@ -20,9 +20,12 @@ class behavior {
             $('.fv_comArea').addClass('dispNone')
         })
     }
+
     del_click() {
         $('.articlePermDel').on('click', e => {
-            $('.bo_permDelete').removeClass('dispNone')
+            let articleID = $(e.target).attr('id')
+            articleID = articleID.replace('btnDel-', '')
+            $('#confDel-' + articleID).removeClass('dispNone')
         })
         $('.bo_permNo').on('click', e => {
             $('.bo_permDelete').addClass('dispNone')

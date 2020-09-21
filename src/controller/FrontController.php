@@ -48,7 +48,7 @@ class FrontController extends Controller
         $nextId = $this->articleDAO->nextId($articleId);
         $this->session->set('next', $nextId[0]);
 
-        $articles = $this->articleDAO->getArticles();
+        //$articles = $this->articleDAO->getArticles();
         $article = $this->articleDAO->getArticle($articleId);
         $comments = $this->commentDAO->getCommentsFromArticle2($articleId);
 

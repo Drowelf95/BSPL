@@ -18,7 +18,7 @@
 
     <!--Display the text editor-->
     <div class="bo_editor">
-        <form action="../public/index.php?path=editor" method="POST">
+        <form action="../public/index.php?path=editor" method="POST"  enctype="multipart/form-data">
             <div class="bo_fields">
                 <h3>Chapitre :</h3>
                 <input type="text" id="chapter" name="chapter" class="fieldSizing" value=""
@@ -37,7 +37,7 @@
 
             <div class="bo_fields">
                 <h3>Charger une image :</h3>
-                <input type="file" name="image" class="fieldSizing">
+                <input type="file" name="photo" id="photo" class="fieldSizing">
             </div>
 
             <div class="bo_fields">
