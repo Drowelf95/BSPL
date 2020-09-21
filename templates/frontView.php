@@ -17,18 +17,12 @@
   </div>
 </div>
 
-
-<?php 
-$max = $this->session->get('maxID');
-$chaptNow = $article->getID();
-$chaptPrev = $chaptNow -1;
-$chaptNext = $chaptNow ;
-;?>
-
 <div class="dispFlex Container">
     <!--Display the title plus Nav bar-->
     <div class="dispFlex fv_head">
         <h1>Billet simple pour l'Alaska</h1>
+        <?php $next = $this->session->get('next');?>
+        <?php echo $next;?>
     </div>
     <?php $alert = $this->session->get('alert');?>
     <div class="dispFlex bo_alertArea">
@@ -61,6 +55,7 @@ $chaptNext = $chaptNow ;
                 <div class="dispFlex fv_navBar">
                     <div class="fv_Nav">
 
+                        <!--button left-->
                         <div class="dispFlex fv_btnLeft">
                             <?php if ($chaptNow != 1){?>
                             <a href="index.php?path=frontView&articleId=<?php echo $chaptPrev;?>">
@@ -75,6 +70,7 @@ $chaptNext = $chaptNow ;
                             <?php } ?>
                         </div>
 
+                        <!--button middle-->
                         <div class="dispFlex fv_btnCtr">
                             <div class="dispFlex fv_Circle">
                                 <p>
@@ -83,18 +79,13 @@ $chaptNext = $chaptNow ;
                             </div>
                         </div>
 
+                        <!--button right-->
                         <div class="dispFlex fv_btnRight">
-                            <?php if ($chaptNow != $max){?>
-                            <a href="index.php?path=frontView&articleId=<?php echo $chaptNext;?>">
+                            <a href="index.php?path=frontView&articleId=<?php echo $chaptNext;?>&chapterId=<?php echo htmlspecialchars($article->getChapter());?>">
                                 <div class="dispFlex fv_Circle">
                                     <i class="fas fa-chevron-right"></i>
                                 </div>
                             </a>
-                            <?php } else { ?>
-                            <div class="dispFlex fv_Circle">
-                                <i class="fas fa-times"></i>
-                            </div>
-                            <?php } ?>
                         </div>
 
                     </div>

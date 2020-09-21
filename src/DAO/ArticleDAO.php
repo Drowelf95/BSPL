@@ -77,9 +77,38 @@ class ArticleDAO extends DAO
         ]);
     }
 
+    public function firstId()
+    {
+        $sql ='SELECT MIN(id) FROM article WHERE deleted= 0';
+        $result = $this->createQuery($sql);
+        $firstIdAv = $result->fetch();
+        $result->closeCursor();
+        return $firstIdAv;
+    }
+
+    
+    public function nextId($articleId)
+    {
+        $sql ='SELECT chapter FROM article WHERE chapter = (SELECT MIN(chapter) FROM article WHERE chapter > ?)';
+        $result = $this->createQuery($sql, [$articleId]);
+        $nextIdAv = $result->fetch();
+        $result->closeCursor();
+        return $nextIdAv;
+    }
+
+
+    public function prevId($articleId)
+    {
+        $sql ='SELECT chapter FROM article WHERE chapter = (SELECT MIN(chapter) FROM article WHERE chapter < ?)';
+        $result = $this->createQuery($sql, [$articleId]);
+        $prevId = $result->fetch();
+        $result->closeCursor();
+        return $prevId;
+    }
+
     public function maxID()
     {
-        $sql ='SELECT * FROM article WHERE id = ( SELECT MAX(id) FROM article )';
+        $sql ='SELECT MAX(chapter) FROM article WHERE deleted= 0';
         $result = $this->createQuery($sql);
         $lastID = $result->fetch();
         $result->closeCursor();

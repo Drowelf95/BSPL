@@ -12,7 +12,7 @@
             </div>
 
             <a href="index.php?path=bio"><p class="bigBtn">à propos</p></a>
-
+            
         </div>
 
         <div class="rightSide dispFlex">
@@ -22,7 +22,8 @@
                 <p>Le nouveau roman épisodique de Jean FORTEROCHE</p>
             </div>
 
-            <a href="index.php?path=frontView&articleId=1"><p class="bigBtn">Lire</p></a>
+            <?php $firstId = $this->session->get('firstIdNumber');?>
+            <a href="index.php?path=frontView&articleId=<?php echo $firstId;?>"><p class="bigBtn">Lire</p></a>
            
         </div>
 </div>

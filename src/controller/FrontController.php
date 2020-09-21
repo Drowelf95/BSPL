@@ -8,6 +8,8 @@ class FrontController extends Controller
 {
     public function home()
     {
+        $firstId = $this->articleDAO->firstId();
+        $this->session->set('firstIdNumber', $firstId[0]);
         return $this->view->render('home');
     }
 
@@ -43,11 +45,13 @@ class FrontController extends Controller
 
     public function article($articleId)
     {
-        $maxID = $this->articleDAO->maxID();
-        $this->session->set('maxID', $maxID[0]);
+        $nextId = $this->articleDAO->nextId($articleId);
+        $this->session->set('next', $nextId[0]);
+
         $articles = $this->articleDAO->getArticles();
         $article = $this->articleDAO->getArticle($articleId);
         $comments = $this->commentDAO->getCommentsFromArticle2($articleId);
+
         return $this->view->render('frontView', [
             //'articles' => $articles,
             'article' => $article,

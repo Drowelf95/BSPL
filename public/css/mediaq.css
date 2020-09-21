@@ -10,12 +10,7 @@
 
 /*Major breakpoint*/
 
-@media screen and (max-width: 1024px) {}
-
-
-/*Major breakpoint*/
-
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1024px) {
     /* Landing page */
     .landingPage {
         font-size: 0.8rem;
@@ -106,8 +101,24 @@
         text-align: center;
     }
     /* Front View */
-    .fv_Close {
+    .fv_Close,
+    .dropdown {
+        width: 25px;
+        height: 25px;
         font-size: 1rem;
+        padding: 5px;
+        border: 2px solid #481a71;
+        border-radius: 31px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 20px;
+    }
+    .fv_Close {
+        right: 20px;
+    }
+    .dropdown {
+        left: 20px;
     }
     .dropdown p {
         margin: 0;
@@ -130,7 +141,7 @@
     }
     .fv_head {
         margin: 0;
-        margin-top: 10vh;
+        margin-top: 12vh;
         height: 20vh;
     }
     .fv_head h1 {
@@ -156,6 +167,11 @@
         display: none;
     }
 }
+
+
+/*Major breakpoint*/
+
+@media screen and (max-width: 720px) {}
 
 
 /*Minor breakpoint*/
