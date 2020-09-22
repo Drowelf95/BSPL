@@ -8,8 +8,9 @@ class FrontController extends Controller
 {
     public function home()
     {
-        $firstId = $this->articleDAO->firstId();
-        $this->session->set('firstIdNumber', $firstId[0]);
+        $firstChapt = $this->articleDAO->firstChapt();
+        $this->session->set('firstChaptNumber', $firstChapt['minChapter']);
+        $this->session->set('firstChaptId', $firstChapt['chapterId']);
         return $this->view->render('home');
     }
 
@@ -43,15 +44,11 @@ class FrontController extends Controller
         }
     }
 
-    public function article($articleId)
+    public function article($chapterId, $articleId)
     {
-        $nextId = $this->articleDAO->nextId($articleId);
-        $this->session->set('next', $nextId[0]);
-
         //$articles = $this->articleDAO->getArticles();
-        $article = $this->articleDAO->getArticle($articleId);
-        $comments = $this->commentDAO->getCommentsFromArticle2($articleId);
-
+        $article = $this->articleDAO->getChapter($chapterId);
+        $comments = $this->commentDAO->getCommentsFromArticle($articleId);
         return $this->view->render('frontView', [
             //'articles' => $articles,
             'article' => $article,
@@ -59,26 +56,26 @@ class FrontController extends Controller
         ]);
     }
 
-    public function addComment(Parameter $post, $articleId)
+    public function addComment(Parameter $post, $chapterId, $articleId)
     {
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
                 if(!$errors){
                     $this->commentDAO->addComment($post, $articleId);
                     $this->session->set('alert', 'Le commentaire a bien été posté.');
-                    header('Location: ../public/index.php?path=frontView&articleId=' .$articleId);
+                    header('Location: ../public/index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
                 } else {
                     $this->session->set('alert', 'Le pseudo ou le contenu du commentaire est trop court, veuillez le changer.');
-                    header('Location: ../public/index.php?path=frontView&articleId=' .$articleId);
+                    header('Location: ../public/index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
                 } 
         }
     }
 
-    public function flagComment($commentId, $articleId)
+    public function flagComment($commentId, $chapterId, $articleId)
     {
         $this->commentDAO->flagComment($commentId);
         $this->session->set('flag_comment', 'Le commentaire a bien été signalé');
-        header('Location: ../public/index.php?path=frontView&articleId=' .$articleId);
+        header('Location: ../public/index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
     }
 
     public function bio()

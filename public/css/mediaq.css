@@ -162,9 +162,11 @@
         padding: 0 10px;
         overflow: scroll;
     }
-    .fv_articleImg,
     .fv_navBox {
         display: none;
+    }
+    .fv_articleComments {
+        text-align: center;
     }
 }
 

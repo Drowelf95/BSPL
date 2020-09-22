@@ -22,8 +22,10 @@
                 <p>Le nouveau roman épisodique de Jean FORTEROCHE</p>
             </div>
 
-            <?php $firstId = $this->session->get('firstIdNumber');?>
-            <a href="index.php?path=frontView&articleId=<?php echo $firstId;?>"><p class="bigBtn">Lire</p></a>
+            <?php $firstChaptAv = $this->session->get('firstChaptNumber');?>
+            <?php $firstChaptId = $this->session->get('firstChaptId');?>
+            
+            <a href="index.php?path=frontView&chapterId=<?php echo $firstChaptAv;?>&articleId=<?php echo $firstChaptId;?>"><p class="bigBtn">Lire</p></a>
            
         </div>
 </div>

@@ -33,9 +33,12 @@
     <div class="dispFlex fv_Article">
         <div class="fv_articleContainer">
 
+            <?php $isThereAnImage = $article->getPhoto(); ?>
+            <?php if ($isThereAnImage != '') : ?>
             <div class="dispFlex fv_articleImg">
-                <img src="<?php echo $article->getPhoto();?>">
+                <img src="../public/img/<?php echo $article->getPhoto();?>">
             </div>
+            <?php endif ?>
 
             <div class="fv_articleTitle">
                 <h3>Chapitre : <?php echo $article->getChapter();?></h3>
@@ -81,7 +84,7 @@
 
                         <!--button right-->
                         <div class="dispFlex fv_btnRight">
-                            <a href="index.php?path=frontView&articleId=<?php echo $chaptNext;?>&chapterId=<?php echo htmlspecialchars($article->getChapter());?>">
+                            <a href="index.php?path=frontView&chapterId=<?php echo htmlspecialchars($article->getChapter());?>">
                                 <div class="dispFlex fv_Circle">
                                     <i class="fas fa-chevron-right"></i>
                                 </div>
@@ -142,7 +145,7 @@
 
                 <div class="fv_signal">
                 <?php if(!$comment->isFlag()) {?>
-                    <p><a href="../public/index.php?path=flagComment&commentId=<?php echo $comment->getID();?>&articleId=<?php echo htmlspecialchars($article->getId());?>">
+                    <p><a href="../public/index.php?path=flagComment&chapterId=<?php echo htmlspecialchars($article->getChapter());?>&commentId=<?php echo $comment->getID();?>&articleId=<?php echo htmlspecialchars($article->getId());?>">
                             <i class="fas fa-exclamation-triangle"></i>
                             Signaler</a></p>
                     <?php } else { ?>

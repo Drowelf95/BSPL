@@ -71,7 +71,6 @@ class Article
         $this->chapter = $chapter;
     }
 
-    
     /**
      * @return string
      */

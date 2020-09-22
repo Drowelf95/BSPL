@@ -201,6 +201,7 @@ html {
 .fv_articleImg img {
     height: 200px;
     width: auto;
+    margin-bottom: 20px;
 }
 
 .fv_Article h3 {

@@ -79,13 +79,13 @@ class Router
                     $this->backController->logoutCancel();
                 }
                 elseif ($path === 'frontView'){
-                    $this->frontController->article($this->request->getGet()->get('articleId'));
+                    $this->frontController->article($this->request->getGet()->get('chapterId'), $this->request->getGet()->get('articleId'));
                 }
                 elseif($path === 'addComment'){
-                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
+                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('chapterId'), $this->request->getGet()->get('articleId'));
                 }
                 elseif($path === 'flagComment'){
-                    $this->frontController->flagComment($this->request->getGet()->get('commentId'), $this->request->getGet()->get('articleId'));
+                    $this->frontController->flagComment($this->request->getGet()->get('commentId'), $this->request->getGet()->get('chapterId'), $this->request->getGet()->get('articleId'));
                 }
                 elseif($path === 'unflagComment'){
                     $this->backController->unflagComment($this->request->getGet()->get('commentId'));

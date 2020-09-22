@@ -51,13 +51,13 @@ class BackController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if(!$errors){
-                    /*$target = "../public/img/".basename($_FILES['photo']['name']);
+                    $target = "../public/img/".basename($_FILES['photo']['name']);
                     if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                        $this->articleDAO->addArticle($post);
+                        header('Location: ../public/index.php?path=backOffice');
                     } else {
                         $this->session->set('alert', 'Impossible d\'importer l\'image');
-                    }*/
-                    $this->articleDAO->addArticle($post);
-                    header('Location: ../public/index.php?path=backOffice');
+                    }
                 }
                     return $this->view->renderBO('backOfficeEditor', [
                     'post' => $post,
@@ -76,11 +76,16 @@ class BackController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if(!$errors){
-                    $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
-                    header('Location: ../public/index.php?path=backOffice');
-                    return $this->view->renderBO('backOfficeReader', [
-                        'articles' => $articles
-                    ]);
+                    $target = "../public/img/".basename($_FILES['photo']['name']);
+                    if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                        $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
+                        header('Location: ../public/index.php?path=backOffice');
+                        return $this->view->renderBO('backOfficeReader', [
+                            'articles' => $articles
+                        ]);
+                    } else {
+                        $this->session->set('alert', 'Impossible d\'importer l\'image');
+                    }
                 }
                 return $this->view->renderBO('backOfficeModif', [
                     'article' => $article,

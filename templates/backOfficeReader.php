@@ -41,7 +41,7 @@
             <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
             <p>Créé le : <?php echo htmlspecialchars($article->getCreatedAt());?></p>
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&articleId=<?php echo $article->getId(); ?>" target="blank"><i
+                <p><a href="../public/index.php?path=frontView&chapterId=<?php echo $article->getChapter();?>&articleId=<?php echo $article->getId(); ?>" target="blank"><i
                             class="far fa-eye"></i>Visualiser</a></p>
                 <p><a href="../public/index.php?path=editArticle&articleId=<?php echo $article->getId(); ?>"><i
                             class="far fa-edit"></i>Modifier</a></p>

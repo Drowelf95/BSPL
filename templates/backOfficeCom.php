@@ -27,6 +27,7 @@
 
         <div class="bo_artcomTitle">
             <h3><?php echo htmlspecialchars($comment->getPseudo());?></h3>
+            <p><?php //echo $article->getChapter();?></p>
         </div>
 
         <div class="bo_artcomContent">
@@ -41,7 +42,7 @@
             <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
 
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&articleId=<?php echo $comment->getArticleID(); ?>"
+                <p><a href="../public/index.php?path=frontView&chapterId=&articleId=<?php echo $comment->getArticleID();?>"
                         target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
                 <p class="bo_delete"><a href="../public/index.php?path=trashComment&commentId=<?php echo $comment->getID(); ?>">
                 <i class="far fa-trash-alt"></i>Supprimer</p>

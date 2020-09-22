@@ -55,49 +55,60 @@ class ArticleDAO extends DAO
         return $this->buildObject($article);
     }
 
+    public function getChapter($chapterId)
+    {
+        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted= 0 AND chapter = ?';
+        $result = $this->createQuery($sql, [$chapterId]);
+        $article = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($article);
+    }
+
     public function addArticle(Parameter $post)
     {
         $streapText = $post->get('mytextarea');
         $streapContent = strip_tags ($streapText);
+        $imgUpload = $_FILES['photo']['name'];
         $sql = 'INSERT INTO article (chapter, title, content, photo, createdAt, author) VALUES (?, ?, ?, ?, NOW(), ?)';
         $this->createQuery($sql, [
             $post->get('chapter'), 
             $post->get('title'), 
             $streapContent, 
-            $post->get('photo'), 
+            $imgUpload,
             $post->get('author')
         ]);
     }
 
     public function editArticle(Parameter $post, $articleId)
     {
-        $sql = 'UPDATE article SET chapter=:chapter, title=:title, content=:content, photo=:photo author=:author WHERE id=:articleId';
+        $sql = 'UPDATE article SET chapter=:chapter, title=:title, content=:content, photo=:photo, author=:author WHERE id=:articleId';
         $streapText = $post->get('mytextarea');
         $streapContent = strip_tags ($streapText);
+        $imgUpload = $_FILES['photo']['name'];
         $this->createQuery($sql, [
             'chapter' => $post->get('chapter'),
             'title' => $post->get('title'),
             'content' => $streapContent,
-            'photo' => $post->get('photo'),
+            'photo' => $imgUpload,
             'author' => $post->get('author'),
             'articleId' => $articleId
         ]);
     }
 
-    public function firstId()
+    public function firstChapt()
     {
-        $sql ='SELECT MIN(id) FROM article WHERE deleted= 0';
+        $sql ='SELECT MIN(chapter) AS minChapter, id AS chapterId FROM article WHERE deleted= 0';
         $result = $this->createQuery($sql);
-        $firstIdAv = $result->fetch();
+        $firstChaptAv = $result->fetch();
         $result->closeCursor();
-        return $firstIdAv;
+        return $firstChaptAv;
     }
 
     
-    public function nextId($articleId)
+    public function nextId($chapterId)
     {
-        $sql ='SELECT chapter FROM article WHERE chapter = (SELECT MIN(chapter) FROM article WHERE chapter > ?)';
-        $result = $this->createQuery($sql, [$articleId]);
+        $sql ='SELECT chapter AS nextChapt, id AS nextId FROM article WHERE chapter = (SELECT MIN(chapter) FROM article WHERE chapter > ?)';
+        $result = $this->createQuery($sql, [$chapterId]);
         $nextIdAv = $result->fetch();
         $result->closeCursor();
         return $nextIdAv;
@@ -108,9 +119,9 @@ class ArticleDAO extends DAO
     {
         $sql ='SELECT chapter FROM article WHERE chapter = (SELECT MIN(chapter) FROM article WHERE chapter < ?)';
         $result = $this->createQuery($sql, [$articleId]);
-        $prevId = $result->fetch();
+        $prevIdAv = $result->fetch();
         $result->closeCursor();
-        return $prevId;
+        return $prevIdAv;
     }
 
     public function maxID()
