@@ -55,6 +55,7 @@ class ArticleDAO extends DAO
         return $this->buildObject($article);
     }
 
+
     public function getChapter($chapterId)
     {
         $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted= 0 AND chapter = ?';
@@ -104,10 +105,20 @@ class ArticleDAO extends DAO
         return $firstChaptAv;
     }
 
-    
+
     public function nextId($chapterId)
     {
-        $sql ='SELECT chapter AS nextChapt, id AS nextId FROM article WHERE chapter = (SELECT MIN(chapter) FROM article WHERE chapter > ?)';
+        $sql ='SELECT chapter, id FROM article WHERE chapter > ?  AND deleted= 0';
+        $result = $this->createQuery($sql, [$chapterId]);
+        $nextIdAv = $result->fetch();
+        $result->closeCursor();
+        return $nextIdAv;
+    }
+
+    
+    public function prevId($chapterId)
+    {
+        $sql ='SELECT chapter, id FROM article WHERE chapter < ? AND deleted= 0 ORDER BY id DESC LIMIT 1';
         $result = $this->createQuery($sql, [$chapterId]);
         $nextIdAv = $result->fetch();
         $result->closeCursor();
@@ -115,16 +126,7 @@ class ArticleDAO extends DAO
     }
 
 
-    public function prevId($articleId)
-    {
-        $sql ='SELECT chapter FROM article WHERE chapter = (SELECT MIN(chapter) FROM article WHERE chapter < ?)';
-        $result = $this->createQuery($sql, [$articleId]);
-        $prevIdAv = $result->fetch();
-        $result->closeCursor();
-        return $prevIdAv;
-    }
-
-    public function maxID()
+    public function maxChapt()
     {
         $sql ='SELECT MAX(chapter) FROM article WHERE deleted= 0';
         $result = $this->createQuery($sql);
@@ -139,9 +141,21 @@ class ArticleDAO extends DAO
         $this->createQuery($sql, [1, $articleId]);
     }
 
+    public function trashArticleComs($articleId)
+    {
+        $sql = 'UPDATE comment SET deleted = ? WHERE article_id = ?';
+        $this->createQuery($sql, [1, $articleId]);
+    }
+
     public function untrashArticle($articleId)
     {
         $sql = 'UPDATE article SET deleted = ? WHERE id = ?';
+        $this->createQuery($sql, [0, $articleId]);
+    }
+
+    public function untrashArticleComs($articleId)
+    {
+        $sql = 'UPDATE comment SET deleted = ? WHERE article_id = ?';
         $this->createQuery($sql, [0, $articleId]);
     }
 

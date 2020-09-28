@@ -21,8 +21,6 @@
     <!--Display the title plus Nav bar-->
     <div class="dispFlex fv_head">
         <h1>Billet simple pour l'Alaska</h1>
-        <?php $next = $this->session->get('next');?>
-        <?php echo $next;?>
     </div>
     <?php $alert = $this->session->get('alert');?>
     <div class="dispFlex bo_alertArea">
@@ -60,17 +58,19 @@
 
                         <!--button left-->
                         <div class="dispFlex fv_btnLeft">
-                            <?php if ($chaptNow != 1){?>
-                            <a href="index.php?path=frontView&articleId=<?php echo $chaptPrev;?>">
+                            <?php $minChapt = $this->session->get('firstChaptNumber');?>
+                            <?php $actuChapt = $article->getChapter();?>
+                            <?php if ($actuChapt !== $minChapt[0]): ?>
+                                <a href="index.php?path=btnPrev&chapterId=<?php echo ($article->getChapter());?>&articleId=<?php echo ($article->getId());?>">
                                 <div class="dispFlex fv_Circle">
                                     <i class="fas fa-chevron-left"></i>
                                 </div>
                             </a>
-                            <?php } else { ?>
-                            <div class="dispFlex fv_Circle">
-                                <i class="fas fa-times"></i>
-                            </div>
-                            <?php } ?>
+                            <?php else : ?>
+                                <div class="dispFlex fv_Circle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            <?php endif ?>
                         </div>
 
                         <!--button middle-->
@@ -84,11 +84,19 @@
 
                         <!--button right-->
                         <div class="dispFlex fv_btnRight">
-                            <a href="index.php?path=frontView&chapterId=<?php echo htmlspecialchars($article->getChapter());?>">
+                            <?php $maxChapt = $this->session->get('maxChapt');?>
+                            <?php $actuChapt = $article->getChapter();?>
+                            <?php if ($actuChapt !== $maxChapt[0]): ?>
+                            <a href="index.php?path=btnNxt&chapterId=<?php echo ($article->getChapter());?>&articleId=<?php echo ($article->getId());?>">
                                 <div class="dispFlex fv_Circle">
                                     <i class="fas fa-chevron-right"></i>
                                 </div>
                             </a>
+                            <?php else : ?>
+                                <div class="dispFlex fv_Circle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            <?php endif ?>
                         </div>
 
                     </div>
@@ -98,17 +106,17 @@
 
                 <div class="fv_navTitles">
                     <div class="dispFlex fv_navTitle fv_navTitleEdges">
-                        <?php if ($chaptNow != 1){?>
-                        <h2>Chapitre <?php echo $chaptPrev;?></h2>
-                        <?php } ?>
+                        <?php if ($actuChapt !== $minChapt[0]): ?>    
+                            <h2>Chapitre précédent</h2>
+                        <?php endif ?>
                     </div>
                     <div class="dispFlex fv_navTitle">
                         <h2>Chapitre <?php echo $article->getChapter();?></h2>
                     </div>
                     <div class="dispFlex fv_navTitle fv_navTitleEdges">
-                        <?php if ($chaptNow != $max){?>
-                        <h2>Chapitre <?php echo $chaptNext;?></h2>
-                        <?php } ?>
+                        <?php if ($actuChapt !== $maxChapt[0]): ?>
+                            <h2>Chapitre suivant</h2>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -119,7 +127,7 @@
                 </div>
 
                 <div class="dispFlex fv_comArea dispNone">
-                    <form action="index.php?path=addComment&articleId=<?php echo htmlspecialchars($article->getId());?>" method="POST">
+                    <form action="index.php?path=addComment&chapterId=<?php echo ($article->getChapter());?>&articleId=<?php echo ($article->getId());?>" method="POST">
                         <h3>Pseudonyme</h3>
                         <input type="text" id="pseudo" name="pseudo" class="fieldComments"
                             placeholder="Tapez votre nom ou pseudonyme ici..." required>
@@ -145,7 +153,7 @@
 
                 <div class="fv_signal">
                 <?php if(!$comment->isFlag()) {?>
-                    <p><a href="../public/index.php?path=flagComment&chapterId=<?php echo htmlspecialchars($article->getChapter());?>&commentId=<?php echo $comment->getID();?>&articleId=<?php echo htmlspecialchars($article->getId());?>">
+                    <p><a href="../public/index.php?path=flagComment&chapterId=<?php echo ($article->getChapter());?>&commentId=<?php echo $comment->getID();?>&articleId=<?php echo ($article->getId());?>">
                             <i class="fas fa-exclamation-triangle"></i>
                             Signaler</a></p>
                     <?php } else { ?>

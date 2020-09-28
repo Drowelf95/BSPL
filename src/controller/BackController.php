@@ -51,12 +51,17 @@ class BackController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if(!$errors){
-                    $target = "../public/img/".basename($_FILES['photo']['name']);
-                    if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                    if($_FILES["file"]["error"] != 0) {
+                        $target = "../public/img/".basename($_FILES['photo']['name']);
+                        if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                            $this->articleDAO->addArticle($post);
+                            header('Location: ../public/index.php?path=backOffice');
+                        } else {
+                            $this->session->set('alert', 'Impossible d\'importer l\'image');
+                        }
+                    } else {
                         $this->articleDAO->addArticle($post);
                         header('Location: ../public/index.php?path=backOffice');
-                    } else {
-                        $this->session->set('alert', 'Impossible d\'importer l\'image');
                     }
                 }
                     return $this->view->renderBO('backOfficeEditor', [
@@ -76,15 +81,23 @@ class BackController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if(!$errors){
-                    $target = "../public/img/".basename($_FILES['photo']['name']);
-                    if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                    if($_FILES["file"]["error"] != 0) {
+                        $target = "../public/img/".basename($_FILES['photo']['name']);
+                        if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                            $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
+                            header('Location: ../public/index.php?path=backOffice');
+                            return $this->view->renderBO('backOfficeReader', [
+                                'articles' => $articles
+                            ]);
+                        } else {
+                            $this->session->set('alert', 'Impossible d\'importer l\'image');
+                        }
+                    } else {
                         $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
                         header('Location: ../public/index.php?path=backOffice');
                         return $this->view->renderBO('backOfficeReader', [
                             'articles' => $articles
                         ]);
-                    } else {
-                        $this->session->set('alert', 'Impossible d\'importer l\'image');
                     }
                 }
                 return $this->view->renderBO('backOfficeModif', [
@@ -104,6 +117,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->articleDAO->trashArticle($articleId);
+            $this->articleDAO->trashArticleComs($articleId);
             $this->session->set('alert', 'L\'article a été placé dans la corbeille');
             header('Location: ../public/index.php?path=backOffice');
         }
@@ -113,6 +127,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->articleDAO->untrashArticle($articleId);
+            $this->articleDAO->untrashArticleComs($articleId);
             $this->session->set('alert', 'L\'article a été sorti de la corbeille');
             header('Location: ../public/index.php?path=articleBin');
         }
@@ -131,8 +146,7 @@ class BackController extends Controller
     public function comments()
     {
         if ($this->checkLoggedIn()) {
-            $articleId = 1;
-            $article = $this->articleDAO->getChapter($articleId);
+
             $comments = $this->commentDAO->getCommentsFromArticle2();
             $postInBin = $this->commentDAO->getcommentsDeleted();
             if (!empty($postInBin)) {
@@ -141,7 +155,6 @@ class BackController extends Controller
                 $this->session->set('comBin', 'empty');
             }
             return $this->view->renderBO('backOfficeCom', [
-                'article' => $article,
                 'comments' => $comments
             ]);
         }

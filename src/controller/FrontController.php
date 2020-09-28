@@ -47,6 +47,9 @@ class FrontController extends Controller
     public function article($chapterId, $articleId)
     {
         //$articles = $this->articleDAO->getArticles();
+        $maxChapt = $this->articleDAO->maxChapt();
+        $this->session->set('maxChapt', $maxChapt);
+
         $article = $this->articleDAO->getChapter($chapterId);
         $comments = $this->commentDAO->getCommentsFromArticle($articleId);
         return $this->view->render('frontView', [
@@ -85,4 +88,19 @@ class FrontController extends Controller
             'bioText' => $bioText
         ]);
     }
+
+    public function nextChapter($chapterId)
+    {
+        $nextId = $this->articleDAO->nextId($chapterId);
+        $this->session->set('nextChapt', $nextId[0]);
+        header('Location: ../public/index.php?path=frontView&chapterId=' . $nextId[0] . '&articleId=' .$nextId[1]);
+    }
+
+    public function prevChapter($chapterId)
+    {
+        $prevId = $this->articleDAO->prevId($chapterId);
+        $this->session->set('prevChapt', $prevId[0]);
+        header('Location: ../public/index.php?path=frontView&chapterId=' . $prevId[0] . '&articleId=' .$prevId[1]);
+    }
+
 }

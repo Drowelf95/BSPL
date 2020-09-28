@@ -14,6 +14,9 @@ class Comment
      */
     private $pseudo;
 
+    
+    private $article;
+
     /**
      * @var string
      */
@@ -59,6 +62,22 @@ class Comment
     public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
     }
 
     /**

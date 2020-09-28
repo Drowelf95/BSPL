@@ -4,6 +4,7 @@ namespace App\src\DAO;
 
 use App\config\Parameter;
 use App\src\model\Comment;
+use App\src\DAO\ArticleDAO;
 
 class CommentDAO extends DAO
 {
@@ -15,6 +16,7 @@ class CommentDAO extends DAO
         $comment->setContent($row['content']);
         $comment->setCreatedAt($row['createdAt']);
         $comment->setArticleID($row['article_id']);
+        $comment->setArticle($this->getArticle($row['article_id']));
         $comment->setFlag($row['flag']);
         return $comment;
     }
@@ -45,17 +47,11 @@ class CommentDAO extends DAO
         return $comments;
     }
 
-    public function getArtChapt()
+    public function getArticle($articleId)
     {
-        $sql = 'SELECT article_id FROM comment WHERE deleted = 0';
-        $result = $this->createQuery($sql);
-        $comments = [];
-        foreach ($result as $row) {
-            $commentId = $row['id'];
-            $comments[$commentId] = $this->buildObject($row);
-        }
-        $result->closeCursor();
-        return $comments;
+        $articleDAO = new ArticleDAO();
+        $article = $articleDAO->getArticle($articleId);
+        return $article;
     }
 
     public function getCommentsDeleted()

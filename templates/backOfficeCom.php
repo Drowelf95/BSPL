@@ -25,8 +25,8 @@
     <div class="bo_comWrapper">
 
         <div class="bo_artcomTitle">
-            <h3><?php echo htmlspecialchars($comment->getPseudo());?></h3>
-            <p><?php //echo $article->getChapter();?></p>
+            <p>Article : Chapitre : <?php echo $comment->getArticle()->getChapter();?> - <?php echo $comment->getArticle()->getTitle();?></p>
+            <h3><?php echo ($comment->getPseudo());?></h3>
         </div>
 
         <div class="bo_artcomContent">
@@ -38,13 +38,13 @@
     <div class="bo_postInfosContainer">
         <div class="bo_postInfos">
 
-            <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
+            <p>Créé le : <?php echo ($comment->getCreatedAt());?></p>
 
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&chapterId=<?php echo $article->getChapter();?>&articleId=<?php echo $comment->getArticleID();?>"
+                <p><a href="../public/index.php?path=frontView&chapterId=<?php echo $comment->getArticle()->getChapter();?>&articleId=<?php echo $comment->getArticleID();?>"
                         target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
                 <p class="bo_delete"><a href="../public/index.php?path=trashComment&commentId=<?php echo $comment->getID(); ?>">
-                <i class="far fa-trash-alt"></i>Supprimer</p>
+                <i class="far fa-trash-alt"></i>Supprimer</a></p>
             </div>
 
             <div class="bo_postflaged">

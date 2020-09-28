@@ -81,6 +81,12 @@ class Router
                 elseif ($path === 'frontView'){
                     $this->frontController->article($this->request->getGet()->get('chapterId'), $this->request->getGet()->get('articleId'));
                 }
+                elseif ($path === 'btnNxt'){
+                    $this->frontController->nextChapter($this->request->getGet()->get('chapterId'), $this->request->getGet()->get('articleId'));
+                }
+                elseif ($path === 'btnPrev'){
+                    $this->frontController->prevChapter($this->request->getGet()->get('chapterId'), $this->request->getGet()->get('articleId'));
+                }
                 elseif($path === 'addComment'){
                     $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('chapterId'), $this->request->getGet()->get('articleId'));
                 }
