@@ -45,6 +45,19 @@ class CommentDAO extends DAO
         return $comments;
     }
 
+    public function getArtChapt()
+    {
+        $sql = 'SELECT article_id FROM comment WHERE deleted = 0';
+        $result = $this->createQuery($sql);
+        $comments = [];
+        foreach ($result as $row) {
+            $commentId = $row['id'];
+            $comments[$commentId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $comments;
+    }
+
     public function getCommentsDeleted()
     {
         $sql = 'SELECT id, pseudo, content, createdAt, article_id, flag, deleted FROM comment WHERE deleted = 1 ORDER BY createdAt DESC';

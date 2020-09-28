@@ -55,7 +55,7 @@ class Router
                     $this->backController->deleteArticle($this->request->getGet()->get('articleId'));
                 }
                 elseif ($path === 'comments'){
-                    $this->backController->comments($this->request->getGet()->get('articleId'));
+                    $this->backController->comments();
                 }
                 elseif ($path === 'trashComment'){
                     $this->backController->trashComment($this->request->getGet()->get('commentId'));

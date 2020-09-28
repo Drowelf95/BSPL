@@ -131,6 +131,8 @@ class BackController extends Controller
     public function comments()
     {
         if ($this->checkLoggedIn()) {
+            $articleId = 1;
+            $article = $this->articleDAO->getChapter($articleId);
             $comments = $this->commentDAO->getCommentsFromArticle2();
             $postInBin = $this->commentDAO->getcommentsDeleted();
             if (!empty($postInBin)) {
@@ -139,6 +141,7 @@ class BackController extends Controller
                 $this->session->set('comBin', 'empty');
             }
             return $this->view->renderBO('backOfficeCom', [
+                'article' => $article,
                 'comments' => $comments
             ]);
         }

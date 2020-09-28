@@ -19,8 +19,7 @@
     </div>
 </div>
 
-<div class="bo_Container">
-
+<div class="bo_Container">  
     <?php foreach ($comments as $comment) { ?>
 
     <div class="bo_comWrapper">
@@ -42,7 +41,7 @@
             <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
 
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&chapterId=&articleId=<?php echo $comment->getArticleID();?>"
+                <p><a href="../public/index.php?path=frontView&chapterId=<?php echo $article->getChapter();?>&articleId=<?php echo $comment->getArticleID();?>"
                         target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
                 <p class="bo_delete"><a href="../public/index.php?path=trashComment&commentId=<?php echo $comment->getID(); ?>">
                 <i class="far fa-trash-alt"></i>Supprimer</p>
