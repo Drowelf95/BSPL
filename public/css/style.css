@@ -476,7 +476,8 @@ html {
 
 /* Backoffice menu*/
 
-.bo_menu {
+.bo_menu,
+.bo_menu_group {
     flex-direction: column;
     width: 20%;
     background-color: #ececec;

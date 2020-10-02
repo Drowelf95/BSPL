@@ -51,6 +51,11 @@
         border-radius: unset;
     }
     .bo_menu {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    .bo_menu_group {
         flex-direction: row;
         width: 100%;
         height: auto;

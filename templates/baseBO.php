@@ -19,46 +19,51 @@
 
             <div class="dispFlex bo_menu">
 
-                <a href="index.php">
-                    <div class="bo_m_btn">
-                        <p><i class="fas fa-home"></i></p>
-                        <p>Accueil</p>
-                    </div>
-                </a>
+                <div class="dispFlex bo_menu_group">
 
-                <a href="index.php?path=backOffice">
-                    <div class="bo_m_btn">
-                        <p><i class="far fa-edit"></i></p>
-                        <p>Billets</p>
-                    </div>
-                </a>
+                    <a href="index.php">
+                        <div class="bo_m_btn">
+                            <p><i class="fas fa-home"></i></p>
+                            <p>Accueil</p>
+                        </div>
+                    </a>
 
-                <a href="index.php?path=comments">
-                    <div class="bo_m_btn">
-                        <p><i class="far fa-comments"></i></p>
-                        <p>Commentaires</p>
-                    </div>
-                </a>
+                    <a href="index.php?path=backOffice">
+                        <div class="bo_m_btn">
+                            <p><i class="far fa-edit"></i></p>
+                            <p>Billets</p>
+                        </div>
+                    </a>
 
-                <a href="index.php?path=profil">
-                    <div class="bo_m_btn">
-                        <p><i class="far fa-user-circle"></i></p>
-                        <p>Profil</p>
-                    </div>
-                </a>
+                    <a href="index.php?path=comments">
+                        <div class="bo_m_btn">
+                            <p><i class="far fa-comments"></i></p>
+                            <p>Commentaires</p>
+                        </div>
+                    </a>
 
-                <div class="bo_m_btn bo_logOut">
-                    <p><i class="fas fa-sign-out-alt"></i></p>
-                    <p>Quitter</p>
+                    <a href="index.php?path=profil">
+                        <div class="bo_m_btn">
+                            <p><i class="far fa-user-circle"></i></p>
+                            <p>Profil</p>
+                        </div>
+                    </a>
+
+                    <div class="bo_m_btn bo_logOut">
+                        <p><i class="fas fa-sign-out-alt"></i></p>
+                        <p>Quitter</p>
+                    </div>
                 </div>
 
-                <div class="logout_Conf dispNone">
-                    <p>Souhaitez vous réellement quitter ?</p>
-                    <div class="logout_confBtn">
-                        <a href="index.php?path=logoutConf">
-                            <p class="conf_Yes">Oui</p>
-                        </a>
-                        <p class="conf_No">Non</p>
+                <div class="dispFlex bo_menu_quit">
+                    <div class="logout_Conf dispNone">
+                        <p>Souhaitez vous réellement quitter ?</p>
+                        <div class="logout_confBtn">
+                            <a href="index.php?path=logoutConf">
+                                <p class="conf_Yes">Oui</p>
+                            </a>
+                            <p class="conf_No">Non</p>
+                        </div>
                     </div>
                 </div>
 
