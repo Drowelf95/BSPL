@@ -10,7 +10,7 @@
   <p class="dropbtn "><i class="fas fa-bars"></i></p>
   <div class="dropdown-content">
     <?php foreach ($articles as $article) { ?>
-        <a href="../public/index.php?path=frontView&articleId=<?php echo $article->getId(); ?>">
+        <a href="../public/index.php?path=frontView&chapterId=<?php echo $article->getChapter(); ?>&articleId=<?php echo $article->getId(); ?>">
                 Chapitre : <?php echo htmlspecialchars($article->getChapter());?> -
                 <?php echo htmlspecialchars($article->getTitle());?></a>
     <?php } ?>  

@@ -46,7 +46,7 @@ class FrontController extends Controller
 
     public function article($chapterId, $articleId)
     {
-        //$articles = $this->articleDAO->getArticles();
+        $articles = $this->articleDAO->getArticles();
         $maxChapt = $this->articleDAO->maxChapt();
         $this->session->set('maxChapt', $maxChapt);
 

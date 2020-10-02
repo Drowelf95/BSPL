@@ -25,7 +25,7 @@
     <div class="bo_comWrapper">
 
         <div class="bo_artcomTitle">
-            <p>Article : Chapitre : <?php echo $comment->getArticle()->getChapter();?> - <?php echo $comment->getArticle()->getTitle();?></p>
+            <p>Chapitre : <?php echo $comment->getArticle()->getChapter();?> - <?php echo $comment->getArticle()->getTitle();?></p>
             <h3><?php echo ($comment->getPseudo());?></h3>
         </div>
 
