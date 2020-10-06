@@ -53,7 +53,7 @@ class FrontController extends Controller
         $article = $this->articleDAO->getChapter($chapterId);
         $comments = $this->commentDAO->getCommentsFromArticle($articleId);
         return $this->view->render('frontView', [
-            //'articles' => $articles,
+            'articles' => $articles,
             'article' => $article,
             'comments' => $comments
         ]);

@@ -9,10 +9,10 @@
 <div class="dropdown fv_Menu">
   <p class="dropbtn "><i class="fas fa-bars"></i></p>
   <div class="dropdown-content">
-    <?php foreach ($articles as $article) { ?>
-        <a href="../public/index.php?path=frontView&chapterId=<?php echo $article->getChapter(); ?>&articleId=<?php echo $article->getId(); ?>">
-                Chapitre : <?php echo htmlspecialchars($article->getChapter());?> -
-                <?php echo htmlspecialchars($article->getTitle());?></a>
+    <?php foreach ($articles as $menuArticle) { ?>
+        <a href="../public/index.php?path=frontView&chapterId=<?php echo $menuArticle->getChapter();?>&articleId=<?php echo $menuArticle->getId(); ?>">
+                Chapitre : <?php echo htmlspecialchars($menuArticle->getChapter());?> -
+                <?php echo htmlspecialchars($menuArticle->getTitle());?></a>
     <?php } ?>  
   </div>
 </div>
