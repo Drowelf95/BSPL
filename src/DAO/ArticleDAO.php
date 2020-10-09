@@ -96,6 +96,12 @@ class ArticleDAO extends DAO
         ]);
     }
 
+    public function deletePicture($articleId)
+    {
+        $sql = 'UPDATE article SET photo="" WHERE id= ?' ;
+        $this->createQuery($sql, [$articleId]);
+    }
+
     public function firstChapt()
     {
         $sql ='SELECT MIN(chapter) AS minChapter, id AS chapterId FROM article WHERE deleted= 0';
@@ -161,8 +167,6 @@ class ArticleDAO extends DAO
 
     public function deleteArticle($articleId)
     {
-        $sql = 'DELETE FROM comment WHERE article_id = ?';
-        $this->createQuery($sql, [$articleId]);
         $sql = 'DELETE FROM article WHERE id = ?';
         $this->createQuery($sql, [$articleId]);
     }

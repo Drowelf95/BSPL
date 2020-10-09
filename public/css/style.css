@@ -646,6 +646,13 @@ html {
     margin-bottom: 20px;
 }
 
+.bo_articleImg img {
+    height: 100px;
+    width: auto;
+    border: 1px dashed grey;
+    padding: 10px;
+}
+
 .fieldSizing {
     width: 400px;
     height: 20px;

@@ -37,8 +37,13 @@
             <div class="bo_fields">
                 <h3>Charger une image :</h3>
                 <?php $img = $article->getPhoto();?>
+                <?php $this->session->set('pictureName', $img);?>
                 <?php if ($img != '' ) : ?>
-                <p>Illustration : <?php echo $article->getPhoto();?></p>
+                <div class="bo_articleImg">
+                    <img src="../public/img/<?php echo $article->getPhoto();?>">
+                </div>                
+                <p>Illustration : <?php echo $article->getPhoto();?> <span class="bo_delete"><a href="index.php?path=deletePicture&articleId=<?php echo ($article->getId());?>"><i
+                            class="far fa-trash-alt"></i>Supprimer</a></span></p> 
                 <?php endif ?>
                 <input type="file" name="photo" id="photo" class="fieldSizing">
             </div>

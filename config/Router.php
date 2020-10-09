@@ -42,6 +42,9 @@ class Router
                 elseif ($path === 'editArticle'){
                     $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
+                elseif ($path === 'deletePicture'){
+                    $this->backController->deletePicture($this->request->getGet()->get('articleId'));
+                }
                 elseif ($path === 'articleBin'){
                     $this->backController->articleBin($this->request->getGet()->get('articleId'));
                 }

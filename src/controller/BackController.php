@@ -60,11 +60,9 @@ class BackController extends Controller
                         } else {
                             $this->session->set('alert', 'Impossible d\'importer l\'image');
                         }
-                        //echo 'Upload';
                     } else {
                         $this->articleDAO->addArticle($post);
                         header('Location: ../public/index.php?path=backOffice');
-                        //echo 'Fail';
                     }
                 }
                     return $this->view->renderBO('backOfficeEditor', [
@@ -84,17 +82,13 @@ class BackController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if(!$errors){
-                    //if($_FILES["photo"]["error"] != 0) {
-                        $target = "../public/img/".basename($_FILES['photo']['name']);
-                        if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
-                            $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
-                            header('Location: ../public/index.php?path=backOffice');
-                            return $this->view->renderBO('backOfficeReader', [
-                                'articles' => $articles
-                            ]);
-                        /*} else {
-                            $this->session->set('alert', 'Impossible d\'importer l\'image');
-                        }*/
+                    $target = "../public/img/".basename($_FILES['photo']['name']);
+                    if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
+                        $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
+                        header('Location: ../public/index.php?path=backOffice');
+                        return $this->view->renderBO('backOfficeReader', [
+                            'articles' => $articles
+                        ]);
                     } else {
                         $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
                         header('Location: ../public/index.php?path=backOffice');
@@ -113,6 +107,18 @@ class BackController extends Controller
             return $this->view->renderBO('backOfficeModif', [
                 'article' => $article
             ]);
+        }
+    }
+    
+    public function deletePicture($articleId)
+    {
+        $this->articleDAO->deletePicture($articleId);
+        $picture = $this->session->get('pictureName');
+        $target = "../public/img/".$picture; 
+        if (!unlink ($target)) {
+            $this->session->set('alert', 'Impossible de supprimer l\'image');
+        } else {
+            header('Location: ../public/index.php?path=editArticle&articleId=' . $articleId);
         }
     }
 
