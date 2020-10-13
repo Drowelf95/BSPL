@@ -35,8 +35,6 @@
             <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
             <p>Créé le : <?php echo htmlspecialchars($article->getCreatedAt());?></p>
             <div class="bo_postOptions">
-                <p><a href="../index.php?path=frontView&articleId=<?php echo $article->getId(); ?>" target="blank"><i
-                            class="far fa-eye"></i>Visualiser</a></p>
                 <p><a href="../index.php?path=untrashArticle&articleId=<?php echo $article->getId();?>"><i
                             class="fas fa-undo-alt"></i>Sortir de la corbeille</a></p>
                 <p class="bo_delete articlePermDel" id="btnDel-<?php echo $article->getId(); ?>"><i class="far fa-trash-alt"></i>Supprimer</p>

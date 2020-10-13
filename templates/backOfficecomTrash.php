@@ -37,8 +37,6 @@
             <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
 
             <div class="bo_postOptions">
-                <p><a href="../index.php?path=frontView&articleId=<?php echo $comment->getArticleID(); ?>"
-                        target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
                 <p><a href="../index.php?path=untrashComment&commentId=<?php echo $comment->getId();?>"><i
                     class="fas fa-undo-alt"></i>Sortir de la corbeille</a></p>
                 <p class="articlePermDel bo_delete" id="btnDel-<?php echo $comment->getId();?>"><i class="far fa-trash-alt"></i>Supprimer</p>

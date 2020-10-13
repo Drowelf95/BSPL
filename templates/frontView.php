@@ -68,7 +68,9 @@
                             </a>
                             <?php else : ?>
                                 <div class="dispFlex fv_Circle">
-                                    <i class="fas fa-times"></i>
+                                    <a href="index.php">
+                                        <i class="fas fa-times"></i>
+                                    </a>
                                 </div>
                             <?php endif ?>
                         </div>
@@ -94,7 +96,9 @@
                             </a>
                             <?php else : ?>
                                 <div class="dispFlex fv_Circle">
-                                    <i class="fas fa-times"></i>
+                                    <a href="index.php">
+                                        <i class="fas fa-times"></i>
+                                    </a>
                                 </div>
                             <?php endif ?>
                         </div>
@@ -108,6 +112,8 @@
                     <div class="dispFlex fv_navTitle fv_navTitleEdges">
                         <?php if ($actuChapt !== $minChapt[0]): ?>    
                             <h2>Chapitre précédent</h2>
+                        <?php else : ?>
+                            <h2>Accueil</h2>
                         <?php endif ?>
                     </div>
                     <div class="dispFlex fv_navTitle">
@@ -116,6 +122,8 @@
                     <div class="dispFlex fv_navTitle fv_navTitleEdges">
                         <?php if ($actuChapt !== $maxChapt[0]): ?>
                             <h2>Chapitre suivant</h2>
+                        <?php else : ?>
+                            <h2>Accueil</h2>
                         <?php endif ?>
                     </div>
                 </div>
@@ -157,7 +165,7 @@
                             <i class="fas fa-exclamation-triangle"></i>
                             Signaler</a></p>
                     <?php } else { ?>
-                        <p class="fv_signalDone">Ce commentaire à était signalé.</p>
+                        <p class="fv_signalDone">Ce commentaire a été signalé.</p>
                     <?php }?>
                 </div>
             </div>
