@@ -26,7 +26,7 @@
 
     <div class="bo_artcomTitle">
         <h3>
-            <a href="../public/index.php?path=frontView&articleId=<?php echo $article->getId(); ?>" target="blank">
+            <a href="../index.php?path=frontView&articleId=<?php echo $article->getId(); ?>" target="blank">
                 Chapitre : <?php echo ($article->getChapter());?> -
                 <?php echo ($article->getTitle());?></a>
         </h3>
@@ -41,11 +41,11 @@
             <p>Auteur : <?php echo ($article->getAuthor());?></p>
             <p>Créé le : <?php echo ($article->getCreatedAt());?></p>
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&chapterId=<?php echo $article->getChapter();?>&articleId=<?php echo $article->getId(); ?>" target="blank"><i
+                <p><a href="../index.php?path=frontView&chapterId=<?php echo $article->getChapter();?>&articleId=<?php echo $article->getId(); ?>" target="blank"><i
                             class="far fa-eye"></i>Visualiser</a></p>
-                <p><a href="../public/index.php?path=editArticle&articleId=<?php echo $article->getId(); ?>"><i
+                <p><a href="../index.php?path=editArticle&articleId=<?php echo $article->getId(); ?>"><i
                             class="far fa-edit"></i>Modifier</a></p>
-                <p class="bo_delete"><a href="../public/index.php?path=trashArticle&articleId=<?php echo $article->getId(); ?>"><i
+                <p class="bo_delete"><a href="../index.php?path=trashArticle&articleId=<?php echo $article->getId(); ?>"><i
                             class="far fa-trash-alt"></i>Supprimer</a></p>
                 </a>
             </div>

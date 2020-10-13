@@ -10,7 +10,7 @@
   <p class="dropbtn "><i class="fas fa-bars"></i></p>
   <div class="dropdown-content">
     <?php foreach ($articles as $menuArticle) { ?>
-        <a href="../public/index.php?path=frontView&chapterId=<?php echo $menuArticle->getChapter();?>&articleId=<?php echo $menuArticle->getId(); ?>">
+        <a href="../index.php?path=frontView&chapterId=<?php echo $menuArticle->getChapter();?>&articleId=<?php echo $menuArticle->getId(); ?>">
                 Chapitre : <?php echo htmlspecialchars($menuArticle->getChapter());?> -
                 <?php echo htmlspecialchars($menuArticle->getTitle());?></a>
     <?php } ?>  
@@ -34,7 +34,7 @@
             <?php $isThereAnImage = $article->getPhoto(); ?>
             <?php if ($isThereAnImage != '') : ?>
             <div class="dispFlex fv_articleImg">
-                <img src="../public/img/<?php echo $article->getPhoto();?>">
+                <img src="../img/<?php echo $article->getPhoto();?>">
             </div>
             <?php endif ?>
 
@@ -153,7 +153,7 @@
 
                 <div class="fv_signal">
                 <?php if(!$comment->isFlag()) {?>
-                    <p><a href="../public/index.php?path=flagComment&chapterId=<?php echo ($article->getChapter());?>&commentId=<?php echo $comment->getID();?>&articleId=<?php echo ($article->getId());?>">
+                    <p><a href="../index.php?path=flagComment&chapterId=<?php echo ($article->getChapter());?>&commentId=<?php echo $comment->getID();?>&articleId=<?php echo ($article->getId());?>">
                             <i class="fas fa-exclamation-triangle"></i>
                             Signaler</a></p>
                     <?php } else { ?>

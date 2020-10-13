@@ -17,7 +17,7 @@
 
     <!--Display the text editor-->
     <div class="bo_editor">
-    <form action="../public/index.php?path=profil" method="POST">
+    <form action="../index.php?path=profil" method="POST">
         <div class="bo_fields">
             <h3>Pseudonyme :</h3>
             <input type="text" name="pseudo" class="fieldSizing" value=""
@@ -39,7 +39,7 @@
         </div>
     </form>
 
-    <form action="../public/index.php?path=bioUpdate" method="POST">
+    <form action="../index.php?path=bioUpdate" method="POST">
         <div class="bo_fields">
                     <h3>Le contenu de la Bio :</h3>
                     <textarea id="mytextarea" name="myBio"><?php echo $bioText->getBio();?></textarea>

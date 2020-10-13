@@ -29,7 +29,7 @@ class View
         $this->styling = '../public/css/style.css';
         $this->fontAwe = '../public/fonts/Fontawesome/css/all.css';
         $this->mediaq = '../public/css/mediaq.css';
-        $this->favIco = '../public/img/fire.png';
+        $this->favIco = '../img/fire.png';
         $this->myJs = '../public/js/behavior.js';
         $view = $this->renderFile('../templates/base.php', [
             'title' => $this->title,
@@ -51,7 +51,7 @@ class View
         $this->styling = '../public/css/style.css';
         $this->fontAwe = '../public/fonts/Fontawesome/css/all.css';
         $this->mediaq = '../public/css/mediaq.css';
-        $this->favIco = '../public/img/fire.png';
+        $this->favIco = '../img/fire.png';
         $this->myJs = '../public/js/behavior.js';
         $view = $this->renderFile('../templates/baseBO.php', [
             'title' => $this->title,

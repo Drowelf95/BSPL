@@ -21,7 +21,7 @@
 
     <div class="bo_articleWrapper">
         <h3>Chapitre : <?php echo htmlspecialchars($article->getChapter());?> -
-            <a href="../public/index.php?path=article&articleId=<?php echo htmlspecialchars($article->getId());?>">
+            <a href="../index.php?path=article&articleId=<?php echo htmlspecialchars($article->getId());?>">
                 <?php echo htmlspecialchars($article->getTitle());?></a>
         </h3>
 
@@ -35,9 +35,9 @@
             <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
             <p>Créé le : <?php echo htmlspecialchars($article->getCreatedAt());?></p>
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&articleId=<?php echo $article->getId(); ?>" target="blank"><i
+                <p><a href="../index.php?path=frontView&articleId=<?php echo $article->getId(); ?>" target="blank"><i
                             class="far fa-eye"></i>Visualiser</a></p>
-                <p><a href="../public/index.php?path=untrashArticle&articleId=<?php echo $article->getId();?>"><i
+                <p><a href="../index.php?path=untrashArticle&articleId=<?php echo $article->getId();?>"><i
                             class="fas fa-undo-alt"></i>Sortir de la corbeille</a></p>
                 <p class="bo_delete articlePermDel" id="btnDel-<?php echo $article->getId(); ?>"><i class="far fa-trash-alt"></i>Supprimer</p>
                 </a>
@@ -45,7 +45,7 @@
         </div>
         <div class="bo_permDelete dispNone" id="confDel-<?php echo $article->getId(); ?>">
             <p>Souhaitez-vous définitivement supprimer cette article ? </p>
-            <p class="bo_permYes"><a href="../public/index.php?path=deleteArticle&articleId=<?php echo $article->getId();?>">Oui</a></p>
+            <p class="bo_permYes"><a href="../index.php?path=deleteArticle&articleId=<?php echo $article->getId();?>">Oui</a></p>
             <p class="bo_permNo">Non</p>
         </div>
     </div>

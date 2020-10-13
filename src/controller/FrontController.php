@@ -27,7 +27,7 @@ class FrontController extends Controller
                 if($result && $result['isPasswordValid']) {
                     $this->session->set('id', $result['result']['id']);
                     $this->session->set('pseudo', $post->get('pseudo'));
-                    header('Location: ../public/index.php?path=backOffice');
+                    header('Location: ../index.php?path=backOffice');
                 }
                 else {
                     $this->session->set('errorMdp', 'Il y a une erreur sur le pseudonyme ou le mot de passe.');
@@ -40,7 +40,7 @@ class FrontController extends Controller
             return $this->view->render('login');
             
         } else {
-            header('Location: ../public/index.php?path=backOffice');
+            header('Location: ../index.php?path=backOffice');
         }
     }
 
@@ -66,10 +66,10 @@ class FrontController extends Controller
                 if(!$errors){
                     $this->commentDAO->addComment($post, $articleId);
                     $this->session->set('alert', 'Le commentaire a bien été posté.');
-                    header('Location: ../public/index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
+                    header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
                 } else {
                     $this->session->set('alert', 'Le pseudo ou le contenu du commentaire est trop court, veuillez le changer.');
-                    header('Location: ../public/index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
+                    header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
                 } 
         }
     }
@@ -78,7 +78,7 @@ class FrontController extends Controller
     {
         $this->commentDAO->flagComment($commentId);
         $this->session->set('flag_comment', 'Le commentaire a bien été signalé');
-        header('Location: ../public/index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
+        header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
     }
 
     public function bio()
@@ -93,14 +93,14 @@ class FrontController extends Controller
     {
         $nextId = $this->articleDAO->nextId($chapterId);
         $this->session->set('nextChapt', $nextId[0]);
-        header('Location: ../public/index.php?path=frontView&chapterId=' . $nextId[0] . '&articleId=' .$nextId[1]);
+        header('Location: ../index.php?path=frontView&chapterId=' . $nextId[0] . '&articleId=' .$nextId[1]);
     }
 
     public function prevChapter($chapterId)
     {
         $prevId = $this->articleDAO->prevId($chapterId);
         $this->session->set('prevChapt', $prevId[0]);
-        header('Location: ../public/index.php?path=frontView&chapterId=' . $prevId[0] . '&articleId=' .$prevId[1]);
+        header('Location: ../index.php?path=frontView&chapterId=' . $prevId[0] . '&articleId=' .$prevId[1]);
     }
 
 }

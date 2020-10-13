@@ -8,11 +8,11 @@
 
         <div class="dispFlex titleContainer">
             <h1>Blog</h1>
-            <img src="../public/img/iceberg.png">
+            <img src="../img/iceberg.png">
             <h1>Admin</h1>
         </div>
 
-        <form method="post" action="../public/index.php?path=login" >
+        <form method="post" action="../index.php?path=login" >
             <div class="inputLines">
 
                 <h2>Identifiant</h2>

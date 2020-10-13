@@ -37,16 +37,16 @@
             <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
 
             <div class="bo_postOptions">
-                <p><a href="../public/index.php?path=frontView&articleId=<?php echo $comment->getArticleID(); ?>"
+                <p><a href="../index.php?path=frontView&articleId=<?php echo $comment->getArticleID(); ?>"
                         target="blank"><i class="far fa-eye"></i>Visualiser</a></p>
-                <p><a href="../public/index.php?path=untrashComment&commentId=<?php echo $comment->getId();?>"><i
+                <p><a href="../index.php?path=untrashComment&commentId=<?php echo $comment->getId();?>"><i
                     class="fas fa-undo-alt"></i>Sortir de la corbeille</a></p>
                 <p class="articlePermDel bo_delete" id="btnDel-<?php echo $comment->getId();?>"><i class="far fa-trash-alt"></i>Supprimer</p>
             </div>
         </div>
         <div class="bo_permDelete dispNone" id="confDel-<?php echo $comment->getId();?>">
             <p>Souhaitez-vous définitivement supprimer ce commentaire ? </p>
-            <p class="bo_permYes"><a href="../public/index.php?path=deleteComment&commentId=<?php echo $comment->getId();?>">Oui</a></p>
+            <p class="bo_permYes"><a href="../index.php?path=deleteComment&commentId=<?php echo $comment->getId();?>">Oui</a></p>
             <p class="bo_permNo">Non</p>
         </div>
     </div>

@@ -9,7 +9,7 @@ class BackController extends Controller
     private function checkLoggedIn()
     {
         if(!$this->session->get('pseudo')) {
-            header('Location: ../public/index.php?path=login');
+            header('Location: ../index.php?path=login');
         } else {
             return true;
         }
@@ -40,7 +40,7 @@ class BackController extends Controller
                 'articles' => $articles
             ]);
             } else {
-                header('Location: ../public/index.php?path=backOffice');
+                header('Location: ../index.php?path=backOffice');
             }
         }
     }
@@ -56,13 +56,13 @@ class BackController extends Controller
                         $target = "../public/img/".basename($_FILES['photo']['name']);
                         if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
                             $this->articleDAO->addArticle($post);
-                            header('Location: ../public/index.php?path=backOffice');
+                            header('Location: ../index.php?path=backOffice');
                         } else {
                             $this->session->set('alert', 'Impossible d\'importer l\'image');
                         }
                     } else {
                         $this->articleDAO->addArticle($post);
-                        header('Location: ../public/index.php?path=backOffice');
+                        header('Location: ../index.php?path=backOffice');
                     }
                 }
                     return $this->view->renderBO('backOfficeEditor', [
@@ -85,13 +85,13 @@ class BackController extends Controller
                     $target = "../public/img/".basename($_FILES['photo']['name']);
                     if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
                         $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
-                        header('Location: ../public/index.php?path=backOffice');
+                        header('Location: ../index.php?path=backOffice');
                         return $this->view->renderBO('backOfficeReader', [
                             'articles' => $articles
                         ]);
                     } else {
                         $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
-                        header('Location: ../public/index.php?path=backOffice');
+                        header('Location: ../index.php?path=backOffice');
                         return $this->view->renderBO('backOfficeReader', [
                             'articles' => $articles
                         ]);
@@ -118,7 +118,7 @@ class BackController extends Controller
         if (!unlink ($target)) {
             $this->session->set('alert', 'Impossible de supprimer l\'image');
         } else {
-            header('Location: ../public/index.php?path=editArticle&articleId=' . $articleId);
+            header('Location: ../index.php?path=editArticle&articleId=' . $articleId);
         }
     }
 
@@ -128,7 +128,7 @@ class BackController extends Controller
             $this->articleDAO->trashArticle($articleId);
             $this->articleDAO->trashArticleComs($articleId);
             $this->session->set('alert', 'L\'article a été placé dans la corbeille');
-            header('Location: ../public/index.php?path=backOffice');
+            header('Location: ../index.php?path=backOffice');
         }
     }
 
@@ -138,7 +138,7 @@ class BackController extends Controller
             $this->articleDAO->untrashArticle($articleId);
             $this->articleDAO->untrashArticleComs($articleId);
             $this->session->set('alert', 'L\'article a été sorti de la corbeille');
-            header('Location: ../public/index.php?path=articleBin');
+            header('Location: ../index.php?path=articleBin');
         }
     }
 
@@ -147,7 +147,7 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $this->articleDAO->deleteArticle($articleId);
             $this->session->set('alert', 'L\'article a été définitivement supprimé');
-            header('Location: ../public/index.php?path=articleBin');
+            header('Location: ../index.php?path=articleBin');
         }
     }
 
@@ -174,7 +174,7 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $this->commentDAO->trashComment($commentId);
             $this->session->set('alert', 'Le commentaire a été placé dans la corbeille ');
-            header('Location: ../public/index.php?path=comments');
+            header('Location: ../index.php?path=comments');
         }   
     }
 
@@ -183,7 +183,7 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $this->commentDAO->untrashComment($commentId);
             $this->session->set('alert', 'Le commentaire a été sorti de la corbeille ');
-            header('Location: ../public/index.php?path=commentBin');
+            header('Location: ../index.php?path=commentBin');
         }
     }
 
@@ -196,7 +196,7 @@ class BackController extends Controller
                 'comments' => $comments
             ]);
             } else {
-                header('Location: ../public/index.php?path=comments');
+                header('Location: ../index.php?path=comments');
             }
         }
     }
@@ -206,7 +206,7 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $this->commentDAO->deleteComment($commentId);
             $this->session->set('alert', 'Le commentaire a été définitivement supprimé');
-            header('Location: ../public/index.php?path=commentBin');
+            header('Location: ../index.php?path=commentBin');
         }
     }
 
@@ -215,7 +215,7 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $this->commentDAO->unflagComment($commentId);
             $this->session->set('alert', 'Le commentaire a bien été désignalé');
-            header('Location: ../public/index.php?path=comments');
+            header('Location: ../index.php?path=comments');
         }
     }
 
@@ -252,7 +252,7 @@ class BackController extends Controller
             $this->session->remove('loginOut');
             $this->session->stop();
             $this->session->start();
-            header('Location: ../public/index.php');
+            header('Location: ../index.php');
         }
     }
 
@@ -260,7 +260,7 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $this->session->remove('loginOut');
-            header('Location: ../public/index.php?path=backOffice');
+            header('Location: ../index.php?path=backOffice');
         }
     }
 

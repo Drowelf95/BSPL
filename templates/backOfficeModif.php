@@ -18,7 +18,7 @@
 
     <!--Display the text editor-->
     <div class="bo_editor">
-        <form method="post" action="../public/index.php?path=editArticle&articleId=<?php echo ($article->getId());?>" enctype="multipart/form-data">
+        <form method="post" action="../index.php?path=editArticle&articleId=<?php echo ($article->getId());?>" enctype="multipart/form-data">
             <div class="bo_fields">
                 <h3>Chapitre :</h3>
                 <input type="text" id="chapter" name="chapter" class="fieldSizing" value="<?php echo $article->getChapter();?>">
@@ -40,7 +40,7 @@
                 <?php $this->session->set('pictureName', $img);?>
                 <?php if ($img != '' ) : ?>
                 <div class="bo_articleImg">
-                    <img src="../public/img/<?php echo $article->getPhoto();?>">
+                    <img src="../img/<?php echo $article->getPhoto();?>">
                 </div>                
                 <p>Illustration : <?php echo $article->getPhoto();?> <span class="bo_delete"><a href="index.php?path=deletePicture&articleId=<?php echo ($article->getId());?>"><i
                             class="far fa-trash-alt"></i>Supprimer</a></span></p> 
