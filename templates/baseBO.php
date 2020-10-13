@@ -86,7 +86,7 @@
     tinymce.init({
         selector: '#mytextarea',
         width: '600',
-        height: '250'
+        height: '250',
     });
 
     $(document).ready(function(e) {
