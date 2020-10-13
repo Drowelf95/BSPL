@@ -22,7 +22,7 @@ class ArticleDAO extends DAO
 
     public function getArticles()
     {
-        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted = 0 ORDER BY id DESC';
+        $sql = 'SELECT * FROM article WHERE deleted = 0 ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -35,7 +35,7 @@ class ArticleDAO extends DAO
 
     public function getArticlesDeleted()
     {
-        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted = 1 ORDER BY id DESC';
+        $sql = 'SELECT *  FROM article WHERE deleted = 1 ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -48,7 +48,7 @@ class ArticleDAO extends DAO
 
     public function getArticle($articleId)
     {
-        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted= 0 AND id = ?';
+        $sql = 'SELECT * FROM article WHERE deleted= 0 AND id = ?';
         $result = $this->createQuery($sql, [$articleId]);
         $article = $result->fetch();
         $result->closeCursor();
@@ -58,7 +58,7 @@ class ArticleDAO extends DAO
 
     public function getChapter($chapterId)
     {
-        $sql = 'SELECT id, chapter, title, content, photo, author, createdAt FROM article WHERE deleted= 0 AND chapter = ?';
+        $sql = 'SELECT * FROM article WHERE deleted= 0 AND chapter = ?';
         $result = $this->createQuery($sql, [$chapterId]);
         $article = $result->fetch();
         $result->closeCursor();

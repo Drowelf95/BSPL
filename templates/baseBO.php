@@ -7,10 +7,10 @@
     
     <title><?php echo $title ?></title>
 
-    <link rel="stylesheet" href="<?= $styling ?>" />
-    <link rel="stylesheet" href="<?= $fontAwe ?>" />
-    <link rel="stylesheet" href="<?= $mediaq ?>" />
-    <link rel="icon" href="<?= $favIco ?>" />
+    <link rel="stylesheet" href="<?php echo $styling ?>" />
+    <link rel="stylesheet" href="<?php echo $fontAwe ?>" />
+    <link rel="stylesheet" href="<?php echo $mediaq ?>" />
+    <link rel="icon" href="<?php echo $favIco ?>" />
 </head>
 
 <body>

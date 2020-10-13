@@ -34,7 +34,7 @@ class Router
                     $this->frontController->login($this->request->getPost());
                 } 
                 elseif ($path === 'backOffice'){
-                    $this->backController->article($this->request->getGet()->get('articleId'));
+                    $this->backController->article();
                 }
                 elseif ($path === 'editor'){
                     $this->backController->addArticle($this->request->getPost());

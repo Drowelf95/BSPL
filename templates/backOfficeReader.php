@@ -26,7 +26,7 @@
 
     <div class="bo_artcomTitle">
         <h3>
-            <a href="../index.php?path=frontView&articleId=<?php echo $article->getId(); ?>" target="blank">
+        <a href="../index.php?path=frontView&chapterId=<?php echo $article->getChapter();?>&articleId=<?php echo $article->getId(); ?>" target="blank">
                 Chapitre : <?php echo ($article->getChapter());?> -
                 <?php echo ($article->getTitle());?></a>
         </h3>
