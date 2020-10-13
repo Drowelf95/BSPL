@@ -26,12 +26,12 @@
 
         <div class="bo_fields">
             <h3>Mot de passe :</h3>
-            <input type="text" name="password" class="fieldSizing" placeholder="Nouveau mot de passe" required>
+            <input type="password" name="password" class="fieldSizing" placeholder="Nouveau mot de passe" required>
         </div>
 
         <div class="bo_fields">
             <h3>Confirmation du mot de passe :</h3>
-            <input type="text" name="password_conf" class="fieldSizing" placeholder="Confirmer le mot de passe" required>
+            <input type="password" name="password_conf" class="fieldSizing" placeholder="Confirmer le mot de passe" required>
         </div>
 
         <div class="bo_submit">
