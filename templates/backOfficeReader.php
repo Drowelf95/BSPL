@@ -1,4 +1,5 @@
 <?php $this->title = "Gestion"; ?>
+<?php $this->session->set('page', 'billets');?>
 
 <!--Display Title and options of the selected area-->
 <div class="bo_titles">

@@ -1,4 +1,5 @@
 <?php $this->title = "Profil"; ?>
+<?php $this->session->set('page', 'profil');?>
 
 <!--Display Title-->
 <div class="bo_titles">
@@ -20,7 +21,7 @@
     <form action="../index.php?path=profil" method="POST">
         <div class="bo_fields">
             <h3>Pseudonyme :</h3>
-            <input type="text" name="pseudo" class="fieldSizing" value=""
+            <input type="text" name="pseudo" class="fieldSizing" value="<?php echo $username[0];?>"
                 placeholder="Nouveau pseudonyme" required>
         </div>
 

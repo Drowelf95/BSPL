@@ -22,7 +22,20 @@ class ArticleDAO extends DAO
 
     public function getArticles()
     {
-        $sql = 'SELECT * FROM article WHERE deleted = 0 ORDER BY id DESC';
+        $sql = 'SELECT * FROM article WHERE deleted = 0 ORDER BY chapter DESC';
+        $result = $this->createQuery($sql);
+        $articles = [];
+        foreach ($result as $row){
+            $articleId = $row['id'];
+            $articles[$articleId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $articles;
+    }
+
+    public function getArticlesASC()
+    {
+        $sql = 'SELECT * FROM article WHERE deleted = 0 ORDER BY chapter';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -114,7 +127,7 @@ class ArticleDAO extends DAO
 
     public function nextId($chapterId)
     {
-        $sql ='SELECT chapter, id FROM article WHERE chapter > ?  AND deleted= 0';
+        $sql ='SELECT chapter, id FROM article WHERE chapter > ?  AND deleted= 0  ORDER BY chapter ASC LIMIT 2';
         $result = $this->createQuery($sql, [$chapterId]);
         $nextIdAv = $result->fetch();
         $result->closeCursor();
@@ -124,7 +137,7 @@ class ArticleDAO extends DAO
     
     public function prevId($chapterId)
     {
-        $sql ='SELECT chapter, id FROM article WHERE chapter < ? AND deleted= 0 ORDER BY id DESC LIMIT 1';
+        $sql ='SELECT chapter, id FROM article WHERE chapter < ? AND deleted= 0 ORDER BY chapter DESC LIMIT 1';
         $result = $this->createQuery($sql, [$chapterId]);
         $nextIdAv = $result->fetch();
         $result->closeCursor();

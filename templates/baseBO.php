@@ -21,6 +21,9 @@
 
                 <div class="dispFlex bo_menu_group">
 
+
+                    <?php $active = $this->session->get('page');?>
+
                     <a href="index.php">
                         <div class="bo_m_btn">
                             <p><i class="fas fa-home"></i></p>
@@ -29,21 +32,33 @@
                     </a>
 
                     <a href="index.php?path=backOffice">
-                        <div class="bo_m_btn">
+                        <?php if($active !== 'billets') : ?>
+                            <div class="bo_m_btn">
+                        <?php else : ?>
+                            <div class=" bo_m_btn bo_m_btn_active">
+                        <?php endif ?>
                             <p><i class="far fa-edit"></i></p>
                             <p>Billets</p>
                         </div>
                     </a>
 
                     <a href="index.php?path=comments">
-                        <div class="bo_m_btn">
+                        <?php if($active !== 'commentaires') : ?>
+                            <div class="bo_m_btn">
+                        <?php else : ?>
+                            <div class=" bo_m_btn bo_m_btn_active">
+                        <?php endif ?>
                             <p><i class="far fa-comments"></i></p>
                             <p>Commentaires</p>
                         </div>
                     </a>
 
                     <a href="index.php?path=profil">
-                        <div class="bo_m_btn">
+                        <?php if($active !== 'profil') : ?>
+                            <div class="bo_m_btn">
+                        <?php else : ?>
+                            <div class=" bo_m_btn bo_m_btn_active">
+                        <?php endif ?>
                             <p><i class="far fa-user-circle"></i></p>
                             <p>Profil</p>
                         </div>

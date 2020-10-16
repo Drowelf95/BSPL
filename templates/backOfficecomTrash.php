@@ -1,4 +1,5 @@
 <?php $this->title = "Corbeille"; ?>
+<?php $this->session->set('page', 'commentaires');?>
 
 <!--Display Title and options of the selected area-->
 <div class="bo_titles">

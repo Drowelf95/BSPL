@@ -46,7 +46,7 @@ class FrontController extends Controller
 
     public function article($chapterId, $articleId)
     {
-        $articles = $this->articleDAO->getArticles();
+        $articles = $this->articleDAO->getArticlesASC();
         $maxChapt = $this->articleDAO->maxChapt();
         $this->session->set('maxChapt', $maxChapt);
 
@@ -77,7 +77,7 @@ class FrontController extends Controller
     public function flagComment($commentId, $chapterId, $articleId)
     {
         $this->commentDAO->flagComment($commentId);
-        $this->session->set('flag_comment', 'Le commentaire a bien été signalé');
+        $this->session->set('alert', 'Le commentaire a bien été signalé');
         header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
     }
 

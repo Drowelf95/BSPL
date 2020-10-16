@@ -28,17 +28,26 @@ class UserDAO extends DAO
 
     public function updatePassword(Parameter $post)
     {
-        $sql = 'UPDATE user SET password = ? WHERE pseudo = ?';
-        $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $post->get('pseudo')]);
+        $sql = 'UPDATE user SET pseudo = ?, password = ? WHERE id = 1';
+        $this->createQuery($sql, [$post->get('pseudo'), password_hash($post->get('password'), PASSWORD_BCRYPT)]);
     }
 
     public function getBio()
     {
-        $sql = 'SELECT bio FROM user WHERE id = ?';
-        $result = $this->createQuery($sql, [1]);
+        $sql = 'SELECT bio FROM user WHERE id = 1';
+        $result = $this->createQuery($sql);
         $bioText = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($bioText);
+    }
+
+    public function getUser()
+    {
+        $sql = 'SELECT pseudo FROM user WHERE id = 1';
+        $result = $this->createQuery($sql);
+        $username = $result->fetch();
+        $result->closeCursor();
+        return $username;
     }
   
     public function updateBio($post)

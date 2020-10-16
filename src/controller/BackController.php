@@ -18,8 +18,8 @@ class BackController extends Controller
     public function article()
     {
         if ($this->checkLoggedIn()) {
-        $articles = $this->articleDAO->getArticles();
-        $postInBin = $this->articleDAO->getArticlesDeleted();
+            $articles = $this->articleDAO->getArticles();
+            $postInBin = $this->articleDAO->getArticlesDeleted();
             if (!empty($postInBin)) {
                 $this->session->set('postBin', 'full');
             }else {
@@ -34,7 +34,7 @@ class BackController extends Controller
     public function articleBin()
     {
         if ($this->checkLoggedIn()) {
-        $articles = $this->articleDAO->getArticlesDeleted();
+            $articles = $this->articleDAO->getArticlesDeleted();
             if (!empty($articles)) {
             return $this->view->renderBO('backOfficePostTrash', [
                 'articles' => $articles
@@ -155,7 +155,6 @@ class BackController extends Controller
     public function comments()
     {
         if ($this->checkLoggedIn()) {
-
             $comments = $this->commentDAO->getCommentsFromArticle2();
             $postInBin = $this->commentDAO->getcommentsDeleted();
             if (!empty($postInBin)) {
@@ -190,7 +189,7 @@ class BackController extends Controller
     public function commentBin()
     {
         if ($this->checkLoggedIn()) {
-        $comments = $this->commentDAO->getcommentsDeleted();
+            $comments = $this->commentDAO->getcommentsDeleted();
             if (!empty($comments)) {
             return $this->view->renderBO('backOfficeComTrash', [
                 'comments' => $comments
@@ -227,21 +226,27 @@ class BackController extends Controller
                     $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
                     $this->session->set('alert', 'L\'identifiant et le mot de passe ont été mise à jour');
                     $bioText = $this->userDAO->getBio();
+                    $username = $this->userDAO->getUser();
                     return $this->view->renderBO('profil', [ 
-                        'bioText' => $bioText 
+                        'bioText' => $bioText, 
+                        'username' => $username
                         ]);
                 } else {
                     $this->session->set('alert', 'Le mot de passe et la confirmation ne correspondent pas.');
                     $bioText = $this->userDAO->getBio();
+                    $username = $this->userDAO->getUser();
                     return $this->view->renderBO('profil', [ 
-                        'bioText' => $bioText 
+                        'bioText' => $bioText , 
+                        'username' => $username
                         ]);
                 }
             }
 
         $bioText = $this->userDAO->getBio();
+        $username = $this->userDAO->getUser();
         return $this->view->renderBO('profil', [ 
-            'bioText' => $bioText 
+            'bioText' => $bioText, 
+            'username' => $username
             ]);
         }
     }

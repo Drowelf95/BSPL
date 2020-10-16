@@ -500,6 +500,11 @@ html {
     transition-duration: 300ms;
 }
 
+.bo_m_btn_active {
+    color: #481a71;
+    background-color: #dcdcdc;
+}
+
 .bo_menu a {
     text-align: center;
 }
