@@ -56,9 +56,7 @@
 
             <div class="bo_submit">
                 <input type="submit" class="bo_btn" value="Mettre à jour" id="submit" name="submit">
-                <p class="bo_date">date : <?php 
-            setlocale(LC_TIME, "fr_FR");
-            echo strftime('%A le %d %B %Y'); ?></p>
+                <p class="bo_date">date : <?php setlocale(LC_TIME, "fr_FR"); echo strftime('%A le %d %B %Y'); ?></p>
             </div>
         </form>
     </div>

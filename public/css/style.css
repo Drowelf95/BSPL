@@ -637,6 +637,10 @@ html {
     margin-bottom: 50px;
 }
 
+.bo_editor_suggest {
+    font-size: 0.8rem;
+}
+
 .bo_btn {
     padding: 10px 20px;
     border: none;
@@ -713,6 +717,11 @@ html {
 }
 
 .bo_comWrapper h3 {
+    margin: 0;
+}
+
+.bo_com_infos {
+    font-size: 0.8rem;
     margin: 0;
 }
 
@@ -803,6 +812,7 @@ input:focus {
 
 h3 {
     margin-bottom: 10px;
+    font-size: 1.3rem;
 }
 
 .dispNone {

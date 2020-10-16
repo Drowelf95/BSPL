@@ -17,6 +17,7 @@ class ArticleDAO extends DAO
         $article->setPhoto($row['photo']);
         $article->setAuthor($row['author']);
         $article->setCreatedAt($row['createdAt']);
+        $article->setDeleted($row['deleted']);
         return $article;
     }
 
@@ -61,13 +62,12 @@ class ArticleDAO extends DAO
 
     public function getArticle($articleId)
     {
-        $sql = 'SELECT * FROM article WHERE deleted= 0 AND id = ?';
+        $sql = 'SELECT * FROM article WHERE  id = ?';
         $result = $this->createQuery($sql, [$articleId]);
         $article = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($article);
     }
-
 
     public function getChapter($chapterId)
     {
@@ -76,6 +76,15 @@ class ArticleDAO extends DAO
         $article = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($article);
+    }
+
+    public function getDouble(Parameter $post)
+    {
+        $sql = 'SELECT chapter FROM article WHERE chapter = ?';
+        $result = $this->createQuery($sql, [$post->get('chapter')]);
+        $double = $result->fetch();
+        $result->closeCursor();
+        return $double;
     }
 
     public function addArticle(Parameter $post)

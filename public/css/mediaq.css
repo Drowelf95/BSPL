@@ -64,10 +64,15 @@
         width: 100%;
         height: auto;
     }
+    .bo_options {
+        margin-left: 5px;
+    }
     .bo_m_btn {
         width: auto;
         font-size: 0.8rem;
-        border-radius: unset;
+        padding: 10px 5px;
+        margin: 10px 2px;
+        border-radius: 5px;
     }
     .bo_m_btn i {
         font-size: 1rem;
@@ -83,6 +88,9 @@
         font-size: 1.5rem;
         margin: 10px;
     }
+    .bo_titles p {
+        margin-left: 10px;
+    }
     .bo_Container {
         font-size: 0.8rem;
         margin: 0;
@@ -92,10 +100,18 @@
         margin: 10px;
     }
     .bo_postInfos {
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+    }
+    .bo_postInfos p {
+        margin: 0;
     }
     .bo_postOptions {
-        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
     }
     /* Editor */
     .fieldSizing {
@@ -110,8 +126,7 @@
         text-align: center;
     }
     /* Front View */
-    .fv_Close,
-    .dropdown {
+    .fv_Close {
         width: 25px;
         height: 25px;
         font-size: 1rem;
@@ -122,6 +137,19 @@
         justify-content: center;
         align-items: center;
         top: 20px;
+    }
+    .fv_Menu {
+        padding: 5px;
+        border: 2px solid #481a71;
+        border-radius: 31px;
+        top: 20px;
+    }
+    .dropbtn {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .fv_Close {
         right: 20px;
@@ -150,7 +178,7 @@
     }
     .fv_head {
         margin: 0;
-        margin-top: 12vh;
+        margin-top: 9vh;
         height: 20vh;
     }
     .fv_head h1 {

@@ -48,6 +48,9 @@ class BackController extends Controller
     public function addArticle(Parameter $post)
     {
         if ($this->checkLoggedIn()) {
+            $maxChapt = $this->articleDAO->maxChapt();
+            $this->session->set('maxChapt', $maxChapt);
+            $test_double = $this->articleDAO->getDouble($post);
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if(!$errors){
@@ -55,14 +58,23 @@ class BackController extends Controller
                     {
                         $target = "../public/img/".basename($_FILES['photo']['name']);
                         if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {    
-                            $this->articleDAO->addArticle($post);
-                            header('Location: ../index.php?path=backOffice');
+                            if ($maxChapt[0] == $test_double[0]) {
+                                $this->session->set('alert', 'Chapitre déjà en ligne');
+                            } else {
+                                $this->articleDAO->addArticle($post);
+                                header('Location: ../index.php?path=backOffice');
+                            }
                         } else {
                             $this->session->set('alert', 'Impossible d\'importer l\'image');
                         }
                     } else {
-                        $this->articleDAO->addArticle($post);
-                        header('Location: ../index.php?path=backOffice');
+                        if ($maxChapt[0] == $test_double[0]) {
+                            $this->session->set('alert', 'Chapitre déjà en ligne');
+                        } else {
+                            $this->articleDAO->addArticle($post);
+                            header('Location: ../index.php?path=backOffice');
+                        }
+                      
                     }
                 }
                     return $this->view->renderBO('backOfficeEditor', [

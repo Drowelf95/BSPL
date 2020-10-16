@@ -63,14 +63,14 @@ class FrontController extends Controller
     {
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
-                if(!$errors){
-                    $this->commentDAO->addComment($post, $articleId);
-                    $this->session->set('alert', 'Le commentaire a bien été posté.');
-                    header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
-                } else {
-                    $this->session->set('alert', 'Le pseudo ou le contenu du commentaire est trop court, veuillez le changer.');
-                    header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
-                } 
+            if(!$errors){
+                $this->commentDAO->addComment($post, $articleId);
+                $this->session->set('alert', 'Le commentaire a bien été posté.');
+                header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
+            } else {
+                $this->session->set('alert', 'Le pseudo ou le contenu du commentaire est trop court, veuillez le changer.');
+                header('Location: ../index.php?path=frontView&chapterId=' . $chapterId . '&articleId=' .$articleId);
+            } 
         }
     }
 

@@ -57,7 +57,7 @@ class ArticleValidation extends Validation
         if($this->constraint->minLength($name, $value, 1)) {
             return $this->constraint->minLength('chapitre', $value, 1);
         }
-        if($this->constraint->maxLength($name, $value, 255)) {
+        if($this->constraint->maxLength($name, $value, 2)) {
             return $this->constraint->maxLength('chapitre', $value, 255);
         }
     }

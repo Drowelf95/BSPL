@@ -40,6 +40,11 @@ class Article
     private $createdAt;
 
     /**
+     * @var string
+     */
+    private $deleted;
+
+    /**
      * @return int
      */
     public function getId()
@@ -149,5 +154,22 @@ class Article
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    
+    /**
+     * @return \string
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+
+    /**
+     * @param \string $deleted
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
     }
 }

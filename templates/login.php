@@ -6,13 +6,16 @@
 
     <div class="mdpContainer">
 
+        <!--Title-->
         <div class="dispFlex titleContainer">
             <h1>Blog</h1>
             <img src="../img/iceberg.png">
             <h1>Admin</h1>
         </div>
 
+        <!--Login form-->
         <form method="post" action="../index.php?path=login" >
+            
             <div class="inputLines">
 
                 <h2>Identifiant</h2>
@@ -30,6 +33,7 @@
 
         </form>
 
+        <!--Alert-->
         <div class="errorMessage">
             <p><?php echo $this->session->get('errorMdp');?></p>
         </div>
