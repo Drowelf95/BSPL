@@ -38,9 +38,9 @@
                 <?php $maxChapt = $this->session->get('maxChapt');?>
                 <?php $propChapt = $maxChapt[0] + 1 ;?>
                 <h3>Chapitre :</h3>
-                <p class="bo_editor_suggest">Suggestion automatique</p>
                 <input type="number" id="chapter" name="chapter" class="fieldSizing" value="<?php echo $propChapt ;?>"
                     placeholder="Numéro du chapitre ici">
+                <p class="bo_editor_suggest">Suggestion automatique</p>
             </div>
 
             <div class="bo_fields">
@@ -60,8 +60,8 @@
 
             <div class="bo_fields">
                 <h3>Auteur :</h3>
-                <p class="bo_editor_suggest">Suggestion automatique</p>
                 <input type="text" id="author" name="author" class="fieldSizing" value="Jean Forteroche" required>
+                <p class="bo_editor_suggest">Suggestion automatique</p>
             </div>
 
             <div class="bo_submit">

@@ -13,7 +13,7 @@
   <div class="dropdown-content">
     <?php foreach ($articles as $menuArticle) { ?>
 
-        <a href="../index.php?path=frontView&chapterId=<?php echo $menuArticle->getChapter();?>&articleId=<?php echo ($article->getId());?>">
+        <a href="../index.php?path=frontView&chapterId=<?php echo $menuArticle->getChapter();?>&articleId=<?php echo ($menuArticle->getId());?>">
                 Chapitre : <?php echo ($menuArticle->getChapter());?> - <?php echo ($menuArticle->getTitle());?></a>
     <?php } ?>  
 

@@ -100,8 +100,8 @@
     <script>
     tinymce.init({
         selector: '#mytextarea',
-        width: '600',
-        height: '250',
+        plugins : 'autoresize',
+        width: '100%'
     });
 
     $(document).ready(function(e) {

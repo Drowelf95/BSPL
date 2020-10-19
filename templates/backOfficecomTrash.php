@@ -49,14 +49,19 @@
 
             <p>Créé le : <?php echo ($comment->getCreatedAt());?></p>
 
+            <?php $linked = $comment->getArticle()->getDeleted();?>
+
+            <div class="dispFlex">
+                <?php if($linked !== '0') : ?> 
+                    <p class="bo_editor_suggest">Article également dans la corbeille</p>
+                <?php endif ?>
+            </div>
+
             <div class="bo_postOptions">
-                <?php $linked = $comment->getArticle()->getDeleted();?>
                 <!--Check if removing from trash is possible-->
                 <?php if($linked !== '1') : ?> 
                     <p><a href="../index.php?path=untrashComment&commentId=<?php echo $comment->getId();?>"><i
                         class="fas fa-undo-alt"></i>Sortir de la corbeille</a></p>
-                <?php else :?>
-                    <p class="errorMessage">Article également dans la corbeille</p>
                 <?php endif ?>
                 <p class="articlePermDel bo_delete" id="btnDel-<?php echo $comment->getId();?>"><i class="far fa-trash-alt"></i>Supprimer</p>
             </div>

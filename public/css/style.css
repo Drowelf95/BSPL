@@ -638,6 +638,7 @@ html {
 }
 
 .bo_editor_suggest {
+    color: red;
     font-size: 0.8rem;
 }
 
@@ -663,7 +664,7 @@ html {
 }
 
 .fieldSizing {
-    width: 400px;
+    width: 98%;
     height: 20px;
     padding: 10px;
     border: 1px dashed grey;

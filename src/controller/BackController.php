@@ -119,7 +119,7 @@ class BackController extends Controller
             return $this->view->renderBO('backOfficeModif', [
                 'article' => $article
             ]);
-        }
+        } 
     }
     
     public function deletePicture($articleId)
