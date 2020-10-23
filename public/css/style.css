@@ -540,6 +540,7 @@ html {
 .logout_Conf p {
     color: white;
     margin: 8px;
+    text-align: center;
 }
 
 .logout_confBtn {
