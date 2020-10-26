@@ -35,8 +35,8 @@
 
         <!--Title & chapter-->
         <h3><a href="../index.php?path=frontView&chapterId=<?php echo $article->getChapter();?>&articleId=<?php echo $article->getId(); ?>" target="blank">
-                Chapitre : <?php echo ($article->getChapter());?> -
-                <?php echo ($article->getTitle());?></a></h3>
+                Chapitre : <?php echo htmlspecialchars($article->getChapter());?> -
+                <?php echo htmlspecialchars($article->getTitle());?></a></h3>
 
         <!--Content-->
         <div class="bo_artcomContent">
@@ -49,8 +49,8 @@
         <!--Post infos-->
         <div class="bo_postInfos">
 
-            <p>Auteur : <?php echo ($article->getAuthor());?></p>
-            <p>Créé le : <?php echo ($article->getCreatedAt());?></p>
+            <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
+            <p>Créé le : <?php echo htmlspecialchars($article->getCreatedAt());?></p>
             
             <!--Options-->
             <div class="bo_postOptions">

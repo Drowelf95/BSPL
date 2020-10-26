@@ -53,7 +53,7 @@
             
             <div class="bo_fields">
                 <h3>Le contenu de la Bio :</h3>
-                <textarea id="mytextarea" name="myBio"><?php echo $bioText->getBio();?></textarea>
+                <textarea id="mytextarea" name="myBio"><?php echo htmlspecialchars($bioText->getBio());?></textarea>
             </div>
             
             <input type="submit" class="bo_btn" value="Mettre à jour la bio" id="submit2" name="submit">

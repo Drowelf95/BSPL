@@ -33,13 +33,13 @@
 
         <!--Username and chapter-->
         <div class="bo_artcomTitle">
-            <h3><?php echo ($comment->getPseudo());?></h3>
-            <p class="bo_com_infos">Chapitre : <?php echo $comment->getArticle()->getChapter();?> - <?php echo $comment->getArticle()->getTitle();?></p>
+            <h3><?php echo htmlspecialchars($comment->getPseudo());?></h3>
+            <p class="bo_com_infos">Chapitre : <?php echo htmlspecialchars($comment->getArticle()->getChapter());?> - <?php echo htmlspecialchars($comment->getArticle()->getTitle());?></p>
         </div>
 
         <!--Content-->
         <div class="bo_artcomContent">
-            <p><?php echo $comment->getContent();?></p>
+            <p><?php echo htmlspecialchars($comment->getContent());?></p>
         </div>
 
     </div>
@@ -49,7 +49,7 @@
         <!--Post infos-->
         <div class="bo_postInfos">
 
-            <p>Créé le : <?php echo ($comment->getCreatedAt());?></p>
+            <p>Créé le : <?php echo htmlspecialchars($comment->getCreatedAt());?></p>
 
             <!--Options-->
             <div class="bo_postOptions">

@@ -29,14 +29,14 @@
 
     <!--Title & chapter-->
     <div class="bo_articleWrapper">
-        <h3>Chapitre : <?php echo ($article->getChapter());?> -
+        <h3>Chapitre : <?php echo htmlspecialchars($article->getChapter());?> -
             <a href="../index.php?path=article&articleId=<?php echo ($article->getId());?>">
-                <?php echo ($article->getTitle());?></a>
+                <?php echo htmlspecialchars($article->getTitle());?></a>
         </h3>
 
         <!--Content-->
         <div class="bo_postContent">
-            <p><?php echo $article->getContent();?></p>
+            <p><?php echo htmlspecialchars($article->getContent());?></p>
         </div>
     </div>
 
@@ -45,8 +45,8 @@
         <!--Post infos-->
         <div class="bo_postInfos">
             
-            <p>Auteur : <?php echo ($article->getAuthor());?></p>
-            <p>Créé le : <?php echo ($article->getCreatedAt());?></p>
+            <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
+            <p>Créé le : <?php echo htmlspecialchars($article->getCreatedAt());?></p>
             
             <!--Options-->
             <div class="bo_postOptions">

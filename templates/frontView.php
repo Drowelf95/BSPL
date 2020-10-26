@@ -50,8 +50,8 @@
 
             <!--Title & chapter-->
             <div class="fv_articleTitle">
-                <h3>Chapitre : <?php echo $article->getChapter();?></h3>
-                <h3><?php echo $article->getTitle();?></h3>
+                <h3>Chapitre : <?php echo htmlspecialchars($article->getChapter());?></h3>
+                <h3><?php echo htmlspecialchars($article->getTitle());?></h3>
             </div>
 
             <!--Content-->
@@ -61,8 +61,8 @@
 
             <!--Article infos-->
             <div class="fv_articleInfos">
-                <p>Auteur : <?php echo $article->getAuthor();?></p>
-                <p>Rédigé le : <?php echo $article->getcreatedAT();?></p>
+                <p>Auteur : <?php echo htmlspecialchars($article->getAuthor());?></p>
+                <p>Rédigé le : <?php echo htmlspecialchars($article->getcreatedAT());?></p>
             </div>
 
             <!--Nav bar-->
@@ -191,11 +191,11 @@
 
             <div class="dispFlex fv_articleComments">
                 
-                <h4><?php echo $comment->getPseudo();?></h4>
-                <p><?php echo $comment->getContent();?></p>
+                <h4><?php echo htmlspecialchars($comment->getPseudo());?></h4>
+                <p><?php echo htmlspecialchars($comment->getContent());?></p>
                 
                 <div class="fv_comInfos">
-                    <p>date : <?php echo $comment->getcreatedAT();?></p>
+                    <p>date : <?php echo htmlspecialchars($comment->getcreatedAT());?></p>
                 </div>
 
                 <!--Alert option-->
